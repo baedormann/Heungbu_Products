@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login');
 const memberRouter = require('./routes/member');
 
 const app = express();
@@ -35,7 +36,8 @@ mongoose
 const memberModel = require('./models/member');
 
 app.use('/', indexRouter);
-app.use('/login', memberRouter);
+app.use('/login', loginRouter);
+app.use('/member', memberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
