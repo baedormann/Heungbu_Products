@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const memberRouter = require('./routes/member');
 
 const app = express();
 
@@ -24,11 +25,17 @@ const pwd = "heven";
 const url = `mongodb://${id}:${pwd}@13.125.245.95:27017/admin`
 
 mongoose
-    .connect(url, { dbName: 'Heunbu' },{ useNewUrlParser: true, useUnifiedTopology: true})
+    .connect(url,
+        { dbName: 'Heunbu' },
+        { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
 
+// models
+const memberModel = require('./models/member');
+
 app.use('/', indexRouter);
+app.use('/login', memberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
