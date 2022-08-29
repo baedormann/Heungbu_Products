@@ -1,12 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,6 +18,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const id = "admin";
+const pwd = "heven";
+const url = `mongodb://${id}:${pwd}@13.125.245.95:27017/admin`
+
+mongoose
+    .connect(url, { dbName: 'Heunbu' },{ useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('Successfully connected to mongodb'))
+    .catch(e => console.error(e));
 
 app.use('/', indexRouter);
 
