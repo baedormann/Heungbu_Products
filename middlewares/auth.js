@@ -4,7 +4,16 @@ const TOKEN_INVALID = -2;
 
 const authUtil = {
     checkToken: async (req, res, next) => {
-        var token = req.headers.authorization.split(" ")[1];
+        if(!req.cookies.token) {
+            return res.redirect('login');
+        }
+
+        let token
+
+        if (req.headers.authorization)
+            token = req.headers.authorization.split(" ")[1];
+        else
+            token = req.cookies.token
         // 토큰 없음
         if (!token)
             return res.json({token: false, message: "토큰이 없습니다."});

@@ -6,8 +6,7 @@ const bcrypt = require("bcrypt");
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-    //res.render('login');
-    res.render('testPage');
+    res.render('login');
 });
 
 // 로그인
@@ -19,7 +18,7 @@ router.post('/',  async function(req, res) {
         if (result) {
             if (bcrypt.compareSync(req_password, result.password)) {
                 const jwtToken = await jwt.sign(result);
-                res.status(201).json({token : jwtToken.token});
+                res.cookie("token", jwtToken.token).status(200).json("로그인 성공");
             } else {
                 res.send("비밀 번호가 틀렸습니다.");
             }
@@ -28,6 +27,10 @@ router.post('/',  async function(req, res) {
         }
     });
 });
+
+router.get('/logout', async function(req, res) {
+    res.clearCookie('token').json("로그아웃");
+})
 
 // access토큰 재발급
 router.post('/token', function(req, res) {

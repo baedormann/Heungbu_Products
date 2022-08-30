@@ -7,7 +7,7 @@ router.post('/auth', async function(req, res) {
     const data = new member({
         emp_no: req.body.emp_no,
         password: req.body.password,
-        emp_name: req.body.emp_no,
+        emp_name: req.body.emp_name,
         dept:req.body.dept,
         emp_position:req.body.emp_position,
         email:req.body.email,
