@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 /* GET login page. */
 router.get('/', function(req, res, next) {
     res.render('login');
+    //res.render('testPage');
 });
 
 // 로그인

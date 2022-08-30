@@ -1,0 +1,70 @@
+html{
+    background-color: #4385F5;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+}
+.formContent{
+    background-color: white;
+    border-radius: 10px;
+    max-width: 450px;
+    width: 90%;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+}
+h4{
+    display: inline-block;
+    padding: 0 10px;
+}
+input[type="text"], input[type="password"]{
+    background-color: #f6f6f6;
+    border: #f6f6f6;
+    border-radius: 6px;
+    width: 50%;
+    padding: 15px 32px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease-in-out;
+}
+input[type="text"]:focus,
+input[type="password"]:focus{
+    background-color: white;
+    outline: 2px solid #f6f6f6;
+}
+button{
+    color: white;
+    padding: 15px 80px;
+    width: 64%;
+    background-color: #4385F5;
+    display: inline-block;
+    margin: 5px 20px 40px 20px;
+    border: none;
+    border-radius: 6px;
+}
+button:hover{
+    cursor: pointer;
+}
+.checkboxDiv{
+    display: inline-block;
+    width: 64%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.formFooter{
+    width: 100%;
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px 0;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+.clickable:hover{
+    cursor: pointer;
+}
