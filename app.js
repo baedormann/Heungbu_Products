@@ -4,10 +4,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const authUtil = require('./middlewares/auth').checkToken;
 
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const memberRouter = require('./routes/member');
+const testRouter = require('./routes/test');
 
 const app = express();
 
@@ -38,6 +40,7 @@ const memberModel = require('./models/member');
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/member', memberRouter);
+app.use('/test', authUtil, testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
