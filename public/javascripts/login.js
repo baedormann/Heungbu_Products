@@ -14,6 +14,8 @@ function login() {
         body: JSON.stringify(user)
     }).then(response => response.json()).then((data) => {
         alert(data.message);
+        localStorage.setItem("name", data.data.emp_name);
+        localStorage.setItem("authorization", data.data.authorization);
         location.href = '/';
     }).catch(err => console.log(err));
 }

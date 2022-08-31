@@ -18,7 +18,7 @@ router.post('/',  async function(req, res) {
         if (result) {
             if (bcrypt.compareSync(req_password, result.password)) {
                 const jwtToken = await jwt.sign(result);
-                res.cookie("token", jwtToken.token).status(200).json({message: "로그인 성공"});
+                res.cookie("token", jwtToken.token).status(200).json({message: "로그인 성공", data: result});
             } else {
                 res.send({message: "비밀 번호가 틀렸습니다."});
             }
