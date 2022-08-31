@@ -2,6 +2,7 @@ const jwt = require('../config/jwt');
 const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
+// jwt 미들웨어
 const authUtil = {
     checkToken: async (req, res, next) => {
         if(!req.cookies.token) {

@@ -18,18 +18,19 @@ router.post('/',  async function(req, res) {
         if (result) {
             if (bcrypt.compareSync(req_password, result.password)) {
                 const jwtToken = await jwt.sign(result);
-                res.cookie("token", jwtToken.token).status(200).json("로그인 성공");
+                res.cookie("token", jwtToken.token).status(200).json({message: "로그인 성공"});
             } else {
-                res.send("비밀 번호가 틀렸습니다.");
+                res.send({message: "비밀 번호가 틀렸습니다."});
             }
         } else {
-            res.send("없는 아이디 입니다.");
+            res.send({message: "없는 아이디 입니다."});
         }
     });
 });
 
+// 로그아웃
 router.get('/logout', async function(req, res) {
-    res.clearCookie('token').json("로그아웃");
+    res.clearCookie('token').json({message: "로그아웃 되었습니다."});
 })
 
 // access토큰 재발급

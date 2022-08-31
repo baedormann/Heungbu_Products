@@ -3,22 +3,23 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+// 유저 스키마
 const memberSchema = new Schema({
     emp_no:
         {
             type: Number,
             unique: true,
-            require: true
+            required: true,
         },
     password:
         {
             type: String,
-            require: true,
+            required: true,
         },
     emp_name:
         {
             type: String,
-            require: true,
+            required: true,
             default: " ",
         },
     dept:
@@ -32,8 +33,7 @@ const memberSchema = new Schema({
     email:
         {
             type: String,
-            require: true,
-            unique: true,
+            required: true,
         },
     authority:
         {
