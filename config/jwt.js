@@ -9,7 +9,7 @@ module.exports = {
     sign: async (user) => {
         const payload = {
             emp_no: user.emp_no,
-            email: user.email,
+            authority: user.authority,
         };
         const result = {
             token: jwt.sign(payload, secretKey, options),
@@ -20,7 +20,7 @@ module.exports = {
     verify: async (token) => {
         let decoded;
         try {
-            // verify를 통해 값 decode!
+            // verify를 통해 값 decode
             decoded = jwt.verify(token, secretKey);
         } catch (err) {
             if (err.message === 'jwt expired') {

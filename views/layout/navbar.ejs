@@ -1,6 +1,8 @@
 <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
 <link rel='stylesheet' href="/stylesheets/navbar.css"></script>
 <script src="/javascripts/logout.js"></script>
+<script src="/javascripts/navbar.js"></script>
+
 <div class="sidebar">
     <div class="logo">
         <div class="logo_name">물품 전산</div>
@@ -47,7 +49,6 @@
         </a>
         <span class="tooltip">대여 현황</span>
     </li>
-
     <li>
         <a href="#">
             <i class="fa-solid fa-user"></i>
@@ -55,8 +56,15 @@
         </a>
         <span class="tooltip">마이페이지</span>
     </li>
+    <li>
+        <a onclick="reToken()">
+            <i id="timmer" style="font-size:10px"></i>
+            <span class="links_name">로그인 연장</span>
+        </a>
+        <span class="tooltip">로그인 연장</span>
+    </li>
     <li class="footNav">
-        <a onclick="logout()">
+        <a onclick="logout(getCookie())">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="links_name">로그아웃</span>
         </a>
