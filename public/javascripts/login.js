@@ -1,3 +1,4 @@
+// 로그인 요청 api
 function login() {
     const user = {
         emp_no: document.getElementById("emp_no").value,
@@ -12,7 +13,9 @@ function login() {
         },
         body: JSON.stringify(user)
     }).then(response => response.json()).then((data) => {
-        console.log(data);
-        location.href = '/test';
-    });
+        alert(data.message);
+        localStorage.setItem("name", data.data.emp_name);
+        localStorage.setItem("authorization", data.data.authorization);
+        location.href = '/';
+    }).catch(err => console.log(err));
 }

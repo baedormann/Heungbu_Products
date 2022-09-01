@@ -9,7 +9,8 @@ const authUtil = require('./middlewares/auth').checkToken;
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const memberRouter = require('./routes/member');
-const testRouter = require('./routes/test');
+const authRouter = require('./routes/auth');
+const test = require('./routes/xlsx');
 
 const app = express();
 
@@ -27,6 +28,7 @@ const id = "admin";
 const pwd = "heven";
 const url = `mongodb://${id}:${pwd}@13.125.245.95:27017/admin`
 
+// 몽고db 연동
 mongoose
     .connect(url,
         { dbName: 'Heunbu' },
@@ -34,13 +36,11 @@ mongoose
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
 
-// models
-const memberModel = require('./models/member');
-
-app.use('/', indexRouter);
+app.use('/',indexRouter);
 app.use('/login', loginRouter);
-app.use('/member', memberRouter);
-app.use('/test', authUtil, testRouter);
+app.use('/member', authUtil, memberRouter);
+app.use('/auth', authRouter);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
