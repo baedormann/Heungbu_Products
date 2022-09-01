@@ -162,7 +162,11 @@
     color:#11101D;
 }
 
-.sidebar li a .links_name.currentPage{
+.sidebar li a.currentPage .links_name{
+    color: #11101D;
+}
+
+.sidebar li a.currentPage i{
     color: #11101D;
 }
 
