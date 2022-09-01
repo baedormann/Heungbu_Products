@@ -6,15 +6,20 @@
   <script src="/javascripts/logout.js"></script>
   <script src="/javascripts/cookieModule.js"></script>
   <script scr="/javascripts/xlsx.js"></script>
+
 </head>
 <body>
-<h1 id="name"></h1>
-<p>환영합니다.</p>
-<button onclick="logout(getCookie('token'))">로그아웃</button>
-<button onclick="location.href='/test/xlsx'">엑셀 생성</button>
+<%- include('./layout/navbar.ejs') %>
+<div class="home-section">
+  <h1 id="name"></h1>
+  <p>환영합니다.</p>
+  <button onclick="logout(getCookie('token'))">로그아웃</button>
+  <button onclick="location.href='/test/xlsx'">엑셀 생성</button>
+</div>
 <script>
   const name = localStorage.getItem("name");
   document.getElementById("name").innerHTML=name + " 님";
+  //console.log(getCookie("token"))
 </script>
 </body>
 </html>

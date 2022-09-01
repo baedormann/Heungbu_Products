@@ -19,3 +19,10 @@ function login() {
         location.href = '/';
     }).catch(err => console.log(err));
 }
+
+// 엔터 클릭
+function enter() {
+    if (window.event.keyCode == 13) {
+        login();
+    }
+}

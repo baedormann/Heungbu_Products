@@ -82,3 +82,10 @@ function auth() {
         alert("회원가입에 실패하셨습니다.");
     });
 }
+
+// 엔터 클릭
+function enter() {
+    if(window.event.keyCode == 13) {
+        auth();
+    }
+}
