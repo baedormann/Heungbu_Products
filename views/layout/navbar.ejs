@@ -22,35 +22,35 @@
         <span class="tooltip">홈</span>
     </li>
     <li>
-        <a href="#">
+        <a href="#" class="manageUser">
             <i class="fa-solid fa-people-roof"></i>
             <span class="links_name">이용자관리</span>
         </a>
         <span class="tooltip">이용자관리</span>
     </li>
     <li>
-        <a href="#">
+        <a href="/regProduct" class="regProduct">
             <i class="fa-regular fa-square-plus"></i>
             <span class="links_name">물품등록</span>
         </a>
         <span class="tooltip">물품등록</span>
     </li>
     <li>
-        <a href="#">
+        <a href="#" class="manageProduct">
             <i class="fa-solid fa-gear"></i>
             <span class="links_name">물품관리</span>
         </a>
         <span class="tooltip">물품관리</span>
     </li>
     <li>
-        <a href="#">
+        <a href="#" class="rentStatus">
             <i class="fa-solid fa-table-list"></i>
             <span class="links_name">대여 현황</span>
         </a>
         <span class="tooltip">대여 현황</span>
     </li>
     <li>
-        <a href="#">
+        <a href="#" class="myPage">
             <i class="fa-solid fa-user"></i>
             <span class="links_name">마이페이지</span>
         </a>
@@ -100,6 +100,5 @@
 
     if(stateUrl == "home"){
         document.querySelector('.home').classList.add('currentPage');
-        document.querySelector('.links_name').classList.add('currentPage');
     }
 </script>
