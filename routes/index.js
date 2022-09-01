@@ -4,7 +4,7 @@ const authUtil = require('../middlewares/auth').checkToken;
 
 /* GET home page. */
 router.get('/', authUtil,function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { stateUrl: 'home' });
 });
 
 module.exports = router;
