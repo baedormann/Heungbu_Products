@@ -31,7 +31,6 @@ router.patch('/auth', async function(req, res) {
                 dept:req.body.dept,
                 emp_position:req.body.emp_position,
                 email:req.body.email,
-                authority:req.body.authority
             });
         const data = await member.findOne({ emp_no: req.body.emp_no }).exec()
         res.status(201).json(data);

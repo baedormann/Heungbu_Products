@@ -16,10 +16,11 @@ function manageOpen(emp_no) {
         document.getElementById("e_dept").innerHTML = "부서 : " + data.dept;
         document.getElementById("e_position").innerHTML = "직책 : " + data.emp_position;
         document.getElementById("e_email").innerHTML = "이메일 : " + data.email;
-        document.getElementById("p_edit").innerHTML = "<input id='e_edit' type='checkbox' data.edit_auth ? checked : null >" + "편집 권한"
+        document.getElementById("p_edit").innerHTML = data.edit_auth ? "<input id='e_edit' type='checkbox' checked=data.rent_edit>" + "편집 권한" : "<input id='e_edit' type='checkbox'>" + "편집 권한";
         document.getElementById("p_rent").innerHTML = data.rent_auth ? "<input id='e_rent' type='checkbox' checked=data.rent_auth>" + "대여 권한" : "<input id='e_rent' type='checkbox'>" + "대여 권한";
         document.getElementById("p_open").innerHTML = data.open_auth ? "<input id='e_open' type='checkbox' checked=data.open_auth>" + "열람 권한" : "<input id='e_open' type='checkbox'>" + "열람 권한";
-        document.getElementById("ben_button").innerHTML = "<button onclick=userBen(" + data.emp_no + ")>추방</button>";
+        document.getElementById("save_button").innerHTML = `<button onclick=saveAuth('${emp_no}')>저장</button>`;
+        document.getElementById("ben_button").innerHTML = `<button onclick=userBen('${emp_no}')>추방</button>`;
     });
 }
 
@@ -33,16 +34,46 @@ window.onclick = function (event) {
     }
 }
 
-// 유저 추방
-function userBen(emp_no) {
-    const url = '/member/auth/' + emp_no;
+// 권한 부여 및 회수
+function saveAuth(emp_no) {
+    console.log(emp_no)
+    const data = {
+        emp_no : emp_no,
+        edit_auth : document.getElementById("e_edit").checked,
+        rent_auth : document.getElementById("e_rent").checked,
+        open_auth : document.getElementById("e_open").checked
+    }
+    console.log(data);
+    const url = '/manageUser';
     fetch(url, {
-        method: "delete",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + getCookie('token')
-        }
+        },
+        body: JSON.stringify(data)
     }).then(response => response.json()).then((data) => {
-        console.log(data);
+        alert('권한을 수정하였습니다.');
+        location.reload();
     });
+}
+
+// 유저 추방
+function userBen(emp_no) {
+    if(confirm("정말 추방하시겠습니까?") == true){
+        const url = '/member/auth/' + emp_no;
+        fetch(url, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + getCookie('token')
+            }
+        }).then(response => response.json()).then((data) => {
+            alert('추방되었습니다.');
+            location.reload();
+        });
+    }else{
+        return;
+    }
+
 }

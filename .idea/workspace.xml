@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/stylesheets/manageUser/manageModal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/stylesheets/userTable.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/manageUse/userTable.ejs" afterDir="false" />
+    <list default="true" id="1ce5e414-9a43-4d52-ae48-6f9267619417" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/jwt.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/cookieModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/cookieModule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/manageUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/manageUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/manageUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/manageUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/member.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout/navbar.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/manageUse/userTable.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/userTable.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +30,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2EBvPptL2yX0SsOxN099xBGZ86v" />
+  <component name="ProjectId" id="2ECueZ6OuzQYoiPDtRYsogJw9pX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,24 +41,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Heungbu_Products" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Heungbu_Products" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www" working-dir="$PROJECT_DIR$/bin">
       <method v="2" />
     </configuration>
@@ -83,12 +59,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="" />
-      <created>1662081775834</created>
+      <changelist id="1ce5e414-9a43-4d52-ae48-6f9267619417" name="Changes" comment="" />
+      <created>1662111986041</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662081775834</updated>
-      <workItem from="1662081780039" duration="18718000" />
+      <updated>1662111986041</updated>
+      <workItem from="1662111989796" duration="4764000" />
     </task>
     <servers />
   </component>

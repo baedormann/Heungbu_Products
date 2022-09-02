@@ -21,9 +21,9 @@
         <td><%= res.dept %></td>
         <td><%= res.emp_position %></td>
         <td><%= res.email %></td>
-        <td><%= res.edit_auth %></td>
-        <td><%= res.rent_auth %></td>
-        <td><%= res.open_auth %></td>
+        <td><%= res.edit_auth ? 'O' : 'X' %></td>
+        <td><%= res.rent_auth ? 'O' : 'X' %></td>
+        <td><%= res.open_auth ? 'O' : 'X'%></td>
         <td><button onclick="manageOpen('<%= res.emp_no %>')">관리</button></td>
     </tr>
     <%})%>
