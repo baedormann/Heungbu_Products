@@ -15,7 +15,7 @@ router.get('/auth', async function(req, res) {
 // 회원 조회
 router.get('/auth/:emp_no', async function(req, res) {
     try {
-        const data = await member.findOne({ emp_no:req.params.emp_no }).exec();
+        const data = await member.findOne({ emp_no : req.params.emp_no }).exec();
         res.status(201).json(data);
     } catch (err) {
         res.status(400).json({ message: err.message });

@@ -9,7 +9,10 @@ module.exports = {
     sign: async (user) => {
         const payload = {
             emp_no: user.emp_no,
-            authority: user.authority,
+            manage: user.manage,
+            edit_auth: user.edit_auth,
+            rent_auth: user.rent_auth,
+            open_auth: user.open_auth
         };
         const result = {
             token: jwt.sign(payload, secretKey, options),

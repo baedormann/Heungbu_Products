@@ -10,14 +10,11 @@
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h1 id="name"></h1>
-    <p>환영합니다.</p>
-    <button onclick="location.href='/test/xlsx'">엑셀 생성</button>
+    <h1 id="name">이용자 관리</h1>
+    <div class="userTable">
+        <%- include('./manageUse/userTable.ejs') %>
+    </div>
 </div>
-<script>
-    const name = localStorage.getItem("name");
-    document.getElementById("name").innerHTML = name + " 님";
-    //console.log(getCookie("token"))
-</script>
+<script src="/javascripts/manageUser.js"></script>
 </body>
 </html>

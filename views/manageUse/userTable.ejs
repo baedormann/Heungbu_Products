@@ -1,0 +1,32 @@
+<link rel='stylesheet' href="/stylesheets/userTable.css"></script>
+<table>
+    <thead>
+    <tr>
+        <th>사번</th>
+        <th>이름</th>
+        <th>부서</th>
+        <th>직책</th>
+        <th>메일</th>
+        <th>편집 권한</th>
+        <th>대여 권한</th>
+        <th>열람 권한</th>
+        <th>관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% data.map(res =>{ %>
+    <tr>
+        <td><%= res.emp_no %></td>
+        <td><%= res.emp_name %></td>
+        <td><%= res.dept %></td>
+        <td><%= res.emp_position %></td>
+        <td><%= res.email %></td>
+        <td><%= res.edit_auth %></td>
+        <td><%= res.rent_auth %></td>
+        <td><%= res.open_auth %></td>
+        <td><button onclick="manageOpen('<%= res.emp_no %>')">관리</button></td>
+    </tr>
+    <%})%>
+    </tbody>
+</table>
+<%- include('../manageUse/manageModal.ejs') %>

@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: "Poppins" , sans-serif;
 }
+body{
+    margin:15px;
+}
 .sidebar{
     position: fixed;
     left: 0;
@@ -208,25 +211,9 @@
     margin-right: 10px;
 }
 
-.sidebar .footNav #log_out{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    background: #1A374D;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 0px;
-    transition: all 0.5s ease;
-}
-.sidebar.open .footNav #log_out{
-    width: 50px;
-    background: none;
-}
 .home-section{
     position: relative;
-    background: #E4E9F7;
+
     min-height: 100vh;
     top: 0;
     left: 78px;

@@ -7,7 +7,7 @@ const saltRounds = 10;
 const memberSchema = new Schema({
     emp_no:
         {
-            type: Number,
+            type: String,
             unique: true,
             required: true,
         },
@@ -35,10 +35,26 @@ const memberSchema = new Schema({
             type: String,
             required: true,
         },
-    authority:
+    manage:
         {
-            type: [String]
-        }
+            type: Boolean,
+            default: false
+        },
+    edit_auth:
+        {
+            type: Boolean,
+            default: false
+        },
+    rent_auth:
+        {
+            type: Boolean,
+            default: false
+        },
+    open_auth:
+        {
+            type: Boolean,
+            default: false
+        },
 }, {versionKey : false})
 
 memberSchema.pre('save', function(next) {
