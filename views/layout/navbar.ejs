@@ -15,7 +15,7 @@
         <span class="tooltip">Search</span>
     </li>
     <li>
-        <a href="#" class="home">
+        <a href="/home" class="home">
             <i class="fa-sharp fa-solid fa-house"></i>
             <span class="links_name">홈</span>
         </a>
@@ -100,5 +100,8 @@
 
     if(stateUrl == "home"){
         document.querySelector('.home').classList.add('currentPage');
+    }
+    else if(stateUrl == "regProduct"){
+        document.querySelector('.regProduct').classList.add('currentPage');
     }
 </script>

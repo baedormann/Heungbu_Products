@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <link rel='stylesheet' href='/stylesheets/regProduct.css'/>
+    <script src="/javascripts/regProduct.js"></script>
+    <script src="/javascripts/cookieModule.js"></script>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h2>물품 등록 페이지</h2>
+    <div class="wrapper">
+        <div class="formContent" onkeyup="enter()">
+            <div>
+                <h4>물품 정보 입력</h4>
+            </div>
+            <div class="firstCategoryDiv">
+                대분류 <select name="firstCategory" id="firstCategory">
+                    <option value="전자제품"></option>
+                    <option value="도서"></option>
+                    <option value="자재"></option>
+                </select>
+            </div>
+            <div class="secondCategoryDiv">
+                소분류 <select name="secondCategory" id="secondCategory">
+                    <option value="모니터"></option>
+                    <option value="청소용구"></option>
+                    <option value="개발관련"></option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="name", placeholder="제품코드">
+            </div>
+            <div>
+                <input type="text" name="name", placeholder="물품명">
+            </div>
+            <div>
+                수량 <input type="number">
+            </div>
+            <div>
+                대여 가능 여부
+                <input type="radio" name="rental_availability"> 가능
+                <input type="radio" name="rental_availability"> 불가능
+            </div>
+            <div>
+                반환 필요 여부
+                <input type="radio" name="return_needed"> 필요
+                <input type="radio" name="return_needed"> 불필요
+            </div>
+
+            <div class="mismatch-message-email" style="font-size:12px; color:red; visibility: hidden">이메일 형식에 맞지 않습니다 ex)asdasd@gmail.com</div>
+            <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">두 비밀번호가 일치하지 않습니다.</div>
+            <button id="submitBtn" onclick="regProduct()">등록</button>
+        </div>
+    </div>
+    <!--<button onclick="location.href='/test/xlsx'">엑셀 생성</button>-->
+</div>
+<script>
+    /*const name = localStorage.getItem("name");
+    document.getElementById("name").innerHTML = name + " 님";*/
+</script>
+</body>
+</html>
