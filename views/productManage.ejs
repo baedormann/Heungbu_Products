@@ -3,6 +3,9 @@
 <head>
     <title><%= stateUrl %></title>
     <script src="/javascripts/cookieModule.js"></script>
+    <script src="/javascripts/productManage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+
 </head>
 <body>
 <div class="sideBar">
@@ -10,6 +13,7 @@
 </div>
 <div class="home-section">
     <h1 id="name">물품 관리</h1>
+    <%- include('./productManage/productSearch') %>
     <%- include('./productManage/productTable') %>
 </div>
 </body>

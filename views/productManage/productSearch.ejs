@@ -1,0 +1,23 @@
+<link rel='stylesheet' href="/stylesheets/productManage/search.css"/>
+<div class="searchBox">
+    필터
+    <select class="select firstFilter">
+        <option value="전체" selected>전체</option>
+        <% category.map(res => {%>
+        <option value='<%= res.firstCategory %>'><%= res.firstCategory %></option>
+        <%})%>
+    </select>
+    <select class="select secondFilter" disabled>
+        <option value="전체" selected>전체</option>
+    </select>
+    검색창
+    <select class="select search">
+        <option value="product_name">물품</option>
+        <option value="product_category.firstCategory">대여자</option>
+    </select>
+    <div class="search">
+        <input type="text" placeholder="검색어 입력">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <button onclick="xlsxTable()">엑셀 다운로드</button>
+</div>

@@ -3,8 +3,6 @@ const router = express.Router();
 const xlsx = require("xlsx");
 const path = require('path');
 
-const {checkToken: authUtil} = require("../middlewares/auth");
-
 const book = xlsx.utils.book_new();
 const nurses = xlsx.utils.json_to_sheet( [
 
@@ -45,7 +43,7 @@ nurses["!cols"] = [
     , { wch : 60 }  // D열
     ]
 
-router.get('/xlsx', authUtil,function(req, res, next) {
+router.get('/xlsx',function(req, res, next) {
     xlsx.utils.book_append_sheet( book, nurses, "NURSES" );
     xlsx.writeFile(book, path.join(__dirname ,"../public/xlsx/test.xlsx"));
     res.status(200).json("성공");

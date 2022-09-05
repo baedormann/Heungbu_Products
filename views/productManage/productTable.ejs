@@ -1,18 +1,5 @@
-<link rel='stylesheet' href="/stylesheets/productManage/search.css"/>
-<div class="searchBox">
-    <select class="select">
-        <option value="product_category.firstCategory">대분류</option>
-        <option value="product_category.secondCategory">소분류</option>
-        <option value="product_name">이름</option>
-    </select>
-    <div class="search">
-        <input type="text" placeholder="검색어 입력">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </div>
-</div>
-
 <link rel='stylesheet' href="/stylesheets/userTable.css"></script>
-<table>
+<table id="productTable">
     <thead>
     <tr>
         <th>분류</th>
@@ -35,7 +22,7 @@
             <td><%= res.rental_availability ? 'O' : 'X' %></td>
             <td><%= res.return_needed ? 'O' : 'X' %></td>
             <td>남은 수량</td>
-            <td>대여 중</td>
+            <td>대여 수량</td>
             <td><%= res.quantity %></td>
             <td><%= res.last_date %></td>
         </tr>

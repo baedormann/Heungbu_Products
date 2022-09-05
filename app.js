@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const memberRouter = require('./routes/member');
@@ -11,6 +12,8 @@ const authRouter = require('./routes/auth');
 const regProduct = require('./routes/regProduct');
 const useManageRouter = require('./routes/manageUser');
 const productManageRouter = require('./routes/productManage');
+const categoryApi = require('./routes/category');
+
 const test = require('./routes/xlsx');
 
 // midleware
@@ -48,6 +51,7 @@ app.use('/auth', authRouter);
 app.use('/manageUser', manage, useManageRouter);
 app.use('/regProduct', regProduct);
 app.use('/productManage', productManageRouter);
+app.use('/category', categoryApi);
 app.use('/test', test);
 
 // catch 404 and forward to error handler

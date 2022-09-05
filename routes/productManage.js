@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const authUtil = require('../middlewares/auth').checkToken;
 const product = require('../models/product');
-
+const categorys = require('../models/category');
 /* GET productManage page. */
-router.get('/', authUtil, async function(req, res, next) {
+router.get('/', async function(req, res, next) {
     const data = await product.find().exec();
-    res.render('productManage', { stateUrl: 'productManage', data: data });
+    const category = await categorys.find().exec();
+    res.render('productManage', { stateUrl: 'productManage', data: data, category: category });
 });
 
 module.exports = router;
