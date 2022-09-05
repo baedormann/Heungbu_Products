@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37413f3c-1660-4542-96e6-7c181b4a3294" name="Changes" comment="" />
+    <list default="true" id="37413f3c-1660-4542-96e6-7c181b4a3294" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/regProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/regProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/regProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/regProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/regProduct.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/regProduct.ejs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,18 +22,21 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2EBjXEBo9jO7Uf6pOsvoGmL4XwJ" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Git/Heungbu_Products/public/javascripts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Git/Heungbu_Products/public/javascripts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Git\Heungbu_Products\public\javascripts" />
@@ -37,17 +45,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www" working-dir="$PROJECT_DIR$/bin">
       <method v="2" />
     </configuration>
@@ -66,6 +63,8 @@
       <option name="presentableId" value="Default" />
       <updated>1662075911945</updated>
       <workItem from="1662075913638" duration="20991000" />
+      <workItem from="1662333615043" duration="2007000" />
+      <workItem from="1662337097579" duration="11288000" />
     </task>
     <servers />
   </component>

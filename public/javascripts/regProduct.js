@@ -1,51 +1,90 @@
 // 물품등록 api
 function regProduct() {
-    console.log(document.getElementById("firstCategory").value);
-    if(!Boolean(document.getElementById("firstCategory").value)){
+    if (!Boolean(document.getElementById("firstCategory").value)) {
         return alert("대분류를 선택하세요");
-    }else if(!Boolean(document.getElementById("secondCategory").value)){
+    } else if (!Boolean(document.getElementById("secondCategory").value)) {
         return alert("소분류를 선택하세요");
+    } else if (!Boolean(document.getElementById("product_code").value)) {
+        return alert("물품코드를 입력하세요");
+    } else if (!Boolean(document.getElementById("product_name").value)) {
+        return alert("물품명을 입력하세요");
+    } else if (!Boolean(document.getElementById("quantity").value)) {
+        return alert("수량을 입력하세요");
     }
-    /*if(!emailKeyUp() || !passwordKeyUp() || document.getElementById('password').value.length < 4){
-        return alert("회원가입형식에 맞게 입력해주세요.");
-    }
-    const url = "/auth"
+    regProductApi()
+}
+
+// 대여 라디오 값 반환
+function rental_availability() {
+    const rental_availability_arr = document.getElementsByName('rental_availability');
+    let rental_availability = '';
+    rental_availability_arr.forEach((node) => {
+        if (node.checked) {
+            return rental_availability = node.value;
+        }
+    })
+}
+
+// 반환 라디오 값 반환
+function return_needed() {
+    //반환 필요 여부return_needed 값 설정
+    const return_needed_arr = document.getElementsByName('return_needed');
+    let return_needed = '';
+    return_needed_arr.forEach((node) => {
+        if(node.checked)  {
+            return return_needed = node.value;
+        }
+    })
+}
+
+// 등록 api호출
+function regProductApi() {
+    const url = "/regProduct"
     let select_postion = document.getElementById("emp_position");
-    const user = {
-        emp_no: document.getElementById("emp_no").value,
-        password: document.getElementById("password").value,
-        emp_name: document.getElementById("emp_name").value,
-        dept: document.getElementById("dept").value,
-        emp_position: select_postion.options[select_postion.selectedIndex].value,
-        email: document.getElementById("email").value
+    const product = {
+        firstCategory : document.getElementById("firstCategory").value,
+        secondCategory : document.getElementById("secondCategory").value,
+        product_code : document.getElementById("product_code").value,
+        product_name : document.getElementById("product_name").value,
+        quantity : document.getElementById("quantity").value,
+        rental_availability : rental_availability(),
+        return_needed : return_needed()
     };
     fetch(url, {
         method: "post",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(product)
     }).then(response => {
         const { status } = response;
         if(status == 400) {
-            alert("중복된 사번 입니다.")
+            alert("중복된 물품코드입니다.")
         }else{
             return response.json()
         }
     }).then((data) => {
         alert(data.message);
         console.log(data);
-        location.href = '/login';
     }).catch((err) => {
         console.log(err);
-        alert("회원가입에 실패하셨습니다.");
-    });*/
+        alert("물품등록에 실패했습니다.");
+    });
 }
 
-// 엔터 클릭
-/*
-function enter(){
-    if(window.event.keyCode == 13) {
-        auth();
+//내용 초기화
+function initReg(){
+    if (confirm('내용을 초기화하시겠습니까?')){
+        document.getElementById('first_category_default').selected = true;
+        document.getElementById('second_category_default').selected = true;
+        document.getElementById('product_code').value = '';
+        document.getElementById('product_name').value = '';
+        document.getElementById('quantity').value = '';
+        document.getElementsByName('rental_availability')[0].checked = true;
+        document.getElementsByName('return_needed')[0].checked = true;
+
+        alert('초기화되었습니다.');
     }
-}*/
+}
+
+
