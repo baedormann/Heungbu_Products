@@ -2,6 +2,9 @@ let time = 0;
 
 // 토큰 만료시간 api
 window.onload=function(){
+    if(!JSON.parse(localStorage.getItem('manage')))
+        document.querySelector(".manageTap").remove();
+
     const url = '/login/exp';
     fetch(url, {
         method: "get",

@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ce5e414-9a43-4d52-ae48-6f9267619417" name="Changes" comment="">
+    <list default="true" id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/middlewares/manage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/javascripts/manageUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/manageUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/manageUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/manageUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/member.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/member.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layout/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout/navbar.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/manageUse/userTable.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/userTable.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +36,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2ECueZ6OuzQYoiPDtRYsogJw9pX" />
+  <component name="ProjectId" id="2EBvPptL2yX0SsOxN099xBGZ86v" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,13 +46,31 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/RT/Desktop/헤븐트리/Heungbu_Products/middlewares",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RT\Desktop\헤븐트리\Heungbu_Products\middlewares" />
+    </key>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Heungbu_Products" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Heungbu_Products" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www" working-dir="$PROJECT_DIR$/bin">
       <method v="2" />
     </configuration>
@@ -59,12 +83,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1ce5e414-9a43-4d52-ae48-6f9267619417" name="Changes" comment="" />
-      <created>1662111986041</created>
+      <changelist id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="" />
+      <created>1662081775834</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662111986041</updated>
-      <workItem from="1662111989796" duration="4764000" />
+      <updated>1662081775834</updated>
+      <workItem from="1662081780039" duration="32561000" />
     </task>
     <servers />
   </component>

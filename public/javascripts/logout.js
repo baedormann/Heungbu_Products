@@ -8,7 +8,7 @@ function logout(cookie) {
             "Authorization": "Bearer " + cookie
         }
     }).then(response => response.json()).then((data) => {
+        localStorage.clear();
         location.href = '/login';
     });
 }
-

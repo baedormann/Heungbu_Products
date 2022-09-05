@@ -73,4 +73,20 @@ memberSchema.pre('save', function(next) {
     }
 })
 
+memberSchema.pre('findOneAndUpdate', function(next) {
+    const user = this;
+    if (user.getUpdate().password) {
+        bcrypt.genSalt(saltRounds, function (err, salt) {
+            if (err) return next(err);
+            bcrypt.hash(user.getUpdate().password, salt, function (err, hash) {
+                if (err) return next(err)
+                user.getUpdate().password = hash;
+                next();
+            })
+        })
+    } else {
+        next();
+    }
+})
+
 module.exports = mongoose.model('member', memberSchema);
