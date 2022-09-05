@@ -1,4 +1,4 @@
-<link rel='stylesheet' href="/stylesheets/navbar.css"></script>
+<link rel='stylesheet' href="/stylesheets/navbar.css" />
 <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
 <script src="/javascripts/logout.js"></script>
 <script src="/javascripts/navbar.js"></script>
@@ -38,7 +38,7 @@
         <span class="tooltip">물품등록</span>
     </li>
     <li>
-        <a href="#" class="manageProduct">
+        <a href="/productManage" class="productManage">
             <i class="fa-solid fa-gear"></i>
             <span class="links_name">물품관리</span>
         </a>
@@ -109,6 +109,9 @@
             break;
         case 'regProduct':
             document.querySelector('.regProduct').classList.add('currentPage');
+            break;
+        case 'productManage':
+            document.querySelector('.productManage').classList.add('currentPage');
             break;
         case 'rentStatus':
             document.querySelector('.rentStatus').classList.add('currentPage');

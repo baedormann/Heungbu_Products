@@ -1,0 +1,33 @@
+.searchBox {
+    display: flex;
+}
+
+.search {
+    position: relative;
+    width: 300px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.select {
+    width: 100px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+i.fa-magnifying-glass {
+    position : absolute;
+    width: 17px;
+    top: 10px;
+    right: 12px;
+    margin: 0;
+}

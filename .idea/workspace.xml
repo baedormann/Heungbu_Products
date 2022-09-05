@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/stylesheets/productManage/search.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/productManage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/productManage.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/productManage/productTable.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layout/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout/navbar.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/manageModal.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/manageUse/userTable.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/manageUse/userTable.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

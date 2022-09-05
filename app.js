@@ -10,6 +10,7 @@ const memberRouter = require('./routes/member');
 const authRouter = require('./routes/auth');
 const regProduct = require('./routes/regProduct');
 const useManageRouter = require('./routes/manageUser');
+const productManageRouter = require('./routes/productManage');
 const test = require('./routes/xlsx');
 
 // midleware
@@ -44,9 +45,10 @@ app.use('/',indexRouter);
 app.use('/login', loginRouter);
 app.use('/member', authUtil, memberRouter);
 app.use('/auth', authRouter);
-app.use('/test', test);
 app.use('/manageUser', manage, useManageRouter);
 app.use('/regProduct', regProduct);
+app.use('/productManage', productManageRouter);
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <script src="/javascripts/cookieModule.js"></script>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h1 id="name">물품 관리</h1>
+    <%- include('./productManage/productTable') %>
+</div>
+</body>
+</html>

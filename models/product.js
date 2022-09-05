@@ -41,7 +41,10 @@ const productSchema = new Schema({
             type: Number,
             required: true,
         },
+    last_date:
+        {
+            type: Date,
+        }
 }, {versionKey : false})
-
 
 module.exports = mongoose.model('product', productSchema);
