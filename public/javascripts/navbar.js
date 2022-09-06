@@ -49,21 +49,3 @@ function reToken() {
         alert(data.message);
     });
 }
-
-//등록 모달 표시
-function regModalOpen() {
-    const modal = document.getElementById('productModal');
-    modal.style.display = "block";
-}
-
-function manageDone() {
-    const modal = document.getElementById('productModal');
-    modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    const modal = document.getElementById('productModal');
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}

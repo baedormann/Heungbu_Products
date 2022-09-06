@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const product = require('../models/product');
+/*const category = require('../models/category');*/
 
 /* GET regProduct page. */
-router.get('/', function (req, res, next) {
-    res.render('regProduct', {stateUrl: 'regProduct'});
+router.get('/', /*async*/ function (req, res, next) {
+    /*const categoryData = await category.find().exec();*/
+    res.render('regProduct', {stateUrl: 'regProduct'/*, categoryData: categoryData*/});
 });
 
 //물품 등록
