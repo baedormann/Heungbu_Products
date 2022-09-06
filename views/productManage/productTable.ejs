@@ -3,17 +3,17 @@
     <thead>
     <tr>
         <th>분류</th>
-        <th>이름</th>
+        <th onclick="sortTable(1)">이름</th>
         <th>번호</th>
         <th>대여 가능</th>
         <th>반납 필요</th>
         <th>남은 수량</th>
         <th>대여 중</th>
         <th>총 수량</th>
-        <th>등록일(수정일)</th>
+        <th onclick="sortTable(8)">등록일(수정일)</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="table_data">
     <% data.map(res =>{ %>
         <tr>
             <td><%= res.product_category.firstCategory %>-<%= res.product_category.secondCategory %></td>
