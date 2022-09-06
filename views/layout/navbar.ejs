@@ -31,7 +31,7 @@
     </li>
     </div>
     <li>
-        <a href="/regProduct" class="regProduct">
+        <a onclick="regModalOpen()" class="regProduct">
             <i class="fa-regular fa-square-plus"></i>
             <span class="links_name">물품등록</span>
         </a>
@@ -74,6 +74,8 @@
     </li>
     </ul>
 </div>
+    <%- include('../regProduct/productModal.ejs') %>
+
 <script>
     let sidebar = document.querySelector(".sidebar");
     let closeBtn = document.querySelector("#btn");

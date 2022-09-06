@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="">
+    <list default="true" id="37413f3c-1660-4542-96e6-7c181b4a3294" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/views/regProduct/productModal.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/regProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/regProduct.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layout/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout/navbar.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +45,12 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git\Heungbu_Products\views\regProduct" />
+      <recent name="C:\Git\Heungbu_Products\views\layout\navbarModal" />
+      <recent name="C:\Git\Heungbu_Products\views\manageUse" />
       <recent name="C:\Users\RT\Desktop\헤븐트리\Heungbu_Products\middlewares" />
     </key>
   </component>
@@ -72,7 +80,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="" />
+      <changelist id="37413f3c-1660-4542-96e6-7c181b4a3294" name="Changes" comment="" />
       <created>1662081775834</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -92,7 +100,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dohun-branch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
