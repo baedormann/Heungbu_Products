@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37413f3c-1660-4542-96e6-7c181b4a3294" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/views/regProduct/productModal.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/javascripts/navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/navbar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/regProduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/regProduct.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layout/navbar.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout/navbar.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/regProduct/productModal.ejs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -48,6 +48,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git\Heungbu_Products\public\stylesheets" />
       <recent name="C:\Git\Heungbu_Products\views\regProduct" />
       <recent name="C:\Git\Heungbu_Products\views\layout\navbarModal" />
       <recent name="C:\Git\Heungbu_Products\views\manageUse" />

@@ -87,4 +87,28 @@ function initReg(){
     }
 }
 
+//카테고리 추가 모달창 켜기
+function addCategoryModal() {
+    let modal = document.getElementById('addCategoryModal');
+    modal.style.display = "block";
+};
+
+//모달 닫기 버튼 클릭 시
+function addDone() {
+    let modal = document.getElementById('addCategoryModal');
+    modal.style.display = "none";
+}
+
+//모달 바깥 부분 클릭 시
+window.onclick = function (event) {
+    let modal = document.getElementById('addCategoryModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+//input 태그 추가하기
+function addInput(){
+    document.getElementById('content').a
+}
 
