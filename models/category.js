@@ -9,7 +9,6 @@ const categorySchema = new Schema({
             },
             secondCategory:{
                 type: Array,
-                required: true,
             }
 }, {versionKey : false})
 

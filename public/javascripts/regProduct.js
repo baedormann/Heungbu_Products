@@ -39,9 +39,8 @@ function return_needed() {
 
 // 등록 api호출
 function regProductApi() {
-    const url = "/regProduct"
-    let select_postion = document.getElementById("emp_position");
-    const product = {
+    let url = "/regProduct"
+    let product = {
         firstCategory : document.getElementById("firstCategory").value,
         secondCategory : document.getElementById("secondCategory").value,
         product_code : document.getElementById("product_code").value,
@@ -107,8 +106,94 @@ window.onclick = function (event) {
     }
 }
 
-//input 태그 추가하기
-function addInput(){
-    document.getElementById('content').a
+//대분류 선택 시 소분류 조회
+function findSecondCategory(firstCategory) {
+    document.getElementById('secondCategory').disabled = false;
+    let selectedElement = document.getElementById("firstCategory");
+    let optionVal = selectedElement.options[selectedElement.selectedIndex].value
+
+    let url = '/regProduct/findSecondCategory/' + optionVal;
+    fetch(url, {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getCookie('token')
+        }
+    }).then(response => response.json()).then((data) => {
+        let str = '<option id="second_category_default" value="" disabled>선택</option>';
+        for (var i = 0; i < data[0].secondCategory.length; i++){
+            str += '<option id="" value="' + data[0].secondCategory[i] + '">' + data[0].secondCategory[i] + '</option>';
+        }
+        document.getElementById('secondCategory').innerHTML = str;
+    });
 }
+
+//카테고리 추가 시 라디오버튼 동작
+var radio = document.getElementsByName('selectNth');
+for(var i = 0; i < radio.length; i++){
+    radio[i].addEventListener('click', async function (){
+        let addCategoryInput = document.getElementById('addCategoryInput');
+        let firstCategoryArr;//api요청
+
+        //대분류 추가 라디오 버튼 클릭 시
+        if(this.value == 'addFirstCategory'){
+            addCategoryInput.lastElementChild.remove();
+            addCategoryInput.firstElementChild.innerHTML = '대분류 <input type="text" id="addFirstInput">';
+        }
+        //소분류 추가 라디오 버튼 클릭 시
+        if(this.value == 'addSecondCategory' && addCategoryInput.childElementCount == 1){
+            let optionStr = '<option id="first_category_default" value="" disabled selected>선택</option>';
+            const url = '/regProduct/findFirstCategory/';
+            await fetch(url, {
+                method: "get",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + getCookie('token')
+                }
+            }).then(response => response.json()).then((data) => {
+                for (var i = 0; i < data.length; i++){
+                    optionStr += '<option value="' + data[i].firstCategory + '">' + data[i].firstCategory + '</option>'
+                }
+            });
+            addCategoryInput.firstElementChild.innerHTML = '대분류 ' + '<select id="addFirstSelect">' + optionStr + '</select>';
+            let newSpan = document.createElement('span');
+            newSpan.innerHTML = '<span>소분류 <input id="addSecondInput" type="text"></span>';
+            addCategoryInput.appendChild(newSpan);
+        }
+    })
+}
+
+function regCategory(){
+    let nth = document.getElementsByName('selectNth');
+    let url = '/regProduct/regCategory';
+    let first;
+    if(nth[0].checked){
+        first = document.getElementById('addFirstInput').value;
+
+
+    }else if(nth[1].checked){
+        first = document.getElementById('addFirstSelect').value;
+    }
+    let category = {
+        firstCategory : first,
+        secondCategory: document.getElementById('addSecondInput') ? document.getElementById('addSecondInput').value : null
+    }
+    fetch(url, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category)
+    }).then(response =>
+        response.json()
+    ).then((data) => {
+        alert(data.message);
+    }).catch((err) => {
+        alert('카테고리 등록에 실패했습니다.');
+    })
+}
+
+
+
+
 
