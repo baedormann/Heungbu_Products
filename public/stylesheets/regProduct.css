@@ -22,7 +22,7 @@
     max-width: 1000px;
     width: 90%;
     position: relative;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
     animation: fadeInDown 1s;
 }
@@ -46,21 +46,23 @@ select:focus{
     outline: 2px solid #f6f6f6;
 }
 select{
+    width : 200px;
     background-color: #f6f6f6;
     border: #f6f6f6;
     border-radius: 6px;
-    width: 35%;
-    padding: 15px 32px;
     margin-bottom: 15px;
     transition: all 0.3s ease-in-out;
 }
+#categoryBox, #buttonBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 button{
-    color: black;
-    padding: 15px 80px;
-    width: 30%;
-    background-color: #f6f6f6;
-    display: inline-block;
-    margin: 5px 20px 40px 20px;
+    color: white;
+    background-color: #4385F5;
+    padding: 10px;
+    margin: 5px 20px 15px 20px;
     border: none;
     border-radius: 6px;
     transition: background-color 0.3s ease-in-out;
