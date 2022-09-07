@@ -10,6 +10,16 @@ router.get('/', async function (req, res, next) {
     res.render('productManage', {stateUrl: 'productManage', data: data, category: category});
 });
 
+// 물품 상세 검색
+router.get('/:product_code', async function (req, res) {
+    try {
+        const productDetail = await product.findOne({product_code: req.params.product_code}).exec();
+        return res.status(201).json(productDetail);
+    } catch (err) {
+        return res.status(400).json({message: err});
+    }
+})
+
 // 물품 검색
 router.post('/search', async function (req, res) {
     let condition = req.body.condition;
@@ -19,15 +29,15 @@ router.post('/search', async function (req, res) {
     try {
         if (condition == "product_name") {
             const products = await product.find().and([
-                {product_name: {$regex: text}},
-                first ? {"product_category.firstCategory": first} : {"product_category.firstCategory": {$exists:true}},
-                second ? {"product_category.secondCategory": second} : {"product_category.secondCategory": {$exists:true}}
+                    {product_name: {$regex: text}},
+                    first ? {"product_category.firstCategory": first} : {"product_category.firstCategory": {$exists: true}},
+                    second ? {"product_category.secondCategory": second} : {"product_category.secondCategory": {$exists: true}}
                 ]
             );
             return res.status(201).json({data: products})
         }
     } catch (err) {
-        res.status(400).json({message: err.message});
+        return res.status(400).json({message: err.message});
     }
 })
 

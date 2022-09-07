@@ -1,21 +1,29 @@
-<link rel='stylesheet' href="/stylesheets/userTable.css"></script>
+<link rel='stylesheet' href="/stylesheets/productManage/productTable.css"></script>
+<style>
+    tr .fa-sort-up{
+        cursor:pointer
+    }
+    tr .fa-sort-down{
+        cursor:pointer
+    }
+</style>
 <table id="productTable">
     <thead>
     <tr>
         <th>분류</th>
-        <th onclick="sortTable(1)">이름</th>
+        <th onclick="sortTable(1, this)">이름  <i class="fa-solid fa-sort-up" value="asc"></i></th>
         <th>번호</th>
         <th>대여 가능</th>
         <th>반납 필요</th>
         <th>남은 수량</th>
         <th>대여 중</th>
         <th>총 수량</th>
-        <th onclick="sortTable(8)">등록일(수정일)</th>
+        <th onclick="sortTable(8, this)">등록일(수정일) <i class="fa-solid fa-sort-up" value="asc"></i></th>
     </tr>
     </thead>
     <tbody id="table_data">
     <% data.map(res =>{ %>
-        <tr>
+        <tr onclick="productModalOpen('<%= res.product_code %>')">
             <td><%= res.product_category.firstCategory %>-<%= res.product_category.secondCategory %></td>
             <td><%= res.product_name %></td>
             <td><%= res.product_code %></td>
@@ -29,3 +37,5 @@
     <% }) %>
     </tbody>
 </table>
+
+<%- include('./productModal') %>

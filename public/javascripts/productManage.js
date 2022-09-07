@@ -52,12 +52,12 @@ function firstFilter(e) {
     first = e.value;
     second = '';
     let secondSelect = document.querySelector(".secondFilter");
-    if(e.value){
-        secondSelect.disabled=false;
+    if (e.value) {
+        secondSelect.disabled = false;
         secondCategorys(e.value);
-    }else{
-        secondSelect.disabled=true;
-        secondSelect.innerHTML="<option value=''>전체</option>"
+    } else {
+        secondSelect.disabled = true;
+        secondSelect.innerHTML = "<option value=''>전체</option>"
     }
     productSearch()
 }
@@ -78,7 +78,7 @@ function secondCategorys(firstCategory) {
             "Authorization": "Bearer " + getCookie('token')
         }
     }).then(response => response.json()).then((data) => {
-        secondSelect.innerHTML='';
+        secondSelect.innerHTML = '';
         let second = ["<option value=''>전체</option>"]
         data[0].secondCategory.map(res => {
             second.push(`<option value='${res}'>${res}</option>`);
@@ -123,43 +123,73 @@ function productFilter() {
 }
 
 // 정렬
-function sortTable(n) {
+function sortTable(n, e) {
     var table, rows, switching, o, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("productTable");
     switching = true;
-    dir = "asc";
-
-    while(switching) {
+    dir = e.firstElementChild.getAttribute('value');
+    while (switching) {
         switching = false;
         rows = table.getElementsByTagName("tr");
 
-        for (o = 1; o<(rows.length - 1); o++) {
+        for (o = 1; o < (rows.length - 1); o++) {
             shouldSwitch = false;
             x = rows[o].getElementsByTagName("td")[n];
             y = rows[o + 1].getElementsByTagName("td")[n];
 
-            if(dir == "asc"){
-                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                     shouldSwitch = true;
+                    e.innerHTML = `${e.innerText}<i class=\"fa-solid fa-sort-down\" value="desc"></i>`
                     break;
                 }
-            } else if(dir == "desc") {
-                if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                     shouldSwitch = true;
+                    e.innerHTML = `${e.innerText}<i class=\"fa-solid fa-sort-up\" value="asc"></i>`
                     break;
                 }
             }
         }
 
-        if(shouldSwitch) {
+        if (shouldSwitch) {
             rows[o].parentNode.insertBefore(rows[o + 1], rows[o]);
             switching = true;
-            switchcount ++;
+            switchcount++;
         } else {
-            if(switchcount == 0 && dir == "asc") {
+            if (switchcount == 0 && dir == "asc") {
                 dir = "desc";
                 switching = true;
             }
         }
+    }
+}
+
+// 물품 상세 화면
+
+function productModalOpen(product_code) {
+    var modal = document.getElementById('productModal');
+    modal.style.display = "block";
+    const url = '/productManage/' + product_code;
+    fetch(url, {
+        method: "get",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getCookie('token')
+        }
+    }).then(response => response.json()).then((data) => {
+        document.getElementById("product_name").innerHTML = "물품 이름 : " + data.product_name
+    });
+}
+
+function productDone() {
+    var modal = document.getElementById('productModal');
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    var modal = document.getElementById('productModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
