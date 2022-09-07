@@ -19,10 +19,10 @@
 .formContent{
     background-color: white;
     border-radius: 10px;
-    max-width: 450px;
+    max-width: 1000px;
     width: 90%;
     position: relative;
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.3);
     text-align: center;
     animation: fadeInDown 1s;
 }
@@ -54,12 +54,11 @@ select{
     margin-bottom: 15px;
     transition: all 0.3s ease-in-out;
 }
-select:focus,
 button{
-    color: white;
+    color: black;
     padding: 15px 80px;
-    width: 64%;
-    background-color: #4385F5;
+    width: 30%;
+    background-color: #f6f6f6;
     display: inline-block;
     margin: 5px 20px 40px 20px;
     border: none;

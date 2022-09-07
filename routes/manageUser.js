@@ -25,6 +25,7 @@ router.patch('/', async function (req, res) {
     }
 })
 
+// 비밀번호 초기화
 router.patch('/init', async function (req, res) {
     try {
         const update = await member.findOneAndUpdate({emp_no: req.body.emp_no},

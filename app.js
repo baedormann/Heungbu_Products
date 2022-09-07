@@ -19,6 +19,7 @@ const test = require('./routes/xlsx');
 // midleware
 const authUtil = require('./middlewares/auth').checkToken;
 const manage = require('./middlewares/manage').checkToken;
+const editAuth = require('./middlewares/regProduct').checkToken;
 
 const app = express();
 
@@ -49,7 +50,7 @@ app.use('/login', loginRouter);
 app.use('/member', authUtil, memberRouter);
 app.use('/auth', authRouter);
 app.use('/manageUser', manage, useManageRouter);
-app.use('/regProduct', regProduct);
+app.use('/regProduct', editAuth, regProduct);
 app.use('/productManage', productManageRouter);
 app.use('/category', categoryApi);
 app.use('/test', test);

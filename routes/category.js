@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const category = require('../models/category');
 
+// 카테고리 등록
 router.post('/', function (req, res, next) {
     category.findOne({firstCategory: req.body.firstCategory}).exec(async (err, result) => {
         if (result) {
