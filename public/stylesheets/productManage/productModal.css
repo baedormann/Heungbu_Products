@@ -19,7 +19,8 @@
     border-radius: 20px;
     width: 50%;
     max-width: 700px;
-    height:50%;
+    min-height: 550px;
+    height:60%;
 }
 
 .close {
