@@ -16,7 +16,8 @@
     padding: 20px;
     border: 5px solid #888;
     border-radius: 20px;
-    width: 50%;
+    width: 60%;
+    min-height: 550px;
     transition: all 0.5s ease-in-out;
 }
 .modal-productDetail{
