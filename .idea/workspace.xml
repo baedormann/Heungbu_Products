@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d8e8b21-1060-44b0-9bc3-5a996def699d" name="Changes" comment="">
+    <list default="true" id="d3ad0729-17df-420f-a458-2bada51e4cbe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models/rental.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/productManage/rentalList.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/javascripts/productModal/productDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/productModal/productDetail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/stylesheets/productManage/productModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/productManage/productModal.css" afterDir="false" />
