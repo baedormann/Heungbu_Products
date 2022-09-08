@@ -1,0 +1,35 @@
+Index: views/productManage/productModal.ejs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><link rel='stylesheet' href=\"/stylesheets/productManage/productModal.css\" />\r\n<div id=\"productModal\" class=\"modal\">\r\n    <div class=\"modal-content\">\r\n        <span class=\"close\" onclick=\"productDone()\"><i class=\"fa-regular fa-circle-xmark\"></i></span>\r\n        <p id=\"product_name\"></p>\r\n    </div>\r\n</div>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/views/productManage/productModal.ejs b/views/productManage/productModal.ejs
+--- a/views/productManage/productModal.ejs	(revision c4511cde667ccc20e5aa2c6cedbdfb8c0f50878a)
++++ b/views/productManage/productModal.ejs	(date 1662600308895)
+@@ -3,5 +3,9 @@
+     <div class="modal-content">
+         <span class="close" onclick="productDone()"><i class="fa-regular fa-circle-xmark"></i></span>
+         <p id="product_name"></p>
++        <div>
++            <%- include('productDetail.ejs') %>
++            <%- include('lenderList.ejs') %>
++        </div>
+     </div>
+ </div>
+\ No newline at end of file
+Index: views/productManage/lenderList.ejs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/views/productManage/lenderList.ejs b/views/productManage/lenderList.ejs
+new file mode 100644
+--- /dev/null	(date 1662600308901)
++++ b/views/productManage/lenderList.ejs	(date 1662600308901)
+@@ -0,0 +1,1 @@
++gd
+\ No newline at end of file
+diff --git a/public/javascripts/productModal/lenderList.js b/public/javascripts/productModal/lenderList.js
+new file mode 100644
