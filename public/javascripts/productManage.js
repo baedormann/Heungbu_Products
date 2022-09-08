@@ -165,23 +165,6 @@ function sortTable(n, e) {
     }
 }
 
-// 물품 상세 화면
-
-function productModalOpen(product_code) {
-    var modal = document.getElementById('productModal');
-    modal.style.display = "block";
-    const url = '/productManage/' + product_code;
-    fetch(url, {
-        method: "get",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + getCookie('token')
-        }
-    }).then(response => response.json()).then((data) => {
-        document.getElementById("product_name").innerHTML = "물품 이름 : " + data.product_name
-    });
-}
-
 function productDone() {
     var modal = document.getElementById('productModal');
     modal.style.display = "none";

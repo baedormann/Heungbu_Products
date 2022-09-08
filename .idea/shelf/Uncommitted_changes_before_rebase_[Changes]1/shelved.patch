@@ -1,0 +1,93 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"221eefe5-1e82-4aa0-96e8-2dbde6fc34d9\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"last_opened_file_path\": \"C:/Users/RT/Desktop/헤븐트리/Heungbu_Products/public/stylesheets/productManage\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\RT\\Desktop\\헤븐트리\\Heungbu_Products\\public\\stylesheets\\productManage\" />\r\n      <recent name=\"C:\\Users\\RT\\Desktop\\헤븐트리\\Heungbu_Products\\views\\productManage\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\RT\\Desktop\\헤븐트리\\Heungbu_Products\\public\\stylesheets\\manageUser\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 857e359556a1f92ae250ce8fd70b2ca56eb7bdac)
++++ b/.idea/workspace.xml	(date 1662595010233)
+@@ -4,21 +4,29 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="221eefe5-1e82-4aa0-96e8-2dbde6fc34d9" name="Changes" comment="" />
++    <list default="true" id="6d8e8b21-1060-44b0-9bc3-5a996def699d" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "last_opened_file_path": "C:/Users/RT/Desktop/헤븐트리/Heungbu_Products/public/stylesheets/productManage",
+-    "node.js.selected.package.tslint": "(autodetect)"
++  <component name="ProjectId" id="2EQtcWeM7wMxRGMv1aPmXCX7c5i" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/RT/Desktop/헤븐트리/Heungbu_Products/public/stylesheets/productManage&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\RT\Desktop\헤븐트리\Heungbu_Products\public\stylesheets\productManage" />
+@@ -28,7 +36,45 @@
+       <recent name="C:\Users\RT\Desktop\헤븐트리\Heungbu_Products\public\stylesheets\manageUser" />
+     </key>
+   </component>
++  <component name="RunManager">
++    <configuration default="true" type="JetRunConfigurationType">
++      <module name="Heungbu_Products" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
++      <module name="Heungbu_Products" />
++      <option name="filePath" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
++    <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www" working-dir="$PROJECT_DIR$/bin">
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Node.js.www" />
++      </list>
++    </recent_temporary>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
