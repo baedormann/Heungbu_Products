@@ -1,7 +1,36 @@
 <link rel='stylesheet' href="/stylesheets/productManage/productModal.css" />
 <div id="productModal" class="modal">
-    <div class="modal-content">
+    <div id="modal-content" class="modal-content modal-productDetail">
         <span class="close" onclick="productDone()"><i class="fa-regular fa-circle-xmark"></i></span>
         <%- include('./productDetail') %>
+        <%- include('./rentalList') %>
+        <div>
+            <button onclick="rental()">대여자명단클래스주기</button>
+            <button onclick="history()">대여이력클래스주기</button>
+            <button onclick="detail()">물품상세클래스주기</button>
+        </div>
     </div>
+
 </div>
+<script>
+    function rental() {
+        const modalContent = document.getElementById('modal-content');
+        modalContent.classList.remove('modal-productDetail');
+        modalContent.classList.remove('modal-historyList');
+        modalContent.classList.add('modal-rentalList');
+    }
+
+    function history(){
+        const modalContent = document.getElementById('modal-content');
+        modalContent.classList.remove('modal-productDetail');
+        modalContent.classList.remove('modal-rentalList');
+        modalContent.classList.add('modal-historyList');
+    }
+
+    function detail(){
+        const modalContent = document.getElementById('modal-content');
+        modalContent.classList.remove('modal-historyList');
+        modalContent.classList.remove('modal-rentalList');
+        modalContent.classList.add('modal-productDetail');
+    }
+</script>

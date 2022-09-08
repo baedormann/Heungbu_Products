@@ -5,12 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d3ad0729-17df-420f-a458-2bada51e4cbe" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/models/rental.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/productManage/rentalList.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/productManage/productModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/productManage/productModal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/productManage/productDetail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/productManage/productDetail.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/productManage/productModal.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/productManage/productModal.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Git/Heungbu_Products/models",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git\Heungbu_Products\models" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="www" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/bin/www" working-dir="$PROJECT_DIR$/bin">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.www" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <servers />

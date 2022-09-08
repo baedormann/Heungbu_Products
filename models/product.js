@@ -44,6 +44,7 @@ const productSchema = new Schema({
     last_date:
         {
             type: Date,
+            default: new Date().toISOString()
         }
 }, {versionKey : false})
 
