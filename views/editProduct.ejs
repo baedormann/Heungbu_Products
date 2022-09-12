@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <link rel='stylesheet' href='/stylesheets/regProduct.css'/>
+    <script src="/javascripts/editProduct.js"></script>
+    <script src="/javascripts/cookieModule.js"></script>
+    <link rel='stylesheet' href="/stylesheets/regProduct/addCategoryModal.css"></script>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h2>물품 편집 페이지</h2>
+    <div class="wrapper">
+        <div class="formContent">
+            <div>
+                <h4>물품 정보 수정</h4>
+            </div>
+            <div id="categoryBox">
+                <div id="selectBox">
+                    <div class="firstCategoryDiv">
+                        대분류 <select name="firstCategory" id="firstCategory" onchange="findSecondCategory()">
+                            <option id="first_category_default" value="" disabled selected>선택</option>
+                            <% for(var i = 0; i < categoryData.length; i++){ %>
+                                <option value="<%= categoryData[i].firstCategory %>"><%= categoryData[i].firstCategory %></option>
+                            <% }%>
+                        </select>
+                    </div>
+                    <div class="secondCategoryDiv">
+                        소분류 <select name="secondCategory" id="secondCategory" disabled>
+                            <option id="second_category_default" value="" disabled selected>선택</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="buttonBox">
+                    <button id="addCategory" onclick="addCategoryModal();">분류 추가</button>
+                </div>
+            </div>
+            <div>
+                <input id="product_code" type="text" name="name", placeholder="제품코드">
+            </div>
+            <div>
+                <input id="product_name" type="text" name="name", placeholder="물품명">
+            </div>
+            <div>
+                수량 <input id="quantity" type="number">
+            </div>
+            <div>
+                대여 가능 여부
+                <input class="rental_availability" type="radio" name="rental_availability" checked="checked" value="true"> 가능
+                <input class="rental_availability" type="radio" name="rental_availability" value="false"> 불가능
+            </div>
+            <div>
+                반환 필요 여부
+                <input class="return_needed" type="radio" name="return_needed" checked="checked" value="true"> 필요
+                <input class="return_needed" type="radio" name="return_needed" value="false"> 불필요
+            </div>
+
+            <div class="mismatch-message-email" style="font-size:12px; color:red; visibility: hidden">이메일 형식에 맞지 않습니다 ex)asdasd@gmail.com</div>
+            <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">두 비밀번호가 일치하지 않습니다.</div>
+
+            <button id="submitBtn" onclick="editProduct();">편집</button>
+            <button id="cancelBtn" onclick="location.href='/';">취소</button>
+            <button id="initBtn" onclick="initReg();">초기화</button>
+        </div>
+    </div>
+    <!--<button onclick="location.href='/test/xlsx'">엑셀 생성</button>-->
+    <div class="modalDiv">
+        <%- include('regProduct/addCategoryModal.ejs') %>
+    </div>
+
+</div>
+<script src="/javascripts/editProduct.js"></script>
+<script>
+    /*const name = localStorage.getItem("name");
+    document.getElementById("name").innerHTML = name + " 님";*/
+</script>
+</body>
+</html>

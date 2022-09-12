@@ -5,11 +5,23 @@
 <p id="rental_availability"></p>
 <p id="return_needed"></p>
 <p id="quantity"></p>
+<form action="/editProduct" method="post" id="form">
+    <input type="hidden" id="hiddenCode" value="">
+</form>
+
 <button onclick="rental()">대여자 명단</button>
 <button onclick="history()">대여 이력</button>
+<button onclick="edit()">편집</button>
 <div>
     <div id="inputStart"></div>
     <div id="inputEnd"></div>
     <div id="inputText"></div>
     <button>대여</button>
 </div>
+<script>
+    function edit(){
+        const form = document.getElementById('form');
+        form.submit();
+    }
+
+</script>
