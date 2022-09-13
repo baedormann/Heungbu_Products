@@ -1,8 +1,12 @@
 <div id="productModal" class="modal">
     <div id="modal-content" class="modal-content modal-productDetail">
         <span class="close" onclick="productDone()"><i class="fa-regular fa-circle-xmark"></i></span>
+        <div id="modal-rental">
         <%- include('./productDetail') %>
-        <!--<%- include('./rentalList') %>-->
+        </div>
+        <div id="modal-rentalList">
+        <%- include('./rentalList') %>
+        </div>
     </div>
 
 </div>

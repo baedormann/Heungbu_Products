@@ -13,7 +13,6 @@ function productModalOpen(product_code) {
         document.getElementById("product_name").innerHTML = `물품 이름 : ${data.product_name}`
         document.getElementById("product_category").innerHTML = `대분류 : ${data.product_category.firstCategory} 소분류 : ${data.product_category.secondCategory}`
         document.getElementById("product_code").innerHTML = `물품코드 : ${data.product_code}`
-        document.getElementById("hiddenCode").value = `${data.product_code}`
         document.getElementById("rental_availability").innerHTML = `대여 여부 : ${data.rental_availability}`
         document.getElementById("return_needed").innerHTML = `반납 여부 : ${data.return_needed}`
         document.getElementById("quantity").innerHTML = `물품 수량 : ${data.quantity}`
@@ -22,6 +21,7 @@ function productModalOpen(product_code) {
         document.getElementById("inputText").innerHTML = `대여 목적 : <input id="rentPurpose" type="text">`
         document.getElementById('product_code').value = product_code;
         defaultStartEnd();
+        detail();
     });
 }
 
@@ -75,4 +75,45 @@ function rental() {
         alert(`대여하셨습니다.`);
         location.reload();
     });
+}
+
+// 편집 화면 호출
+function edit() {
+/*    form.submit();
+    const form = document.getElementById('form');*/
+}
+
+// 대여명단 모달창 띄우기
+function rentalList() {
+    document.getElementById('modal-rentalList').style.display = 'block';
+    document.getElementById('modal-rental').style.display = 'none';
+    const modalContent = document.getElementById('modal-content');
+    modalContent.classList.remove('modal-productDetail');
+    modalContent.classList.remove('modal-historyList');
+    modalContent.classList.add('modal-rentalList');
+
+}
+
+// 대여이력 모달창 띄우기
+function history() {
+    document.getElementById('modal-rental').style.display = 'none';
+    document.getElementById('modal-rentalList').style.display = 'block';
+    const modalContent = document.getElementById('modal-content');
+    modalContent.classList.remove('modal-productDetail');
+    modalContent.classList.remove('modal-rentalList');
+    modalContent.classList.add('modal-historyList');
+}
+
+// 물품 대여 모달창 띄우기
+function detail() {
+    document.getElementById('modal-rental').style.display = 'block';
+    document.getElementById('modal-rentalList').style.display = 'none';
+    const modalContent = document.getElementById('modal-content');
+    modalContent.classList.remove('modal-historyList');
+    modalContent.classList.remove('modal-rentalList');
+    modalContent.classList.add('modal-productDetail');
+}
+
+function back() {
+    detail();
 }
