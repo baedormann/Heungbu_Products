@@ -11,11 +11,11 @@ const productSchema = new Schema({
         },
     product_category:
         {
-            firstCategory:{
+            firstCategory: {
                 type: String,
                 required: true,
             },
-            secondCategory:{
+            secondCategory: {
                 type: String,
                 required: true,
             }
@@ -23,29 +23,38 @@ const productSchema = new Schema({
     product_code:
         {
             type: String,
-            unique:true,
+            unique: true,
             required: true,
         },
     rental_availability:
         {
             type: Boolean,
-            default:false,
+            default: false,
         },
     return_needed:
         {
             type: Boolean,
-            default:false,
+            default: false,
         },
     quantity:
         {
             type: Number,
             required: true,
         },
+    rentalQuantity: {
+        type: Number,
+        default: 0,
+        required: true
+    },
+    leftQuantity: {
+        type: Number,
+        required: true,
+    },
     last_date:
         {
             type: Date,
             default: new Date().toISOString()
         }
-}, {versionKey : false})
+}, {versionKey: false})
 
 module.exports = mongoose.model('product', productSchema);

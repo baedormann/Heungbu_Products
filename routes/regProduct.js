@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const product = require('../models/product');
 const category = require('../models/category');
+const rental = require('../models/rental');
 
 /* GET regProduct page. */
 router.get('/', async function (req, res, next) {
@@ -32,7 +33,8 @@ router.post('/', async function (req, res) {
         product_code: req.body.product_code,
         rental_availability: req.body.rental_availability,
         return_needed: req.body.return_needed,
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
+        leftQuantity: req.body.quantity
     });
     console.log("data : " + data);
     try {
