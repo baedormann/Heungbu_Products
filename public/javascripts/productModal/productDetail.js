@@ -77,6 +77,8 @@ function rental() {
     }).then(response => {
         if(response.status==402){
             throw alert('수량이 없습니다.');
+        }else if(response.status==400){
+            throw alert('대여에 실패하였습니다.')
         }
         return response.json()
     }).then((data) => {

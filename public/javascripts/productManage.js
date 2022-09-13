@@ -29,7 +29,7 @@ function productSearch() {
         let innerTable = [];
         data.data.map(res => {
             innerTable.push(
-                "<tr>"
+                `<tr onclick=productModalOpen('${res.product_code}')>`
                 + `<td>${res.product_category.firstCategory} - ${res.product_category.secondCategory}</td>`
                 + `<td>${res.product_name}</td>`
                 + `<td>${res.product_code}</td>`
@@ -104,7 +104,7 @@ function productFilter() {
         let innerTable = [];
         data.data.map(res => {
             innerTable.push(
-                "<tr>"
+                `<tr onclick=productModalOpen('${res.product_code}')>`
                 + `<td>${res.product_category.firstCategory} - ${res.product_category.secondCategory}</td>`
                 + `<td>${res.product_name}</td>`
                 + `<td>${res.product_code}</td>`
