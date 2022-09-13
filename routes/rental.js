@@ -21,7 +21,7 @@ router.post('/', async function (req, res) {
         }).count().exec();
         let leftQuantity = productCount.quantity - rentCount;
         if(leftQuantity<0){
-            return res.status(402).json({message:"수량이 없습니다."});
+            return res.status(402).send({message : '수량이 없습니다.'});
         }
         await product.update({product_code: newRental.product_code}, {
             leftQuantity: leftQuantity,

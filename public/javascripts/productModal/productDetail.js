@@ -74,7 +74,12 @@ function rental() {
             "Authorization": "Bearer " + getCookie('token')
         },
         body: JSON.stringify(data)
-    }).then(response => response.json()).then((data) => {
+    }).then(response => {
+        if(response.status==402){
+            throw alert('수량이 없습니다.');
+        }
+        return response.json()
+    }).then((data) => {
         alert(`대여하셨습니다.`);
         location.reload();
     })
