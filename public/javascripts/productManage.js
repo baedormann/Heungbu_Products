@@ -177,14 +177,6 @@ window.onclick = function (event) {
     }
 }
 
-// 대여명단 모달창 띄우기
-function rental() {
-    const modalContent = document.getElementById('modal-content');
-    modalContent.classList.remove('modal-productDetail');
-    modalContent.classList.remove('modal-historyList');
-    modalContent.classList.add('modal-rentalList');
-}
-
 // 대여이력 모달창 띄우기
 function history() {
     const modalContent = document.getElementById('modal-content');

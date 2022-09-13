@@ -41,4 +41,14 @@ router.post('/search', async function (req, res) {
     }
 })
 
+// 물품 대여 명단 검색
+router.get('/rentalList:product_code', async function (req, res) {
+    try {
+        const productDetail = await product.findOne({product_code: req.params.product_code}).exec();
+        return res.status(201).json(productDetail);
+    } catch (err) {
+        return res.status(400).json({message: err});
+    }
+})
+
 module.exports = router;
