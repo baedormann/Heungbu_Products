@@ -90,11 +90,37 @@ function edit() {
 function rentalList() {
     document.getElementById('modal-rentalList').style.display = 'block';
     document.getElementById('modal-rental').style.display = 'none';
+
     const modalContent = document.getElementById('modal-content');
     modalContent.classList.remove('modal-productDetail');
     modalContent.classList.remove('modal-historyList');
     modalContent.classList.add('modal-rentalList');
 
+    const productCode = document.getElementById('product_code').value;
+
+    const url = '/productManage/rentalList';
+    fetch(url, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getCookie('token')
+        },
+        body: JSON.stringify({product_code:productCode})
+    }).then(response => response.json()).then((data) => {
+        let tbody = '';
+        let str = '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+        str += '';
+    });
 }
 
 // 대여이력 모달창 띄우기
