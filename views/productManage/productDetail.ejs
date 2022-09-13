@@ -1,15 +1,15 @@
-<h1>물품 대여</h1>
-<p id="product_name"></p>
-<p id="product_category"></p>
-<p id="product_code"></p>
-<p id="rental_availability"></p>
-<p id="return_needed"></p>
-<p id="quantity"></p>
+<h1 class="modal-title">물품 대여</h1>
+<div class="modal-body">
+    <p id="product_name"></p>
+    <p id="product_category"></p>
+
+    <p id="product_code"></p>
+    <p id="rental_availability"></p>
+    <p id="return_needed"></p>
+    <p id="quantity"></p>
 <input id="product_code" type="hidden" value="">
 
-<form action="/editProduct" method="post" id="form">
-    <input type="hidden" id="hiddenCode" value="">
-</form>
+
 
 <button onclick="rentalList()">대여자 명단</button>
 <button onclick="history()">대여 이력</button>

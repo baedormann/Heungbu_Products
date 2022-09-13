@@ -30,7 +30,7 @@ h4{
     display: inline-block;
     padding: 40px 8px 10px 8px;
 }
-.wrapper input[type="text"], input[type="password"]{
+.wrapper input[type="text"]{
     background-color: #f6f6f6;
     border: #f6f6f6;
     border-radius: 6px;
