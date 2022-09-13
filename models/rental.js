@@ -13,18 +13,23 @@ const rentalSchema = new Schema({
             },
             rental_purpose:{
                 type: String,
-                required: true
             },
             rental_date:{
                 type: Date,
-                required: true,
-                default: new Date().toISOString()
+                required: true
+            },
+            return_date:{
+                type: Date,
             },
             return_deadline:{
                 type: Date,
                 required: true
+            },
+            rental_status:{
+                type: String,
+                required: true,
+                default: "대여중"
             }
-
 }, {versionKey : false})
 
 module.exports = mongoose.model('rental', rentalSchema);

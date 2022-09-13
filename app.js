@@ -5,15 +5,17 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// controller
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
-const memberRouter = require('./routes/member');
+const memberApi = require('./routes/member');
 const authRouter = require('./routes/auth');
 const regProduct = require('./routes/regProduct');
 const editProduct = require('./routes/editProduct');
 const useManageRouter = require('./routes/manageUser');
 const productManageRouter = require('./routes/productManage');
 const categoryApi = require('./routes/category');
+const rentalApi = require('./routes/rental');
 
 const test = require('./routes/xlsx');
 
@@ -46,15 +48,17 @@ mongoose
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
 
+// connect
 app.use('/',indexRouter);
 app.use('/login', loginRouter);
-app.use('/member', authUtil, memberRouter);
+app.use('/member', authUtil, memberApi);
 app.use('/auth', authRouter);
 app.use('/manageUser', manage, useManageRouter);
 app.use('/regProduct', editAuth, regProduct);
 app.use('/editProduct', editAuth, editProduct);
 app.use('/productManage', productManageRouter);
 app.use('/category', categoryApi);
+app.use('/rental', rentalApi);
 app.use('/test', test);
 
 // catch 404 and forward to error handler

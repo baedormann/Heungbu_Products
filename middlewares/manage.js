@@ -18,11 +18,13 @@ const authUtil = {
             token = req.cookies.token
         }
 
+        // 관리자 검증
         const decode = await jwt.verify(token, secretKey);
         if(!decode.manage){
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('관리자가 아닙니다.'); location.href = \'/'</script>");
         }
+        
         // 토큰 없음
         if (!token)
             return res.json({token: false, message: "토큰이 없습니다."});

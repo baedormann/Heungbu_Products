@@ -18,7 +18,6 @@ router.post('/', async function (req, res) {
         email: req.body.email,
         authority: req.body.authority
     });
-    console.log(req.body);
     try {
         await member.findOne({emp_no: data.emp_no}).exec(async (err, result) => {
             if (result) {
