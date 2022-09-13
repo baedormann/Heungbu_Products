@@ -5,7 +5,8 @@ const product = require('../models/product');
 
 // 대여추가
 router.post('/', async function (req, res) {
-    const rentalData = new rental({
+    let rentalData = new rental({
+        product_id : '',
         product_code: req.body.product_code,
         emp_no: req.body.emp_no,
         rental_purpose: req.body.purpose,
@@ -13,6 +14,7 @@ router.post('/', async function (req, res) {
         return_deadline: req.body.end,
     })
     const productCount = await product.findOne({product_code: rentalData.product_code}).exec();
+    rentalData.product_id = productCount._id;
     try {
         const newRental = await rentalData.save();
         const rentCount = await rental.find({

@@ -24,7 +24,7 @@ router.get('/findSecondCategory/:firstCategory', async function(req, res) {
 //물품 등록
 router.post('/', async function (req, res) {
     console.log(req.body);
-    const data = new product({
+    let data = new product({
         product_name: req.body.product_name,
         product_category: {
             firstCategory: req.body.firstCategory

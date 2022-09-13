@@ -45,7 +45,9 @@ router.post('/search', async function (req, res) {
 // 물품 대여 명단
 router.post('/rentalList', async function (req, res) {
     try {
-        const rentalList = await rental.find({product_code: req.body.product_code}).exec();
+        const rentalList = await rental.find({product_code: req.body.product_code})
+            .populate('product_id')
+            .exec();
         return res.status(201).json(rentalList);
     } catch (err) {
         return res.status(400).json({message: err});

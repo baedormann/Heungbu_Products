@@ -25,6 +25,7 @@ const productSchema = new Schema({
             type: String,
             unique: true,
             required: true,
+            tags:{type:[String], index: true}
         },
     rental_availability:
         {
