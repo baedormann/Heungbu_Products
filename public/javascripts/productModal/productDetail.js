@@ -114,19 +114,28 @@ function rentalList() {
         },
         body: JSON.stringify({product_code:productCode})
     }).then(response => response.json()).then((data) => {
-        let tbody = '';
+        //thead의 innerHTML 코드 작성
         let str = '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
-        str += '';
+        str += '<tr>';
+        str += '<td>대여자명</td>';
+        str += '<td>대여 사유</td>';
+        str += '<td>대여일</td>';
+        str += '<td>반납 기한</td>';
+        str += '<td>대여 상태</td>';
+        str += '</tr>';
+        document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
+        //변수 str 초기화
+        str = '';
+        for(var i = 0; i < data.length; i++){
+            str += '<tr>';
+            str += '<td>' + data[i].emp_no + '</td>';
+            str += '<td>' + data[i].rental_purpose + '</td>';
+            str += '<td>' + data[i].rental_date + '</td>';
+            str += '<td>' + data[i].return_deadline + '</td>';
+            str += '<td>' + data[i].rental_status + '</td>';
+            str += '</tr>';
+        }
+        document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
     });
 }
 
@@ -134,10 +143,53 @@ function rentalList() {
 function history() {
     document.getElementById('modal-rental').style.display = 'none';
     document.getElementById('modal-rentalList').style.display = 'block';
+
     const modalContent = document.getElementById('modal-content');
     modalContent.classList.remove('modal-productDetail');
     modalContent.classList.remove('modal-rentalList');
     modalContent.classList.add('modal-historyList');
+
+    const productCode = document.getElementById('product_code').value;
+
+    const url = '/productManage/rentalList';
+    fetch(url, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getCookie('token')
+        },
+        body: JSON.stringify({product_code:productCode})
+    }).then(response => response.json()).then((data) => {
+        let str = '';
+        str += '<tr>';
+        str += '<td>상태</td>';
+        str += '<td>분류</td>';
+        str += '<td>물품명</td>';
+        str += '<td>물품 코드</td>';
+        str += '<td>대여자</td>';
+        str += '<td>대여 사유</td>';
+        str += '<td>대여일</td>';
+        str += '<td>반납일</td>';
+        str += '</tr>';
+        document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
+
+        //변수 str 초기화
+        str = '';
+        for(var i = 0; i < data.length; i++){
+            str += '<tr>';
+            str += '<td>' + data[i].rental_status + '</td>';
+            str += '<td>' + data[i].product_id.product_category.firstCategory + '<br>' + data[i].product_id.product_category.secondCategory +'</td>';
+            str += '<td>' + data[i].product_id.product_name + '</td>';
+            str += '<td>' + data[i].product_code + '</td>';
+            str += '<td>' + data[i].emp_no + '</td>';
+            str += '<td>' + data[i].rental_purpose + '</td>';
+            str += '<td>' + data[i].rental_date + '</td>';
+            str += '<td>' + data[i].return_date + '</td>';
+            str += '</tr>';
+        }
+        document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
+
+    });
 }
 
 // 물품 대여 모달창 띄우기
@@ -150,6 +202,14 @@ function detail() {
     modalContent.classList.add('modal-productDetail');
 }
 
+//뒤로가기
 function back() {
     detail();
+    document.getElementsByClassName('rentalList__thead')[0].innerHTML = '';
+    document.getElementsByClassName('rentalList__tbody')[0].innerHTML = '';
+}
+
+function edit(){
+    const product_code = document.getElementById('product_code').value;
+    location.href='/productManage/edit/:' + product_code;
 }
