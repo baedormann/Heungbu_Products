@@ -32,7 +32,7 @@
             <td><%= res.leftQuantity %></td>
             <td><%= res.rentalQuantity %></td>
             <td><%= res.quantity %></td>
-            <td><%= res.last_date %></td>
+            <td><%= res.last_date.getFullYear() %>-<%= res.last_date.getMonth() + 1%>-<%=res.last_date.getDate() %></td>
         </tr>
     <% }) %>
     </tbody>
