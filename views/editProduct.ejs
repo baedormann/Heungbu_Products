@@ -23,8 +23,8 @@
                     <div class="firstCategoryDiv">
                         대분류 <select name="firstCategory" id="firstCategory" onchange="findSecondCategory()">
                             <option id="first_category_default" value="" disabled selected>선택</option>
-                            <% for(var i = 0; i < categoryData.length; i++){ %>
-                                <option value="<%= categoryData[i].firstCategory %>"><%= categoryData[i].firstCategory %></option>
+                            <% for(var i = 0; i < category.length; i++){ %>
+                                <option value="<%= category[i].firstCategory %>"><%= category[i].firstCategory %></option>
                             <% }%>
                         </select>
                     </div>
