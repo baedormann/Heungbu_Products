@@ -128,7 +128,7 @@ function rentalList() {
         str = '';
         for(var i = 0; i < data.length; i++){
             str += '<tr>';
-            str += '<td>' + data[i].emp_no + '</td>';
+            str += '<td>' + data[i].emp_id.emp_name + '</td>';
             str += '<td>' + data[i].rental_purpose + '</td>';
             str += '<td>' + data[i].rental_date + '</td>';
             str += '<td>' + data[i].return_deadline + '</td>';

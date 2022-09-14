@@ -55,7 +55,11 @@ const productSchema = new Schema({
         {
             type: Date,
             default: new Date().toISOString()
-        }
+        },
+    rental_id: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "rental"
+    }]
 }, {versionKey: false})
 
 module.exports = mongoose.model('product', productSchema);

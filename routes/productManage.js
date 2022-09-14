@@ -47,6 +47,10 @@ router.post('/rentalList', async function (req, res) {
     try {
         const rentalList = await rental.find({product_code: req.body.product_code})
             .populate('product_id')
+            .populate({
+                path: 'emp_id',
+                select:'emp_name'
+            })
             .exec();
         console.log(rentalList);
         return res.status(201).json(rentalList);

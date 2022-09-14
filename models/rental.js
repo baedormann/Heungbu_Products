@@ -11,9 +11,9 @@ const rentalSchema = new Schema({
         type: String,
         required: true
     },
-    emp_no: {
-        type: String,
-        required: true
+    emp_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "member"
     },
     rental_purpose: {
         type: String,
