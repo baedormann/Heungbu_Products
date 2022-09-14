@@ -35,10 +35,10 @@ function productSearch() {
                 + `<td>${res.product_code}</td>`
                 + `<td>${res.rental_availability ? 'O' : 'X'} </td>`
                 + `<td>${res.return_needed ? 'O' : 'X'} </td>`
-                + `<td>남은 수량</td>`
-                + `<td>대여 수량</td>`
+                + `<td>${res.leftQuantity}</td>`
+                + `<td>${res.rentalQuantity}</td>`
                 + `<td>${res.quantity}</td>`
-                + `<td>${res.last_date}</td>`
+                + `<td>${res.last_date.split('T')[0]}</td>`
                 + "</tr>"
             )
         });
@@ -110,10 +110,10 @@ function productFilter() {
                 + `<td>${res.product_code}</td>`
                 + `<td>${res.rental_availability ? 'O' : 'X'} </td>`
                 + `<td>${res.return_needed ? 'O' : 'X'} </td>`
-                + `<td>남은 수량</td>`
-                + `<td>대여 수량</td>`
+                + `<td>${res.leftQuantity}</td>`
+                + `<td>${res.rentalQuantity}</td>`
                 + `<td>${res.quantity}</td>`
-                + `<td>${res.last_date}</td>`
+                + `<td>${res.last_date.split('T')[0]}</td>`
                 + "</tr>"
             )
         });
