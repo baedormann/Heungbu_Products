@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <script src="/javascripts/cookieModule.js"></script>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h1 id="name">대여 현황</h1>
+    <%- include('./rentalCheck/rentalCheckTable.ejs') %>
+</div>
+</body>
+</html>

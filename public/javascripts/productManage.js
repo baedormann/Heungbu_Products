@@ -1,6 +1,18 @@
 let first = '';
 let second = '';
 
+// 권한에 따른 UI
+let selectSearch = document.getElementById('select_search');
+let newOption = document.createElement('option');
+if (JSON.parse(localStorage.getItem('manage'))) {
+    newOption.setAttribute('value', 'product_rent');
+    newOption.innerText = "대여자";
+    selectSearch.appendChild(newOption);
+}
+if (!(JSON.parse(localStorage.getItem('open_auth')) || JSON.parse(localStorage.getItem('manage')))){
+    document.getElementById("xlsxBtn").style.display="none"
+}
+
 // 엑셀내보내기
 function xlsxTable() {
     let wb = XLSX.utils.table_to_book(document.getElementById('productTable'), {sheet: "xlsxSheet", raw: true});

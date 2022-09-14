@@ -16,6 +16,7 @@ const useManageRouter = require('./routes/manageUser');
 const productManageRouter = require('./routes/productManage');
 const categoryApi = require('./routes/category');
 const rentalApi = require('./routes/rental');
+const rentalCheck = require('./routes/rentalCheck');
 
 const test = require('./routes/xlsx');
 
@@ -23,6 +24,7 @@ const test = require('./routes/xlsx');
 const authUtil = require('./middlewares/auth').checkToken;
 const manage = require('./middlewares/manage').checkToken;
 const editAuth = require('./middlewares/regProduct').checkToken;
+const openAuth = require('./middlewares/open').checkToken;
 
 const app = express();
 
@@ -59,6 +61,7 @@ app.use('/editProduct', editAuth, editProduct);
 app.use('/productManage', productManageRouter);
 app.use('/category', categoryApi);
 app.use('/rental', rentalApi);
+app.use('/rentStatus', openAuth, rentalCheck);
 app.use('/test', test);
 
 // catch 404 and forward to error handler

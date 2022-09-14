@@ -1,3 +1,12 @@
+// 권한에 따른 UI
+if (!JSON.parse(localStorage.getItem('manage'))) {
+    document.getElementsByClassName('manageOk')[0].style.display = "none";
+}
+
+if (!(JSON.parse(localStorage.getItem('edit_auth')) || JSON.parse(localStorage.getItem('manage')))) {
+    document.getElementsByClassName('editOk')[0].style.display = "none";
+}
+
 // 물품 상세 화면
 function productModalOpen(product_code) {
     var modal = document.getElementById('productModal');
@@ -13,14 +22,14 @@ function productModalOpen(product_code) {
         document.getElementById("product_name").innerHTML = `물품 이름 : ${data.product_name}`
         document.getElementById("product_category").innerHTML = `대분류 : ${data.product_category.firstCategory} 소분류 : ${data.product_category.secondCategory}`
         document.getElementById("product_code").innerHTML = `물품코드 : ${data.product_code}`
-        document.getElementById("rental_availability").innerHTML = `대여 여부 : ${data.rental_availability ? 'O':'X'}`
-        document.getElementById("return_needed").innerHTML = `반납 여부 : ${data.return_needed ? 'O':'X'}`
+        document.getElementById("rental_availability").innerHTML = `대여 여부 : ${data.rental_availability ? 'O' : 'X'}`
+        document.getElementById("return_needed").innerHTML = `반납 여부 : ${data.return_needed ? 'O' : 'X'}`
         document.getElementById("quantity").innerHTML = `물품 남은 수량 : ${data.leftQuantity}`
-        if(data.rental_availability) {
+        if (data.rental_availability && JSON.parse(localStorage.getItem('rent_auth')) || JSON.parse(localStorage.getItem('manage'))) {
             document.getElementById("inputStart").innerHTML = `시작일 : <input id="startDate" type="datetime-local" onchange="startEnd()">`
             document.getElementById("inputEnd").innerHTML = `종료일 : <input id="endDate" type="datetime-local" onchange="startEnd()">`
             document.getElementById("inputText").innerHTML = `대여 목적 : <input id="rentPurpose" type="text">`
-            document.getElementById('rentalButton').innerHTML= `<button onClick="rental()">대여</button>`
+            document.getElementById('rentalButton').innerHTML = `<button onClick="rental()">대여</button>`
             defaultStartEnd();
         }
         document.getElementById('product_code').value = product_code;
@@ -58,7 +67,7 @@ function rental() {
     let end = document.getElementById('endDate');
     let text = document.getElementById('rentPurpose');
     let product_code = document.getElementById('product_code').value;
-    if(!end.value) return alert('반납일을 정해주세요.');
+    if (!end.value) return alert('반납일을 정해주세요.');
     const data = {
         product_code: product_code,
         emp_no: localStorage.getItem('emp_no'),
@@ -75,9 +84,9 @@ function rental() {
         },
         body: JSON.stringify(data)
     }).then(response => {
-        if(response.status==402){
+        if (response.status == 402) {
             throw alert('수량이 없습니다.');
-        }else if(response.status==400){
+        } else if (response.status == 400) {
             throw alert('대여에 실패하였습니다.')
         }
         return response.json()
@@ -89,8 +98,8 @@ function rental() {
 
 // 편집 화면 호출
 function edit() {
-/*    form.submit();
-    const form = document.getElementById('form');*/
+    /*    form.submit();
+        const form = document.getElementById('form');*/
 }
 
 // 대여명단 모달창 띄우기
@@ -112,7 +121,7 @@ function rentalList() {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + getCookie('token')
         },
-        body: JSON.stringify({product_code:productCode})
+        body: JSON.stringify({product_code: productCode})
     }).then(response => response.json()).then((data) => {
         //thead의 innerHTML 코드 작성
         let str = '';
@@ -126,7 +135,7 @@ function rentalList() {
         document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
         //변수 str 초기화
         str = '';
-        for(var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
             str += '<tr>';
             str += '<td>' + data[i].emp_id.emp_name + '</td>';
             str += '<td>' + data[i].rental_purpose + '</td>';
@@ -158,7 +167,7 @@ function history() {
             "Content-Type": "application/json",
             "Authorization": "Bearer " + getCookie('token')
         },
-        body: JSON.stringify({product_code:productCode})
+        body: JSON.stringify({product_code: productCode})
     }).then(response => response.json()).then((data) => {
         let str = '';
         str += '<tr>';
@@ -175,10 +184,10 @@ function history() {
 
         //변수 str 초기화
         str = '';
-        for(var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
             str += '<tr>';
             str += '<td>' + data[i].rental_status + '</td>';
-            str += '<td>' + data[i].product_id.product_category.firstCategory + '<br>' + data[i].product_id.product_category.secondCategory +'</td>';
+            str += '<td>' + data[i].product_id.product_category.firstCategory + '<br>' + data[i].product_id.product_category.secondCategory + '</td>';
             str += '<td>' + data[i].product_id.product_name + '</td>';
             str += '<td>' + data[i].product_code + '</td>';
             str += '<td>' + data[i].emp_no + '</td>';
@@ -209,7 +218,7 @@ function back() {
     document.getElementsByClassName('rentalList__tbody')[0].innerHTML = '';
 }
 
-function edit(){
+function edit() {
     const product_code = document.getElementById('product_code').value;
-    location.href='/productManage/edit/:' + product_code;
+    location.href = '/productManage/edit/:' + product_code;
 }

@@ -12,11 +12,10 @@
     검색창
     <select class="select search" id="select_search">
         <option value="product_name">물품</option>
-        <option value="product_category.firstCategory">대여자</option>
     </select>
     <div class="search" style="cursor:pointer">
         <input type="text" placeholder="검색어 입력" id="input_text">
         <i class="fa-solid fa-magnifying-glass" onclick="productSearch()"></i>
     </div>
-    <button onclick="xlsxTable()">엑셀 다운로드</button>
+    <button id="xlsxBtn" onclick="xlsxTable()">엑셀 다운로드</button>
 </div>

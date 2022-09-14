@@ -4,7 +4,7 @@ const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
 // jwt 미들웨어
-const manageUtil = {
+const openUtil = {
     // jwt 토큰 검증
     checkToken: async (req, res, next) => {
         let token
@@ -18,11 +18,11 @@ const manageUtil = {
             token = req.cookies.token
         }
 
-        // 관리자 검증
+        // 열람권한 검증
         const decode = await jwt.verify(token, secretKey);
-        if(!decode.manage){
+        if(!(decode.manage || decode.open_auth)){
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
-            return res.write("<script>alert('관리자가 아닙니다.'); location.href = \'/'</script>");
+            return res.write("<script>alert('열람권한이 없습니다.'); location.href = \'/'</script>");
         }
         
         // 토큰 없음
@@ -40,4 +40,4 @@ const manageUtil = {
     }
 }
 
-module.exports = manageUtil;
+module.exports = openUtil;

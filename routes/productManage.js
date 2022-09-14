@@ -35,7 +35,36 @@ router.post('/search', async function (req, res) {
                     second ? {"product_category.secondCategory": second} : {"product_category.secondCategory": {$exists: true}}
                 ]
             );
-            return res.status(201).json({data: products})
+            return res.status(201).json({data: products});
+        } else if (condition == "product_rent") {
+            const products = await product.find().and([
+                    first ? {"product_category.firstCategory": first} : {"product_category.firstCategory": {$exists: true}},
+                    second ? {"product_category.secondCategory": second} : {"product_category.secondCategory": {$exists: true}}
+                ]
+            ).populate({
+                path: 'rental_id',
+                populate: {
+                    path: 'emp_id',
+                    select: 'emp_name',
+                    match:{emp_name:{$regex:text}}
+                }
+            }).exec();
+            const rentproduct = [];
+            products.map((data)=>{
+                if(data.rental_id.length !== 0){
+                    let emp_name = '';
+                    data.rental_id.map((data2)=>{
+                        if(data2.emp_id){
+                            if(emp_name === ''){
+                                emp_name = data2.emp_id.emp_name;
+                                return rentproduct.push(data);
+                            }
+                        }
+                    })
+                }
+            })
+            console.log(rentproduct);
+            return res.status(201).json({data: rentproduct});
         }
     } catch (err) {
         return res.status(400).json({message: err.message});
@@ -49,10 +78,9 @@ router.post('/rentalList', async function (req, res) {
             .populate('product_id')
             .populate({
                 path: 'emp_id',
-                select:'emp_name'
+                select: 'emp_name'
             })
             .exec();
-        console.log(rentalList);
         return res.status(201).json(rentalList);
     } catch (err) {
         return res.status(400).json({message: err});

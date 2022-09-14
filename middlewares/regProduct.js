@@ -4,7 +4,7 @@ const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
 // jwt 미들웨어
-const authUtil = {
+const regUtil = {
     // jwt 토큰 검증
     checkToken: async (req, res, next) => {
         let token
@@ -18,11 +18,13 @@ const authUtil = {
             token = req.cookies.token
         }
 
+        // 등록권한
         const decode = await jwt.verify(token, secretKey);
-        if(!decode.edit_auth){
+        if(!(decode.manage||decode.edit_auth)){
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('등록권한이 없습니다.'); location.href = \'/'</script>");
         }
+
         // 토큰 없음
         if (!token)
             return res.json({token: false, message: "토큰이 없습니다."});
@@ -38,4 +40,4 @@ const authUtil = {
     }
 }
 
-module.exports = authUtil;
+module.exports = regUtil;
