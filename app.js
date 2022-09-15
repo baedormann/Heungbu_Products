@@ -19,13 +19,12 @@ const rentalApi = require('./routes/rental');
 const rentalCheck = require('./routes/rentalCheck');
 const myPage = require('./routes/myPage');
 
-const test = require('./routes/xlsx');
-
 // midleware
 const authUtil = require('./middlewares/auth').checkToken;
 const manage = require('./middlewares/manage').checkToken;
 const editAuth = require('./middlewares/regProduct').checkToken;
 const openAuth = require('./middlewares/open').checkToken;
+const rentAuth = require('./middlewares/rent').checkToken;
 
 const app = express();
 
@@ -52,18 +51,22 @@ mongoose
     .catch(e => console.error(e));
 
 // connect
+// 내부 미들웨어
 app.use('/',indexRouter);
+
 app.use('/login', loginRouter);
 app.use('/member', authUtil, memberApi);
 app.use('/auth', authRouter);
 app.use('/manageUser', manage, useManageRouter);
 app.use('/regProduct', editAuth, regProduct);
 app.use('/editProduct', editAuth, editProduct);
+
+// 내부 미들웨어
 app.use('/productManage', productManageRouter);
-app.use('/category', categoryApi);
-app.use('/rental', rentalApi);
+
+app.use('/category', authUtil, categoryApi);
+app.use('/rental', rentAuth, rentalApi);
 app.use('/rentStatus', openAuth, rentalCheck);
-app.use('/test', test);
 app.use('/myPage', authUtil, myPage);
 
 // catch 404 and forward to error handler

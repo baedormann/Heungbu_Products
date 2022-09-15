@@ -17,24 +17,25 @@ function regProduct() {
 // 대여 라디오 값 반환
 function rental_availability() {
     const rental_availability_arr = document.getElementsByName('rental_availability');
-    let rental_availability = '';
-    rental_availability_arr.forEach((node) => {
-        if (node.checked) {
-            return rental_availability = node.value;
-        }
-    })
+
+    if(rental_availability_arr[0].checked == true){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 // 반환 라디오 값 반환
 function return_needed() {
-    //반환 필요 여부return_needed 값 설정
+    //반환 필요 여부, return_needed 값 설정
     const return_needed_arr = document.getElementsByName('return_needed');
-    let return_needed = '';
-    return_needed_arr.forEach((node) => {
-        if (node.checked) {
-            return return_needed = node.value;
-        }
-    })
+    if(return_needed_arr[0].checked == true){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 // 등록 api호출

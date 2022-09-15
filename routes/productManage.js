@@ -3,16 +3,19 @@ const router = express.Router();
 const product = require('../models/product');
 const categorys = require('../models/category');
 const rental = require('../models/rental');
+const editAuth = require('../middlewares/regProduct').checkToken;
+const manage = require('../middlewares/manage').checkToken;
+const authUtil = require('../middlewares/auth').checkToken;
 
 /* GET productManage page. */
-router.get('/', async function (req, res, next) {
+router.get('/', authUtil, async function (req, res, next) {
     const data = await product.find().exec();
     const category = await categorys.find().exec();
     res.render('productManage', {stateUrl: 'productManage', data: data, category: category});
 });
 
-// 물품 상세 검색
-router.get('/:product_code', async function (req, res) {
+// 물품 상세 화면
+router.get('/:product_code', authUtil, async function (req, res) {
     try {
         const productDetail = await product.findOne({product_code: req.params.product_code}).exec();
         return res.status(201).json(productDetail);
@@ -22,7 +25,7 @@ router.get('/:product_code', async function (req, res) {
 })
 
 // 물품 검색
-router.post('/search', async function (req, res) {
+router.post('/search', authUtil, async function (req, res) {
     let condition = req.body.condition;
     let first = req.body.firstCategory;
     let second = req.body.secondCategory;
@@ -73,7 +76,7 @@ router.post('/search', async function (req, res) {
 })
 
 // 물품 대여 명단
-router.post('/rentalList', async function (req, res) {
+router.post('/rentalList', manage, async function (req, res) {
     try {
         const rentalList = await rental.find({product_code: req.body.product_code})
             .populate('product_id')
@@ -89,7 +92,7 @@ router.post('/rentalList', async function (req, res) {
 })
 
 //물품 편집 화면으로 이동
-router.get('/edit/:product_code', async function (req, res, next) {
+router.get('/edit/:product_code', editAuth, async function (req, res, next) {
     let product_code = req.params.product_code;
     const data = await product.findOne({product_code: product_code}).exec();
     const category = await categorys.find().exec();
