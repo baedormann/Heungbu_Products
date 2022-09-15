@@ -258,7 +258,7 @@ function regCategory(){
     }
     let category = {
         firstCategory : first,
-        secondCategory: document.getElementById('addSecondInput') ? document.getElementById('addSecondInput').value : null
+        secondCategory: document.getElementById('addSecondInput') ? document.getElementById('addSecondInput').value : []
     }
     fetch(url, {
         method: "post",

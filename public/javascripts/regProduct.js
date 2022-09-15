@@ -18,10 +18,9 @@ function regProduct() {
 function rental_availability() {
     const rental_availability_arr = document.getElementsByName('rental_availability');
 
-    if(rental_availability_arr[0].checked == true){
+    if (rental_availability_arr[0].checked == true) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
@@ -30,14 +29,24 @@ function rental_availability() {
 function return_needed() {
     //반환 필요 여부, return_needed 값 설정
     const return_needed_arr = document.getElementsByName('return_needed');
-    if(return_needed_arr[0].checked == true){
+    if (return_needed_arr[0].checked == true) {
         return true;
-    }
-    else{
+    } else {
         return false;
     }
 }
-
+//수량 유효성 검사
+function underZero() {
+    let number = document.getElementById('quantity').value;
+    if (number < 0) {
+        document.getElementById('quantity').value = 0;
+        alert('0 이상의 수량을 입력하세요.')
+    }
+    if (number % 1 > 0) {
+        document.getElementById('quantity').value = 0;
+        alert('수량을 정수 형태로 입력하세요.')
+    }
+}
 // 등록 api호출
 function regProductApi() {
     let url = "/regProduct"
@@ -156,22 +165,33 @@ for (var i = 0; i < radio.length; i++) {
                     optionStr += '<option value="' + data[i].firstCategory + '">' + data[i].firstCategory + '</option>'
                 }
             });
-            addCategoryInput.firstElementChild.innerHTML = '대분류 ' + '<select id="addFirstSelect">' + optionStr + '</select>';
+            addCategoryInput.firstElementChild.innerHTML = '대분류 ' + '<select id="addFirstSelect" onchange="disabledOff();">' + optionStr + '</select>';
             let newSpan = document.createElement('span');
-            newSpan.innerHTML = '<span>소분류 <input id="addSecondInput" type="text"></span>';
+            newSpan.innerHTML = '<span>소분류 <input id="addSecondInput" type="text" disabled></span>';
             addCategoryInput.appendChild(newSpan);
         }
     })
 }
 
+function disabledOff(){
+    document.getElementById('addSecondInput').disabled = false;
+}
 // 카테고리 추가
 function regCategory() {
+    if(document.getElementById('addFirstInput')){
+        if(document.getElementById('addFirstInput').value == ''){
+            alert('대분류명을 입력해주세요.');
+            return;
+        }
+    }
     let nth = document.getElementsByName('selectNth');
     let first;
     if (nth[0].checked) {
         first = document.getElementById('addFirstInput').value;
     } else if (nth[1].checked) {
         first = document.getElementById('addFirstSelect').value;
+        if(first=='')
+            document.getElementById('addSecondInput').disabled = true;
     }
     let category = {
         firstCategory: first,
@@ -184,8 +204,12 @@ function regCategory() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(category)
-    }).then(response =>
-        response.json()
+    }).then(response => {
+        if(response.status == 401){
+            throw alert('소분류를 입력해주세요.');
+        }
+            response.json()
+        }
     ).then((data) => {
         alert(data.message);
     }).catch((err) => {

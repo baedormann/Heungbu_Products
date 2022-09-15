@@ -45,7 +45,7 @@
                 <input id="product_name" type="text" name="name", placeholder="물품명">
             </div>
             <div>
-                수량 <input id="quantity" type="number">
+                수량 <input id="quantity" type="number" min="0" oninput="underZero()" >
             </div>
             <div>
                 대여 가능 여부

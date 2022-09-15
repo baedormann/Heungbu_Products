@@ -23,7 +23,6 @@ router.get('/findSecondCategory/:firstCategory', async function(req, res) {
 
 //물품 등록
 router.post('/', async function (req, res) {
-    console.log(req.body);
     let data = new product({
         product_name: req.body.product_name,
         product_category: {
@@ -36,7 +35,6 @@ router.post('/', async function (req, res) {
         quantity: req.body.quantity,
         leftQuantity: req.body.quantity
     });
-    console.log("data : " + data);
     try {
         await product.findOne({product_code: data.product_code}).exec(async (err, result) => {
             if (result) {
@@ -82,16 +80,18 @@ router.post('/regFirstCategory', async function (req, res) {
     }
 })
 
-//전체 카테고리 등록
+//소분류 카테고리 등록
 router.post('/regCategory', function (req, res, next) {
     try{
+        if(!req.body.secondCategory){
+            return res.status(401).send({message: "소분류명을 입력해주세요."});
+        }
         category.findOne({firstCategory: req.body.firstCategory}).exec(async (err, result) => {
             if (result) {
                 const exist = await category.findOne().and([{firstCategory: req.body.firstCategory},{secondCategory: {$all: [req.body.secondCategory]}}]).exec();
                 if(exist){
                     res.status(201).json({message: "이미 존재하는 소분류 입니다."})
                 }else{
-                    console.log(req.body.secondCategory)
                     category.update({firstCategory: result.firstCategory}, {$push: {secondCategory: req.body.secondCategory}}).exec();
                     res.status(201).json({message: "소분류 등록완료."})
                 }
@@ -109,4 +109,6 @@ router.post('/regCategory', function (req, res, next) {
     }
 
 });
+
+
 module.exports = router;
