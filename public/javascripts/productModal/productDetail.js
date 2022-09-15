@@ -104,6 +104,7 @@ function edit() {
 
 // 대여명단 모달창 띄우기
 function rentalList() {
+    document.getElementById('modal-title').innerHTML = '물품 대여 명단';
     document.getElementById('modal-rentalList').style.display = 'block';
     document.getElementById('modal-rental').style.display = 'none';
 
@@ -150,6 +151,7 @@ function rentalList() {
 
 // 대여이력 모달창 띄우기
 function history() {
+    document.getElementById('modal-title').innerHTML = '물품 대여 이력';
     document.getElementById('modal-rental').style.display = 'none';
     document.getElementById('modal-rentalList').style.display = 'block';
 
@@ -175,7 +177,7 @@ function history() {
         str += '<td>분류</td>';
         str += '<td>물품명</td>';
         str += '<td>물품 코드</td>';
-        str += '<td>대여자</td>';
+        str += '<td>대여자명</td>';
         str += '<td>대여 사유</td>';
         str += '<td>대여일</td>';
         str += '<td>반납일</td>';
@@ -190,10 +192,10 @@ function history() {
             str += '<td>' + data[i].product_id.product_category.firstCategory + '<br>' + data[i].product_id.product_category.secondCategory + '</td>';
             str += '<td>' + data[i].product_id.product_name + '</td>';
             str += '<td>' + data[i].product_code + '</td>';
-            str += '<td>' + data[i].emp_no + '</td>';
+            str += '<td>' + data[i].emp_id.emp_name + '</td>';
             str += '<td>' + data[i].rental_purpose + '</td>';
             str += '<td>' + data[i].rental_date + '</td>';
-            str += '<td>' + data[i].return_date + '</td>';
+            data[i].return_date ? str += '<td>' + data[i].return_date + '</td>' : str += '<td>-</td>';
             str += '</tr>';
         }
         document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
@@ -218,7 +220,8 @@ function back() {
     document.getElementsByClassName('rentalList__tbody')[0].innerHTML = '';
 }
 
-function edit() {
+//물품편집 화면으로 이동
+function edit(){
     const product_code = document.getElementById('product_code').value;
-    location.href = '/productManage/edit/:' + product_code;
+    location.href='/productManage/edit/' + product_code;
 }

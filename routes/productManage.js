@@ -90,8 +90,8 @@ router.post('/rentalList', async function (req, res) {
 
 //물품 편집 화면으로 이동
 router.get('/edit/:product_code', async function (req, res, next) {
-    console.log(123123);
-    const data = await product.findOne({product_code: req.body.product_code}).exec();
+    let product_code = req.params.product_code;
+    const data = await product.findOne({product_code: product_code}).exec();
     const category = await categorys.find().exec();
 
     res.render('editProduct', {stateUrl: 'editProduct', data: data, category: category});
