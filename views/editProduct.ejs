@@ -3,7 +3,7 @@
 <head>
     <title><%= stateUrl %></title>
     <link rel='stylesheet' href='/stylesheets/regProduct.css'/>
-    <script src="/javascripts/editProduct.js"></script>
+    <script defer src="/javascripts/editProduct.js"></script>
     <script src="/javascripts/cookieModule.js"></script>
     <link rel='stylesheet' href="/stylesheets/regProduct/addCategoryModal.css"></script>
 </head>
@@ -39,22 +39,22 @@
                 </div>
             </div>
             <div>
-                <input id="product_code" type="text" name="name", placeholder="제품코드">
+                제품코드 <input id="product_code" type="text" name="name", placeholder="제품코드" value="<%= data.product_code%>" disabled>
             </div>
             <div>
-                <input id="product_name" type="text" name="name", placeholder="물품명">
+                물품명 <input id="product_name" type="text" name="name", placeholder="물품명" value="<%= data.product_name%>">
             </div>
             <div>
-                수량 <input id="quantity" type="number">
+                수량 <input id="quantity" type="number" value="<%= data.quantity%>">
             </div>
             <div>
                 대여 가능 여부
-                <input class="rental_availability" type="radio" name="rental_availability" checked="checked" value="true"> 가능
+                <input class="rental_availability" type="radio" name="rental_availability" value="true"> 가능
                 <input class="rental_availability" type="radio" name="rental_availability" value="false"> 불가능
             </div>
             <div>
                 반환 필요 여부
-                <input class="return_needed" type="radio" name="return_needed" checked="checked" value="true"> 필요
+                <input class="return_needed" type="radio" name="return_needed" value="true"> 필요
                 <input class="return_needed" type="radio" name="return_needed" value="false"> 불필요
             </div>
 
@@ -63,19 +63,19 @@
 
             <button id="submitBtn" onclick="editProduct();">편집</button>
             <button id="cancelBtn" onclick="location.href='/';">취소</button>
-            <button id="initBtn" onclick="initReg();">초기화</button>
+            <button id="initBtn" onclick="confirmInit();">초기화</button>
         </div>
+    </div>
+    <div>
+        <input id="firstCategoryHidden" type="hidden" value="<%= data.product_category.firstCategory%>">
+        <input id="secondCategoryHidden" type="hidden" value="<%= data.product_category.secondCategory%>">
+        <input id="rentalAvailailityHidden" type="hidden" value="<%= data.rental_availability%>">
+        <input id="returnNeededHidden" type="hidden" value="<%= data.return_needed%>">
     </div>
     <!--<button onclick="location.href='/test/xlsx'">엑셀 생성</button>-->
     <div class="modalDiv">
         <%- include('regProduct/addCategoryModal.ejs') %>
     </div>
-
 </div>
-<script src="/javascripts/editProduct.js"></script>
-<script>
-    /*const name = localStorage.getItem("name");
-    document.getElementById("name").innerHTML = name + " 님";*/
-</script>
 </body>
 </html>

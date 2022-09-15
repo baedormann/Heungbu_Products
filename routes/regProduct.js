@@ -64,11 +64,9 @@ router.get('/findFirstCategory', async function(req, res) {
 
 //대분류 카테고리 등록
 router.post('/regFirstCategory', async function (req, res) {
-    console.log(req.body);
     const data = new category({
         firstCategory: req.body.firstCategory,
     });
-    console.log("data : " + data);
     try {
         await category.findOne({firstCategory: data.firstCategory}).exec(async (err, result) => {
             if (result) {
