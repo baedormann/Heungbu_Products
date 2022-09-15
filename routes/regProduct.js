@@ -86,23 +86,29 @@ router.post('/regFirstCategory', async function (req, res) {
 
 //전체 카테고리 등록
 router.post('/regCategory', function (req, res, next) {
-    category.findOne({firstCategory: req.body.firstCategory}).exec(async (err, result) => {
-        if (result) {
-            const exist = await category.find().and([{firstCategory: req.body.firstCategory},{secondCategory: {$all: [req.body.secondCategory]}}]).exec();
-            if(exist){
-                res.status(201).json({message: "이미 존재하는 소분류 입니다."})
-            }else{
-                category.update({firstCategory: result.firstCategory}, {$push: {secondCategory: req.body.secondCategory}}).exec();
-                res.status(201).json({message: "소분류 등록완료."})
+    try{
+        category.findOne({firstCategory: req.body.firstCategory}).exec(async (err, result) => {
+            if (result) {
+                const exist = await category.findOne().and([{firstCategory: req.body.firstCategory},{secondCategory: {$all: [req.body.secondCategory]}}]).exec();
+                if(exist){
+                    res.status(201).json({message: "이미 존재하는 소분류 입니다."})
+                }else{
+                    console.log(req.body.secondCategory)
+                    category.update({firstCategory: result.firstCategory}, {$push: {secondCategory: req.body.secondCategory}}).exec();
+                    res.status(201).json({message: "소분류 등록완료."})
+                }
+            } else {
+                const data = new category({
+                    firstCategory: req.body.firstCategory,
+                    secondCategory: req.body.secondCategory
+                })
+                const newCategory = await data.save();
+                return res.status(201).json({message: "새 대분류 및 소분류 등록"})
             }
-        } else {
-            const data = new category({
-                firstCategory: req.body.firstCategory,
-                secondCategory: req.body.secondCategory
-            })
-            const newCategory = await data.save();
-            return res.status(201).json({message: "새 대분류 및 소분류 등록"})
-        }
-    })
+        })
+    }catch(err){
+        return res.status(400).json(err)
+    }
+
 });
 module.exports = router;

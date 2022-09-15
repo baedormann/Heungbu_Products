@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const authUtil = require('../middlewares/auth').checkToken;
 const member = require('../models/member')
 
 /* GET manageUser page. */
@@ -20,7 +19,7 @@ router.patch('/', async function (req, res) {
             });
         const data = await member.findOne({emp_no: req.body.emp_no}).exec()
         res.status(201).json(data);
-    } catch {
+    } catch(err) {
         res.status(400).json({message: err.message});
     }
 })

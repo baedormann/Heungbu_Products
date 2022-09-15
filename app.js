@@ -17,6 +17,7 @@ const productManageRouter = require('./routes/productManage');
 const categoryApi = require('./routes/category');
 const rentalApi = require('./routes/rental');
 const rentalCheck = require('./routes/rentalCheck');
+const myPage = require('./routes/myPage');
 
 const test = require('./routes/xlsx');
 
@@ -63,6 +64,7 @@ app.use('/category', categoryApi);
 app.use('/rental', rentalApi);
 app.use('/rentStatus', openAuth, rentalCheck);
 app.use('/test', test);
+app.use('/myPage', authUtil, myPage);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

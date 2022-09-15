@@ -31,7 +31,7 @@ function return_needed() {
     const return_needed_arr = document.getElementsByName('return_needed');
     let return_needed = '';
     return_needed_arr.forEach((node) => {
-        if(node.checked)  {
+        if (node.checked) {
             return return_needed = node.value;
         }
     })
@@ -41,13 +41,13 @@ function return_needed() {
 function regProductApi() {
     let url = "/regProduct"
     let product = {
-        firstCategory : document.getElementById("firstCategory").value,
-        secondCategory : document.getElementById("secondCategory").value,
-        product_code : document.getElementById("product_code").value,
-        product_name : document.getElementById("product_name").value,
-        quantity : document.getElementById("quantity").value,
-        rental_availability : rental_availability(),
-        return_needed : return_needed()
+        firstCategory: document.getElementById("firstCategory").value,
+        secondCategory: document.getElementById("secondCategory").value,
+        product_code: document.getElementById("product_code").value,
+        product_name: document.getElementById("product_name").value,
+        quantity: document.getElementById("quantity").value,
+        rental_availability: rental_availability(),
+        return_needed: return_needed()
     };
     fetch(url, {
         method: "post",
@@ -56,10 +56,10 @@ function regProductApi() {
         },
         body: JSON.stringify(product)
     }).then(response => {
-        const { status } = response;
-        if(status == 400) {
+        const {status} = response;
+        if (status == 400) {
             alert("중복된 물품코드입니다.")
-        }else{
+        } else {
             return response.json()
         }
     }).then((data) => {
@@ -72,8 +72,8 @@ function regProductApi() {
 }
 
 //내용 초기화
-function initReg(){
-    if (confirm('내용을 초기화하시겠습니까?')){
+function initReg() {
+    if (confirm('내용을 초기화하시겠습니까?')) {
         document.getElementById('first_category_default').selected = true;
         document.getElementById('second_category_default').selected = true;
         document.getElementById('product_code').value = '';
@@ -121,7 +121,7 @@ function findSecondCategory(firstCategory) {
         }
     }).then(response => response.json()).then((data) => {
         let str = '<option id="second_category_default" value="" disabled>선택</option>';
-        for (var i = 0; i < data[0].secondCategory.length; i++){
+        for (var i = 0; i < data[0].secondCategory.length; i++) {
             str += '<option id="" value="' + data[0].secondCategory[i] + '">' + data[0].secondCategory[i] + '</option>';
         }
         document.getElementById('secondCategory').innerHTML = str;
@@ -130,18 +130,18 @@ function findSecondCategory(firstCategory) {
 
 //카테고리 추가 시 라디오버튼 동작
 var radio = document.getElementsByName('selectNth');
-for(var i = 0; i < radio.length; i++){
-    radio[i].addEventListener('click', async function (){
+for (var i = 0; i < radio.length; i++) {
+    radio[i].addEventListener('click', async function () {
         let addCategoryInput = document.getElementById('addCategoryInput');
         let firstCategoryArr;//api요청
 
         //대분류 추가 라디오 버튼 클릭 시
-        if(this.value == 'addFirstCategory'){
+        if (this.value == 'addFirstCategory') {
             addCategoryInput.lastElementChild.remove();
             addCategoryInput.firstElementChild.innerHTML = '대분류 <input type="text" id="addFirstInput">';
         }
         //소분류 추가 라디오 버튼 클릭 시
-        if(this.value == 'addSecondCategory' && addCategoryInput.childElementCount == 1){
+        if (this.value == 'addSecondCategory' && addCategoryInput.childElementCount == 1) {
             let optionStr = '<option id="first_category_default" value="" disabled selected>선택</option>';
             const url = '/regProduct/findFirstCategory/';
             await fetch(url, {
@@ -151,7 +151,7 @@ for(var i = 0; i < radio.length; i++){
                     "Authorization": "Bearer " + getCookie('token')
                 }
             }).then(response => response.json()).then((data) => {
-                for (var i = 0; i < data.length; i++){
+                for (var i = 0; i < data.length; i++) {
                     optionStr += '<option value="' + data[i].firstCategory + '">' + data[i].firstCategory + '</option>'
                 }
             });
@@ -163,21 +163,20 @@ for(var i = 0; i < radio.length; i++){
     })
 }
 
-function regCategory(){
+// 카테고리 추가
+function regCategory() {
     let nth = document.getElementsByName('selectNth');
-    let url = '/regProduct/regCategory';
     let first;
-    if(nth[0].checked){
+    if (nth[0].checked) {
         first = document.getElementById('addFirstInput').value;
-
-
-    }else if(nth[1].checked){
+    } else if (nth[1].checked) {
         first = document.getElementById('addFirstSelect').value;
     }
     let category = {
-        firstCategory : first,
-        secondCategory: document.getElementById('addSecondInput') ? document.getElementById('addSecondInput').value : null
+        firstCategory: first,
+        secondCategory: document.getElementById('addSecondInput') ? document.getElementById('addSecondInput').value : []
     }
+    let url = '/regProduct/regCategory';
     fetch(url, {
         method: "post",
         headers: {

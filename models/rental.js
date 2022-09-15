@@ -24,6 +24,7 @@ const rentalSchema = new Schema({
     },
     return_date: {
         type: Date,
+        default: null
     },
     return_deadline: {
         type: Date,

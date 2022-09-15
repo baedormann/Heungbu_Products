@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <script src="/javascripts/cookieModule.js"></script>
+    <script src="/javascripts/myPage.js"></script>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h1 id="name">마이 페이지</h1>
+
+    <h1>나의 대여 현황</h1>
+    <%- include('./myPage/myRentStatus.ejs') %>
+</div>
+</body>
+</html>

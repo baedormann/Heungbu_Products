@@ -43,6 +43,7 @@ router.post('/search', async function (req, res) {
                 ]
             ).populate({
                 path: 'rental_id',
+                match:{rental_status: "대여중"},
                 populate: {
                     path: 'emp_id',
                     select: 'emp_name',
