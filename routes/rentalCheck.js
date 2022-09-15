@@ -8,9 +8,8 @@ router.get('/', async function(req, res, next) {
         .populate({
             path: 'emp_id',
             select: 'emp_name'
-        })
-        .exec();
-    console.log(rentalList)
+        }).
+        sort({rental_date:-1}).exec();
     res.render('rentalCheck', { stateUrl: 'rentStatus', data: rentalList });
 });
 

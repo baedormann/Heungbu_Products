@@ -14,6 +14,14 @@ router.get('/', authUtil, async function (req, res, next) {
     res.render('productManage', {stateUrl: 'productManage', data: data, category: category});
 });
 
+/* GET productManage search page. */
+router.get('/search/:text', authUtil, async function (req, res, next) {
+    const data = await product.find({product_name: {$regex: req.params.text}}).exec();
+    const category = await categorys.find().exec();
+    res.render('productManage', {stateUrl: 'productManage', data: data, category: category});
+});
+
+
 // 물품 상세 화면
 router.get('/:product_code', authUtil, async function (req, res) {
     try {
@@ -46,20 +54,20 @@ router.post('/search', authUtil, async function (req, res) {
                 ]
             ).populate({
                 path: 'rental_id',
-                match:{rental_status: "대여중"},
+                match: {rental_status: "대여중"},
                 populate: {
                     path: 'emp_id',
                     select: 'emp_name',
-                    match:{emp_name:{$regex:text}}
+                    match: {emp_name: {$regex: text}}
                 }
             }).exec();
             const rentproduct = [];
-            products.map((data)=>{
-                if(data.rental_id.length !== 0){
+            products.map((data) => {
+                if (data.rental_id.length !== 0) {
                     let emp_name = '';
-                    data.rental_id.map((data2)=>{
-                        if(data2.emp_id){
-                            if(emp_name === ''){
+                    data.rental_id.map((data2) => {
+                        if (data2.emp_id) {
+                            if (emp_name === '') {
                                 emp_name = data2.emp_id.emp_name;
                                 return rentproduct.push(data);
                             }

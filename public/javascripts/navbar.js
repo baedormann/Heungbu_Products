@@ -51,3 +51,18 @@ function reToken() {
         alert(data.message);
     });
 }
+
+// 네브서치 이동
+function searchProduct() {
+    let searchValue = document.getElementById("searchValue").value;
+    if(searchValue){
+        location.href = '/productManage/search/' + searchValue;
+    }
+}
+
+// 서치 엔터 클릭
+function enter() {
+    if (window.event.keyCode == 13) {
+        searchProduct();
+    }
+}

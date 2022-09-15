@@ -9,9 +9,9 @@
         <i class="fa-solid fa-bars" id="btn"></i>
     </div>
     <input id="stateUrl" type="hidden" value="<%= stateUrl %>">
-    <li>
+    <li onkeyup="enter()">
         <i class="fa-sharp fa-solid fa-magnifying-glass" id="searchIcon"></i>
-        <input type="text" placeholder="물품 검색...">
+        <input id="searchValue" type="text" placeholder="물품 검색...">
         <span class="tooltip">Search</span>
     </li>
     <li>
