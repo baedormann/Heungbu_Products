@@ -86,7 +86,7 @@ router.post('/search', authUtil, async function (req, res) {
 // 물품 대여 명단
 router.post('/rentalList', manage, async function (req, res) {
     try {
-        const rentalList = await rental.find({product_code: req.body.product_code})
+        const rentalList = await rental.find({product_code: req.body.product_code, rental_status: '대여중'})
             .populate('product_id')
             .populate({
                 path: 'emp_id',

@@ -24,6 +24,7 @@ function productModalOpen(product_code) {
         document.getElementById("inputText").innerHTML = ``
         document.getElementById('rentalButton').innerHTML = ``
         document.getElementById("product_name").innerHTML = `물품 이름 : ${data.product_name}`
+        document.getElementById("product_name").value = `${data.product_name}`
         document.getElementById("product_category").innerHTML = `대분류 : ${data.product_category.firstCategory} 소분류 : ${data.product_category.secondCategory}`
         document.getElementById("product_code").innerHTML = `물품코드 : ${data.product_code}`
         document.getElementById("rental_availability").innerHTML = `대여 여부 : ${data.rental_availability ? 'O' : 'X'}`
@@ -108,7 +109,7 @@ function edit() {
 
 // 대여명단 모달창 띄우기
 function rentalList() {
-    document.getElementById('modal-title').innerHTML = '물품 대여 명단';
+    document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여자 명단';
     document.getElementById('modal-rentalList').style.display = 'block';
     document.getElementById('modal-rental').style.display = 'none';
 
@@ -143,9 +144,9 @@ function rentalList() {
         for (var i = 0; i < data.length; i++) {
             str += '<tr>';
             str += '<td>' + data[i].emp_id.emp_name + '</td>';
-            str += '<td>' + data[i].rental_purpose + '</td>';
-            str += '<td>' + data[i].rental_date + '</td>';
-            str += '<td>' + data[i].return_deadline + '</td>';
+            str += '<td>' + (data[i].rental_purpose ? data[i].rental_purpose : '-') + '</td>';
+            str += '<td>' + data[i].rental_date.split('T')[0] + '</td>';
+            str += '<td>' + data[i].return_deadline.split('T')[0] + '</td>';
             str += '<td>' + data[i].rental_status + '</td>';
             str += '</tr>';
         }
@@ -155,7 +156,7 @@ function rentalList() {
 
 // 대여이력 모달창 띄우기
 function history() {
-    document.getElementById('modal-title').innerHTML = '물품 대여 이력';
+    document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여 이력';
     document.getElementById('modal-rental').style.display = 'none';
     document.getElementById('modal-rentalList').style.display = 'block';
 
@@ -197,9 +198,9 @@ function history() {
             str += '<td>' + data[i].product_id.product_name + '</td>';
             str += '<td>' + data[i].product_code + '</td>';
             str += '<td>' + data[i].emp_id.emp_name + '</td>';
-            str += '<td>' + data[i].rental_purpose + '</td>';
-            str += '<td>' + data[i].rental_date + '</td>';
-            data[i].return_date ? str += '<td>' + data[i].return_date + '</td>' : str += '<td>-</td>';
+            str += '<td>' + (data[i].rental_purpose ? data[i].rental_purpose : '-') + '</td>';
+            str += '<td>' + data[i].rental_date.split('T')[0] + '</td>';
+            data[i].return_date ? str += '<td>' + data[i].return_date.split('T')[0] + '</td>' : str += '<td>-</td>';
             str += '</tr>';
         }
         document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
