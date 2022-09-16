@@ -21,10 +21,10 @@ router.post('/', async function (req, res) {
                 const jwtToken = await jwt.sign(result);
                 res.cookie("token", jwtToken.token).status(200).json({message: "로그인 성공", data: result});
             } else {
-                res.send({message: "비밀 번호가 틀렸습니다."});
+                res.send({message: "로그인 정보가 일치하지 않습니다."});
             }
         } else {
-            res.send({message: "없는 아이디 입니다."});
+            res.send({message: "로그인 정보가 일치하지 않습니다."});
         }
     });
 });

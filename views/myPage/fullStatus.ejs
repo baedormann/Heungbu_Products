@@ -1,26 +1,24 @@
-
 <table id="productTable" class="productTable">
     <thead>
     <tr>
         <th>분류</th>
         <th>물품 이름</th>
         <th>물품 코드</th>
-        <th>대여자</th>
         <th>대여 사유</th>
         <th>대여일</th>
         <th>반납일</th>
         <th>반납기한</th>
         <th>대여 상태</th>
+        <th></th>
     </tr>
     </thead>
     <tbody id="table_data">
-    <% data.map(res =>{ %>
+    <% full.map(res =>{ %>
         <tr>
             <td><%= res.product_id.product_category.firstCategory %>
                 -<%= res.product_id.product_category.secondCategory %></td>
             <td><%= res.product_id.product_name %></td>
             <td><%= res.product_id.product_code %></td>
-            <td><%= res.emp_id.emp_name %></td>
             <td><%= res.rental_purpose %></td>
             <td><%= res.rental_date.getFullYear() %>년
                 <%= res.rental_date.getMonth() + 1 %>월
@@ -45,6 +43,11 @@
                 <%= res.return_deadline.getMinutes() %>분
             </td>
             <td><%= res.rental_status %></td>
+            <% if(res.rental_status == "대여중") {%>
+                <td onclick="returnProduct('<%= res._id %>', '<%= res.product_id.product_name %>')">
+                    <button>반납</button>
+                </td>
+            <%} else { %><td></td><%}%>
         </tr>
     <% }) %>
     </tbody>

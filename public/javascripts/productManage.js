@@ -9,14 +9,8 @@ if (JSON.parse(localStorage.getItem('manage'))) {
     newOption.innerText = "대여자";
     selectSearch.appendChild(newOption);
 }
-if (!(JSON.parse(localStorage.getItem('open_auth')) || JSON.parse(localStorage.getItem('manage')))){
-    document.getElementById("xlsxBtn").style.display="none"
-}
-
-// 엑셀내보내기
-function xlsxTable() {
-    let wb = XLSX.utils.table_to_book(document.getElementById('productTable'), {sheet: "xlsxSheet", raw: true});
-    XLSX.writeFile(wb, ('물품테이블.xlsx'));
+if (!(JSON.parse(localStorage.getItem('open_auth')) || JSON.parse(localStorage.getItem('manage')))) {
+    document.getElementById("xlsxBtn").style.display = "none"
 }
 
 // 물품 검색

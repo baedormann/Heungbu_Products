@@ -11,14 +11,28 @@ const product = require("../models/product");
 router.get('/', async function (req, res, next) {
     const decode = await jwt.verify(req.cookies.token, secretKey);
     const users = await member.findOne({emp_no: decode.emp_no}).select('emp_no').exec();
-    const rentalList = await rental.find({emp_id: users._id})
+    const fullRentalList = await rental.find({emp_id: users._id})
         .populate('product_id')
         .populate({
             path: 'emp_id',
             select: 'emp_name'
         }).
         sort({rental_date:-1}).exec();
-    res.render('myPage', {stateUrl: 'myPage', data: rentalList});
+    const rentRentalList = await rental.find({emp_id: users._id, rental_status:"대여중"})
+        .populate('product_id')
+        .populate({
+            path: 'emp_id',
+            select: 'emp_name'
+        }).
+        sort({rental_date:-1}).exec();
+    const returnRentalList = await rental.find({emp_id: users._id, rental_status:"반납"})
+        .populate('product_id')
+        .populate({
+            path: 'emp_id',
+            select: 'emp_name'
+        }).
+        sort({rental_date:-1}).exec();
+    res.render('myPage', {stateUrl: 'myPage', full: fullRentalList, rent:rentRentalList, returns:returnRentalList});
 });
 
 router.patch('/return', async function (req, res) {

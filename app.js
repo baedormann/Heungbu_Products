@@ -18,6 +18,7 @@ const categoryApi = require('./routes/category');
 const rentalApi = require('./routes/rental');
 const rentalCheck = require('./routes/rentalCheck');
 const myPage = require('./routes/myPage');
+const xlsxApi = require('./routes/xlsx');
 
 // midleware
 const authUtil = require('./middlewares/auth').checkToken;
@@ -68,6 +69,7 @@ app.use('/category', authUtil, categoryApi);
 app.use('/rental', rentAuth, rentalApi);
 app.use('/rentStatus', openAuth, rentalCheck);
 app.use('/myPage', authUtil, myPage);
+app.use('/xlsx', xlsxApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
