@@ -32,6 +32,17 @@ router.get('/:product_code', authUtil, async function (req, res) {
     }
 })
 
+// 물품 삭제
+router.delete('/:product_id', editAuth, async function(req, res) {
+    try {
+        const product_id = req.params.product_id;
+        await product.deleteOne({_id: product_id});
+        return res.status(201).end();
+    } catch (err) {
+        return res.status(400).json({manage: err});
+    }
+})
+
 // 물품 검색
 router.post('/search', authUtil, async function (req, res) {
     let condition = req.body.condition;
@@ -107,5 +118,6 @@ router.get('/edit/:product_code', editAuth, async function (req, res, next) {
 
     res.render('editProduct', {stateUrl: 'editProduct', data: data, category: category});
 });
+
 
 module.exports = router;

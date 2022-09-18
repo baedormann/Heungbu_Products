@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const rental = require('./rental');
 
 // 분류 스키마
 const productSchema = new Schema({
@@ -25,7 +26,7 @@ const productSchema = new Schema({
             type: String,
             unique: true,
             required: true,
-            tags:{type:[String], index: true}
+            tags: {type: [String], index: true}
         },
     rental_availability:
         {
@@ -61,5 +62,13 @@ const productSchema = new Schema({
         ref: "rental"
     }]
 }, {versionKey: false})
+
+productSchema.pre("deleteOne",  { document: true, query: true },async function (next) {
+        const {_id} = this.getFilter();
+        await rental.deleteMany({product_id: _id});
+        next();
+    }
+)
+
 
 module.exports = mongoose.model('product', productSchema);

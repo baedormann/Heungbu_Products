@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const rental = require("./rental");
 const saltRounds = 10;
 
 // 유저 스키마
@@ -88,5 +89,13 @@ memberSchema.pre('findOneAndUpdate', function(next) {
         next();
     }
 })
+
+memberSchema.pre("deleteOne", async function (next) {
+        const { _id } = this.getFilter();
+        await rental.deleteMany({ emp_id: _id });
+        next();
+    }
+)
+
 
 module.exports = mongoose.model('member', memberSchema);

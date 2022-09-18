@@ -40,9 +40,9 @@ router.patch('/auth', async function(req, res) {
 })
 
 // 회원탈퇴
-router.delete('/auth/:emp_no', async function(req, res) {
+router.delete('/auth/:emp_id', async function(req, res) {
     try {
-        const data = await member.deleteOne({ emp_no: req.params.emp_no}).exec();
+        const data = await member.deleteOne({ _id: req.params.emp_id}).exec();
         res.status(201).json(data);
     } catch (err) {
         res.status(400).json({ message: err.message });

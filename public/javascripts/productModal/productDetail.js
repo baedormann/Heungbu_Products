@@ -37,7 +37,8 @@ function productModalOpen(product_code) {
             document.getElementById('rentalButton').innerHTML = `<button onClick="rental()">대여</button>`
             defaultStartEnd();
         }
-        document.getElementById('product_code').value = product_code;
+        document.getElementsByClassName('product_code')[0].value = product_code;
+        document.getElementsByClassName('product_id')[0].value = data._id;
         detail();
     });
 }
@@ -101,6 +102,30 @@ function rental() {
     })
 }
 
+// 물품 삭제
+function productDelete() {
+    const product_id = document.getElementsByClassName('product_id')[0].value;
+    const url = '/productManage/' + product_id;
+    if (confirm("정말 삭제하시겠습니까?") == true) {
+        fetch(url, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + getCookie('token')
+            }
+        }).then(response => {
+            if (response.status == 402) {
+                throw alert('물품 삭제에 실패하였습니다.');
+            }
+        }).then((data) => {
+            alert(`삭제되었습니다`);
+            location.reload();
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+}
+
 // 편집 화면 호출
 function edit() {
     /*    form.submit();
@@ -118,7 +143,7 @@ function rentalList() {
     modalContent.classList.remove('modal-historyList');
     modalContent.classList.add('modal-rentalList');
 
-    const productCode = document.getElementById('product_code').value;
+    const productCode = document.getElementsByClassName('product_code')[0].value;
 
     const url = '/productManage/rentalList';
     fetch(url, {
@@ -165,7 +190,7 @@ function history() {
     modalContent.classList.remove('modal-rentalList');
     modalContent.classList.add('modal-historyList');
 
-    const productCode = document.getElementById('product_code').value;
+    const productCode = document.getElementsByClassName('product_code')[0].value;
 
     const url = '/productManage/rentalList';
     fetch(url, {
@@ -226,7 +251,7 @@ function back() {
 }
 
 //물품편집 화면으로 이동
-function edit(){
+function edit() {
     const product_code = document.getElementById('product_code').value;
-    location.href='/productManage/edit/' + product_code;
+    location.href = '/productManage/edit/' + product_code;
 }
