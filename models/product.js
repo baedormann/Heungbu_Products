@@ -6,8 +6,7 @@ const productSchema = new Schema({
     product_name:
         {
             type: String,
-            unique: true,
-            required: true,
+            required: true
         },
     product_category:
         {

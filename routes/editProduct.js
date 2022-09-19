@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const product = require('../models/product');
 const category = require('../models/category');
+const moment = require('moment');
 
 //대분류 선택 시
 router.get('/findSecondCategory/:firstCategory', async function (req, res) {
@@ -15,6 +16,7 @@ router.get('/findSecondCategory/:firstCategory', async function (req, res) {
 
 //물품 편집
 router.patch('/', async function (req, res) {
+    let newDate = moment().format('YYYY-MM-DDTHH:mm:ss');
     const data = new product({
         product_name: req.body.product_name,
         product_category: {
@@ -24,7 +26,8 @@ router.patch('/', async function (req, res) {
         product_code: req.body.product_code,
         rental_availability: req.body.rental_availability,
         return_needed: req.body.return_needed,
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
+        last_date: newDate
     });
     try {
         const existingProduct = await product.findOne({product_code: data.product_code}).exec();
@@ -41,7 +44,8 @@ router.patch('/', async function (req, res) {
                         firstCategory: data.product_category.firstCategory,
                         secondCategory: data.product_category.secondCategory
                     },
-                    leftQuantity: leftQuantity
+                    leftQuantity: leftQuantity,
+                    last_date: data.last_date
                 }
             })
     return res.status(201).json({data: newProduct, message: "물품편집이 완료되었습니다."});
