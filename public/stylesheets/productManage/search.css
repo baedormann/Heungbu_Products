@@ -7,7 +7,7 @@
     width: 400px;
 }
 
-input {
+input[type="text"] {
     width: 100%;
     border: 1px solid #bbb;
     border-radius: 8px;
