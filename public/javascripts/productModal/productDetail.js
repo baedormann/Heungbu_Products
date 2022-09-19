@@ -132,7 +132,7 @@ function edit() {
         const form = document.getElementById('form');*/
 }
 
-// 대여명단 모달창 띄우기
+// 대여자 명단 모달창 띄우기
 function rentalList() {
     document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여자 명단';
     document.getElementById('modal-rentalList').style.display = 'block';
@@ -170,8 +170,8 @@ function rentalList() {
             str += '<tr>';
             str += '<td>' + data[i].emp_id.emp_name + '</td>';
             str += '<td>' + (data[i].rental_purpose ? data[i].rental_purpose : '-') + '</td>';
-            str += '<td>' + data[i].rental_date.split('T')[0] + '</td>';
-            str += '<td>' + data[i].return_deadline.split('T')[0] + '</td>';
+            str += '<td>' + data[i].rental_date.split('T')[0] + ' ' + data[i].rental_date.split('T')[1].slice(0, 5) + '</td>';
+            str += '<td>' + data[i].return_deadline.split('T')[0] + ' ' + data[i].return_deadline.split('T')[1].slice(0, 5) + '</td>';
             str += '<td>' + data[i].rental_status + '</td>';
             str += '</tr>';
         }
@@ -224,8 +224,8 @@ function history() {
             str += '<td>' + data[i].product_code + '</td>';
             str += '<td>' + data[i].emp_id.emp_name + '</td>';
             str += '<td>' + (data[i].rental_purpose ? data[i].rental_purpose : '-') + '</td>';
-            str += '<td>' + data[i].rental_date.split('T')[0] + '</td>';
-            data[i].return_date ? str += '<td>' + data[i].return_date.split('T')[0] + '</td>' : str += '<td>-</td>';
+            str += '<td>' + data[i].rental_date.split('T')[0] + ' ' + data[i].rental_date.split('T')[1].slice(0, 5) + '</td>';
+            data[i].return_date ? str += '<td>' + data[i].return_date.split('T')[0] + ' ' + data[i].return_date.split('T')[1].slice(0, 5) + '</td>' : str += '<td>-</td>';
             str += '</tr>';
         }
         document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
