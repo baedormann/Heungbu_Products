@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= stateUrl %></title>
+    <script src="/javascripts/myInfoModify.js"></script>
+    <script src="/javascripts/cookieModule.js"></script>
+    <link rel="stylesheet" href="/stylesheets/myPage/modify.css"/>
+</head>
+<body>
+<div class="sideBar">
+    <%- include('./layout/navbar.ejs') %>
+</div>
+<div class="home-section">
+    <h1>내정보 수정</h1>
+    <div class="formContent">
+        <div><input type="text" name="emp_name" , id="emp_name" placeholder="이름" value="<%= users.emp_name %>"></div>
+        <div><input type="text" name="dept" , id="dept" placeholder="부서" value="<%= users.dept %>"></div>
+        <div>직책
+            <select name=emp_position, id="emp_position">
+                <option value="사원" <%= users.emp_position == "사원" ? "selected" : null %>>사원</option>
+                <option value="주임" <%= users.emp_position == "주임" ? "selected" : null %>>주임</option>
+                <option value="대리" <%= users.emp_position == "대리" ? "selected" : null %>>대리</option>
+                <option value="과장" <%= users.emp_position == "과장" ? "selected" : null %>>과장</option>
+                <option value="차장" <%= users.emp_position == "차장" ? "selected" : null %>>차장</option>
+                <option value="부장" <%= users.emp_position == "부장" ? "selected" : null %>>부장</option>
+                <option value="팀장" <%= users.emp_position == "팀장" ? "selected" : null %>>팀장</option>
+            </select>
+        </div>
+        <div><input type="text" name="emp_no" , id="emp_no" placeholder="사번" value="<%= users.emp_no %>" disabled></div>
+        <div><input type="text" name="email" , id="email" , onkeyup="emailKeyUp()" , placeholder="이메일"
+                    value="<%= users.email %>" disabled></div>
+        <button id="submitBtn" onclick="userUpdate('<%= users.emp_no %>')">수정</button>
+        <div><input type="password" name="password" , id="password" placeholder="비밀번호"></div>
+        <div><input type="password" name="passwordCheck" , onkeyup="passwordKeyUp()" , id="newPassword" placeholder="새 비밀번호"></div>
+        <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">4자리 이상이 필요합니다.</div>
+        <button onclick="passwordUpdate('<%= users.emp_no %>')">비밀번호 변경</button>
+    </div>
+</div>
+</body>
+</html>

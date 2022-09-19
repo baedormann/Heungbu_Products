@@ -14,13 +14,11 @@
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h1 id="name"></h1>
-    <p>환영합니다.</p>
+    <h2>물품</h2> <%= products %>
+    <h2>사람</h2> <%= members %>
+    <h2>내정보</h2> <%= myInfo %>
+    <h2>내대여</h2> <%= myRent %>
+    <h2>대여현황</h2> <%= rentals %>
 </div>
-<script>
-    const name = localStorage.getItem("emp_name");
-    document.getElementById("name").innerHTML = name + " 님";
-    //console.log(getCookie("token"))
-</script>
 </body>
 </html>
