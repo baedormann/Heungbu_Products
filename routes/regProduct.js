@@ -94,9 +94,15 @@ router.post('/regExcel', async function (req, res) {
                     product_name: data[i].product_name
                 });
             } else if (!firstVal) {
-                wrongCategory1.push({codeVal})
+                wrongCategory1.push({
+                    product_code: data[i].product_code,
+                    product_name: data[i].product_name
+                })
             } else if (!secondVal) {
-                wrongCategory2.push(codeVal)
+                wrongCategory2.push({
+                    product_code: data[i].product_code,
+                    product_name: data[i].product_name
+                })
             } else {
                 await product.create(data[i]);
             }

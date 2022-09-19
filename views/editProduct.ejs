@@ -41,13 +41,13 @@
                 </div>
             </div>
             <div>
-                제품코드 <input id="product_code" type="text" name="name", placeholder="제품코드" value="<%= data.product_code%>" disabled>
+                제품코드 <input id="product_code" type="text" name="name", placeholder="제품코드" value="<%= data.product_code %>" disabled>
             </div>
             <div>
-                물품명 <input id="product_name" type="text" name="name", placeholder="물품명" value="<%= data.product_name%>">
+                물품명 <input id="product_name" type="text" name="name", placeholder="물품명" value="<%= data.product_name %>">
             </div>
             <div>
-                수량 <input id="quantity" type="number" value="<%= data.quantity%>" oninput="underZero()" min="0">
+                수량 <input id="quantity" type="number" value="<%= data.quantity %>" oninput="underZero()" min="0">
             </div>
             <div>
                 대여 가능 여부
@@ -71,7 +71,6 @@
         <input id="rentalAvailailityHidden" type="hidden" value="<%= data.rental_availability%>">
         <input id="returnNeededHidden" type="hidden" value="<%= data.return_needed%>">
     </div>
-    <!--<button onclick="location.href='/test/xlsx'">엑셀 생성</button>-->
     <div class="modalDiv">
         <%- include('regProduct/addCategoryModal.ejs') %>
     </div>

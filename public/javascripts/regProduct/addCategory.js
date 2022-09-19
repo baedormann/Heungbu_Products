@@ -52,14 +52,19 @@ function addDone() {
         }
         document.getElementById('addFirstSelect').parentElement.innerHTML = '대분류 <input type="text" id="addFirstInput">';
     }
+    location.reload();
 }
 
 
 //모달 바깥 부분 클릭 시
 window.onclick = function (event) {
     let modal = document.getElementById('addCategoryModal');
+    let modal2 = document.getElementById('excelModal');
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+    if(event.target == modal2) {
+        modal2.style.display = "none";
     }
 }
 

@@ -126,12 +126,6 @@ function productDelete() {
     }
 }
 
-// 편집 화면 호출
-function edit() {
-    /*    form.submit();
-        const form = document.getElementById('form');*/
-}
-
 // 대여자 명단 모달창 띄우기
 function rentalList() {
     document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여자 명단';
@@ -252,6 +246,6 @@ function back() {
 
 //물품편집 화면으로 이동
 function edit() {
-    const product_code = document.getElementById('product_code').value;
+    const product_code = document.getElementsByClassName('product_code')[0].value;
     location.href = '/productManage/edit/' + product_code;
 }
