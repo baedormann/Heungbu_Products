@@ -10,7 +10,7 @@ const product = require("../models/product");
 /* GET myPage page. */
 router.get('/', async function (req, res, next) {
     const decode = await jwt.verify(req.cookies.token, secretKey);
-    const users = await member.findOne({emp_no: decode.emp_no}).select('emp_no').exec();
+    const users = await member.findOne({emp_no: decode.emp_no});
     const fullRentalList = await rental.find({emp_id: users._id})
         .populate('product_id')
         .populate({
@@ -32,7 +32,7 @@ router.get('/', async function (req, res, next) {
             select: 'emp_name'
         }).
         sort({rental_date:-1}).exec();
-    res.render('myPage', {stateUrl: 'myPage', full: fullRentalList, rent:rentRentalList, returns:returnRentalList});
+    res.render('myPage', {stateUrl: 'myPage', full: fullRentalList, rent:rentRentalList, returns:returnRentalList, user: users});
 });
 
 router.patch('/return', async function (req, res) {

@@ -14,6 +14,7 @@ router.post('/', async function (req, res) {
         rental_date: req.body.start,
         return_deadline: req.body.end,
     })
+
     const productCount = await product.findOne({product_code: rentalData.product_code}).exec();
     const emp_id = await member.findOne({emp_no: req.body.emp_no}).select('_id').exec();
     rentalData.emp_id = emp_id._id;

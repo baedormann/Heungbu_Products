@@ -72,7 +72,7 @@ function rental() {
     let start = document.getElementById('startDate');
     let end = document.getElementById('endDate');
     let text = document.getElementById('rentPurpose');
-    let product_code = document.getElementById('product_code').value;
+    let product_code = document.getElementsByClassName('product_code')[0].value;
     if (!end.value) return alert('반납일을 정해주세요.');
     const data = {
         product_code: product_code,

@@ -37,4 +37,27 @@ router.patch('/init', async function (req, res) {
     }
 })
 
-    module.exports = router;
+
+// 물품 검색
+router.post('/search', async function (req, res) {
+    let condition = req.body.condition;
+    let text = req.body.text;
+    let members = new member;
+    try {
+        if (condition == "emp_name") {
+            members = await member.find({emp_name: {$regex: text}})
+
+        }else if(condition == "emp_no") {
+            members = await member.find({emp_no: {$regex: text}})
+        }else if(condition == "dept") {
+            members = await member.find({dept: {$regex: text}})
+        }else if(condition == "emp_position") {
+            members = await member.find({emp_position: {$regex: text}})
+        }
+        return res.status(201).json({data: members});
+    } catch (err) {
+        return res.status(400).json({message: err.message});
+    }
+})
+
+module.exports = router;

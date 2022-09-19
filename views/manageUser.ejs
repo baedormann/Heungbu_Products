@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href="/stylesheets/manageUser/userTable.css" />
     <link rel='stylesheet' href="/stylesheets/manageUser/manageModal.css" />
+    <link rel='stylesheet' href="/stylesheets/productManage/search.css"/>
 </head>
 <body>
 <div class="sideBar">
@@ -13,6 +14,7 @@
 </div>
 <div class="home-section">
     <h1 id="name">이용자 관리</h1>
+    <%- include('./manageUser/manageSearch.ejs') %>
     <div class="userTable">
         <%- include('./manageUser/userTable.ejs') %>
     </div>

@@ -1,51 +1,35 @@
 
-<table id="productTable" class="productTable">
-    <thead>
-    <tr>
-        <th>분류</th>
-        <th>물품 이름</th>
-        <th>물품 코드</th>
-        <th>대여자</th>
-        <th>대여 사유</th>
-        <th>대여일</th>
-        <th>반납일</th>
-        <th>반납기한</th>
-        <th>대여 상태</th>
-    </tr>
-    </thead>
-    <tbody id="table_data">
-    <% data.map(res =>{ %>
-        <tr>
-            <td><%= res.product_id.product_category.firstCategory %>
-                -<%= res.product_id.product_category.secondCategory %></td>
-            <td><%= res.product_id.product_name %></td>
-            <td><%= res.product_id.product_code %></td>
-            <td><%= res.emp_id.emp_name %></td>
-            <td><%= res.rental_purpose %></td>
-            <td><%= res.rental_date.getFullYear() %>년
-                <%= res.rental_date.getMonth() + 1 %>월
-                <%= res.rental_date.getDate() %>일
-                <%= res.rental_date.getHours() %>시
-                <%= res.rental_date.getMinutes() %>분
-            </td>
-            <% if(res.return_date) { %>
-                <td><%= res.return_date.getFullYear() %>년
-                    <%= res.return_date.getMonth() + 1 %>월
-                    <%= res.return_date.getDate() %>일
-                    <%= res.return_date.getHours() %>시
-                    <%= res.return_date.getMinutes() %>분
-                </td>
-            <% } else { %>
-                <td><%= res.return_date %></td>
-            <% } %>
-            <td><%= res.return_deadline.getFullYear() %>년
-                <%= res.return_deadline.getMonth() + 1 %>월
-                <%= res.return_deadline.getDate() %>일
-                <%= res.return_deadline.getHours() %>시
-                <%= res.return_deadline.getMinutes() %>분
-            </td>
-            <td><%= res.rental_status %></td>
-        </tr>
-    <% }) %>
-    </tbody>
-</table>
+<div class="container">
+
+    <ul class="tabs">
+        <li class="tab-link current" data-tab="tab-1" onclick="tabClick(this)">전체</li>
+        <li class="tab-link" data-tab="tab-2" onclick="tabClick(this)">대여</li>
+        <li class="tab-link" data-tab="tab-3" onclick="tabClick(this)">반납</li>
+    </ul>
+
+    <div id="tab-1" class="tab-content current">
+        <%- include('./fullStatus.ejs') %>
+    </div>
+    <div id="tab-2" class="tab-content">
+        <%- include('./rentStatus.ejs') %>
+    </div>
+    <div id="tab-3" class="tab-content">
+        <%- include('./returnStatus.ejs') %>
+    </div>
+</div>
+
+<script>
+    function tabClick(e) {
+        let tab_link = document.getElementsByClassName('tab-link')
+        for (let i = 0; i < tab_link.length; i++) {
+            tab_link[i].classList.remove('current');
+        }
+        e.classList.add('current');
+        let tab_id = e.getAttribute('data-tab');
+        let tab_content = document.getElementsByClassName('tab-content');
+        for (let i = 0; i < tab_content.length; i++) {
+            tab_content[i].classList.remove('current');
+        }
+        document.getElementById(tab_id).classList.add('current');
+    }
+</script>

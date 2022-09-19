@@ -1,6 +1,7 @@
 // manage 모달관리
 var modal = document.getElementById('manageModal');
 
+// 유저 모달창
 function manageOpen(emp_no) {
     modal.style.display = "block";
     const url = '/member/auth/' + emp_no;
@@ -98,5 +99,42 @@ function userBen(emp_no) {
     } else {
         return;
     }
+}
 
+// 유저 검색
+function manageSearch() {
+    let selectSearch = document.getElementById("select_search");
+    let text = document.getElementById("input_text");
+    let tableData = document.getElementById("table_data");
+    const url = '/manageUser/search';
+    fetch(url, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + getCookie('token')
+        },
+        body: JSON.stringify({
+            "condition": selectSearch.value,
+            "text": text.value,
+        })
+    }).then(response => response.json()).then((data) => {
+        let innerTable = [];
+        data.data.map(res => {
+            innerTable.push(
+                `<tr>`
+                + `<td>${res.emp_no}</td>`
+                + `<td>${res.emp_name}</td>`
+                + `<td>${res.dept}</td>`
+                + `<td>${res.emp_position}</td>`
+                + `<td>${res.email} </td>`
+                + `<td>${res.edit_auth ? 'O' : 'X'}</td>`
+                + `<td>${res.rent_auth ? 'O' : 'X'}</td>`
+                + `<td>${res.open_auth ? 'O' : 'X'}</td>`
+                + `<td><button onclick="manageOpen('${res.emp_no}')">관리</button></td>`
+                + "</tr>"
+            )
+        });
+        tableData.innerHTML = innerTable.join("");
+        text.value = '';
+    });
 }

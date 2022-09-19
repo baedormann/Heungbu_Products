@@ -10,7 +10,22 @@ router.get('/', async function(req, res, next) {
             select: 'emp_name'
         }).
         sort({rental_date:-1}).exec();
-    res.render('rentalCheck', { stateUrl: 'rentStatus', data: rentalList });
+    const rentRentalList = await rental.find({ rental_status:"대여중"})
+        .populate('product_id')
+        .populate({
+            path: 'emp_id',
+            select: 'emp_name'
+        }).
+        sort({rental_date:-1}).exec();
+    const returnRentalList = await rental.find({ rental_status:"반납"})
+        .populate('product_id')
+        .populate({
+            path: 'emp_id',
+            select: 'emp_name'
+        }).
+        sort({rental_date:-1}).exec();
+
+    res.render('rentalCheck', { stateUrl: 'rentStatus', full: rentalList, rent:rentRentalList, returns:returnRentalList  });
 });
 
 module.exports = router;
