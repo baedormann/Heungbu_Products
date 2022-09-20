@@ -3,22 +3,317 @@
 <head>
     <title><%= stateUrl %></title>
     <script src="/javascripts/cookieModule.js"></script>
-    <style>
-        .home-section{
-            margin-left: 250px;
-        }
-    </style>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
+    <link rel='stylesheet' href='/stylesheets/index.css'/>
 </head>
 <body>
-<div class="sideBar">
-    <%- include('./layout/navbar.ejs') %>
+<div class="publicContents">
+    <div class="sideBar">
+        <%- include('./layout/navbar.ejs') %>
+    </div>
+    <div class="home-section">
+        <div class="background">
+            <div class="content">
+                <div class="content__head"><span class="content__title">내 정보</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <div class="content__body__table">
+                        <div class="content__body__group">
+                            <div class="content__body__cell">사번</div>
+                            <div class="content__body__cell">emp001</div>
+                        </div>
+                        <div class="content__body__group">
+                            <div class="content__body__cell">사원명</div>
+                            <div class="content__body__cell">김김김</div>
+                        </div>
+                        <div class="content__body__group">
+                            <div class="content__body__cell">부서</div>
+                            <div class="content__body__cell">개발부</div>
+                        </div>
+                    </div>
+                    <div class="content__body__table">
+                        <div class="content__body__group">
+                            <div class="content__body__cell">직급</div>
+                            <div class="content__body__cell">사원</div>
+                        </div>
+                        <div class="content__body__group">
+                            <div class="content__body__cell">권한</div>
+                            <div class="content__body__cell">편집, 등록, 관리</div>
+                        </div>
+                        <div class="content__body__group">
+                            <div class="content__body__cell">대여/반납</div>
+                            <div class="content__body__cell">없음/없음</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__head"><span class="content__title">나의 대여 현황</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__head"><span class="content__title">물품관리</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__head"><span class="content__title">이용자 관리</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__head"><span class="content__title">대여 현황</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content__head"><span class="content__title">권한 필요!</span><span class="content__cnt">1</span></div>
+                <div class="content__body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                            <th>column</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="home-section">
-    <h2>물품</h2> <%= products %>
-    <h2>사람</h2> <%= members %>
-    <h2>내정보</h2> <%= myInfo %>
-    <h2>내대여</h2> <%= myRent %>
-    <h2>대여현황</h2> <%= rentals %>
 </div>
 </body>
 </html>

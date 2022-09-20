@@ -1,7 +1,3 @@
-@import url('http://fonts.cdnfonts.com/css/segoe-ui-4');
-@import url('http://fonts.cdnfonts.com/css/helvetica-neue-9');
-@import url("http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700");
-@import url(//db.onlinewebfonts.com/c/8d223b3ad8d4819e9dcf22757e4cc2c4?family=Arial);
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -9,15 +5,15 @@
     font-style: normal;
 }
 
+* {
+    font-family: "Pretendard-Regular";
+}
+
 .home-section{
     background-color: rgb(243, 243, 243);
 }
 
 .home-section * {
-}
-
-*:not(.sidebar *, .modal *){
-    font-family: "Pretendard-Regular","Segoe UI",-apple-system, BlinkMacSystemFont, roboto, helvetica, arial, sans-serif!important;
 }
 
 .btn-primary{
