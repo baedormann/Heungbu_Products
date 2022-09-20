@@ -4,19 +4,25 @@
     <title><%= stateUrl %></title>
     <script src="/javascripts/cookieModule.js"></script>
     <script src="/javascripts/myPage.js"></script>
-    <link rel='stylesheet' href="/stylesheets/tagModule/tab.css" />
-    <link rel='stylesheet' href="/stylesheets/tagModule/table.css" />
+    <link rel="stylesheet" href="/stylesheets/myPage.css"/>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
+    <link rel='stylesheet' href="/stylesheets/tagModule/tab.css"/>
+    <link rel="stylesheet" href="/stylesheets/tagModule/tabTable.css"/>
 </head>
 <body>
 <div class="sideBar">
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h1 id="name">마이 페이지</h1>
-    <%- include('./myPage/myInfo.ejs') %>
+    <div class="myInfoDiv">
+        <div class="myInfoComponent">
+            <%- include('./myPage/myInfo.ejs') %>
+        </div>
+        <div class="myRent">
+        <%- include('./myPage/myRentStatus.ejs') %>
+        </div>
+    </div>
 
-    <h1>나의 대여 현황</h1>
-    <%- include('./myPage/myRentStatus.ejs') %>
 </div>
 </body>
 </html>

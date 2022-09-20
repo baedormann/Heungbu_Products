@@ -1,6 +1,12 @@
-<div class="myInfo">
-    <p>사번: <%= user.emp_no %></p>
-    <p>이름: <%= user.emp_name %></p>
+<div class="leftMyInfo">
+    <img src="/stylesheets/myPage/avartar.jpg" alt="profile">
+    <div class="leftContent">
+        <p>사번: <%= user.emp_no %></p>
+        <br/>
+        <p>이름: <%= user.emp_name %></p>
+    </div>
+</div>
+<div class="rightMyInfo">
     <p>부서: <%= user.dept %></p>
     <p>직책: <%= user.emp_position %></p>
     <p>권한</p>

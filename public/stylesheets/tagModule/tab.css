@@ -1,7 +1,8 @@
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
+    width:90%;
+    min-width: 1200px;
 }
 
 ul.tabs {
@@ -19,14 +20,20 @@ ul.tabs li {
 }
 
 ul.tabs li.current {
-    background: #ededed;
+    background: rgb(243, 243, 243);
     color: #222;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .tab-content {
     display: none;
-    background: #ededed;
-    padding: 15px;
+    background: rgb(243, 243, 243);
+    padding-top: 15px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
 }
 
 .tab-content.current {

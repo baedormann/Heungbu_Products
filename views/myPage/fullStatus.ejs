@@ -20,27 +20,24 @@
             <td><%= res.product_id.product_name %></td>
             <td><%= res.product_id.product_code %></td>
             <td><%= res.rental_purpose %></td>
-            <td><%= res.rental_date.getFullYear() %>년
-                <%= res.rental_date.getMonth() + 1 %>월
-                <%= res.rental_date.getDate() %>일
-                <%= res.rental_date.getHours() %>시
-                <%= res.rental_date.getMinutes() %>분
+            <td><%= res.rental_date.getFullYear() %>.
+                <%= res.rental_date.getMonth() + 1 %>.
+                <%= res.rental_date.getDate() %>.
+                <%= res.rental_date.getHours() %>:<%= res.rental_date.getMinutes() %>
             </td>
             <% if(res.return_date) { %>
-                <td><%= res.return_date.getFullYear() %>년
-                    <%= res.return_date.getMonth() + 1 %>월
-                    <%= res.return_date.getDate() %>일
-                    <%= res.return_date.getHours() %>시
-                    <%= res.return_date.getMinutes() %>분
+                <td><%= res.return_date.getFullYear() %>.
+                    <%= res.return_date.getMonth() + 1 %>.
+                    <%= res.return_date.getDate() %>.
+                    <%= res.return_date.getHours() %>:<%= res.return_date.getMinutes() %>분
                 </td>
             <% } else { %>
                 <td><%= res.return_date %></td>
             <% } %>
-            <td><%= res.return_deadline.getFullYear() %>년
-                <%= res.return_deadline.getMonth() + 1 %>월
-                <%= res.return_deadline.getDate() %>일
-                <%= res.return_deadline.getHours() %>시
-                <%= res.return_deadline.getMinutes() %>분
+            <td><%= res.return_deadline.getFullYear() %>.
+                <%= res.return_deadline.getMonth() + 1 %>.
+                <%= res.return_deadline.getDate() %>.
+                <%= res.return_deadline.getHours() %>:<%= res.return_deadline.getMinutes() %>
             </td>
             <td><%= res.rental_status %></td>
             <% if(res.rental_status == "대여중") {%>
