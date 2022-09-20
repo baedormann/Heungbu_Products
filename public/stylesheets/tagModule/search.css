@@ -1,5 +1,6 @@
 .searchBox {
     display: flex;
+    justify-content: center;
 }
 
 .search {

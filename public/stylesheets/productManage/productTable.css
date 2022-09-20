@@ -1,4 +1,4 @@
-.userTable {
+.divProductTable {
     display: flex;
     justify-content: center;
     margin-top: 15px;
@@ -81,4 +81,13 @@ a {
         border-bottom: 1px solid #e5e5e5;
     }
 
+}
+tr .fa-sort-up{
+    cursor:pointer
+}
+tr .fa-sort-down{
+    cursor:pointer
+}
+tbody tr :hover {
+    cursor: pointer;
 }

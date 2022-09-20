@@ -4,8 +4,15 @@ function login() {
         emp_no: document.getElementById("emp_no").value,
         password: document.getElementById("password").value
     };
-    const url = "/login"
 
+    if(document.getElementById("checkId").checked)
+        setCookie("id", user.emp_no, 7)
+    else
+        deleteCookie("id");
+
+    console.log(getCookie("id"))
+
+    const url = "/login"
     fetch(url, {
         method: "post",
         headers: {
@@ -31,3 +38,12 @@ function enter() {
         login();
     }
 }
+
+// 아이디 저장
+window.onload = function() {
+    if(getCookie("id")){
+        document.getElementById("emp_no").value = getCookie("id");
+        document.getElementById("checkId").checked = true;
+    }
+}
+

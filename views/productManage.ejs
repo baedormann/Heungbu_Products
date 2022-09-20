@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
     <link rel='stylesheet' href="/stylesheets/productManage/productModal.css" />
-    <link rel='stylesheet' href="/stylesheets/productManage/search.css"/>
+    <link rel='stylesheet' href="/stylesheets/tagModule/search.css"/>
     <link rel='stylesheet' href="/stylesheets/productManage/productTable.css"></script>
 </head>
 <body>
@@ -19,7 +19,9 @@
 <div class="home-section">
     <h1 id="name">물품 관리</h1>
     <%- include('./productManage/productSearch') %>
+    <div class="divProductTable">
     <%- include('./productManage/productTable') %>
+    </div>
 </div>
 </body>
 </html>

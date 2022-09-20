@@ -13,3 +13,15 @@ function getCookie(cName) {
     //console.log(cValue);
     return cValue;
 }
+
+// 쿠키 저장
+function setCookie(key, value, day) {
+    let toDay = new Date();
+    toDay.setDate(toDay.getDate() + day);
+    document.cookie = key + "=" + escape(value) + "; path=/; expries=" + toDay.toUTCString() + ";"
+}
+
+// 쿠키 삭제
+function deleteCookie(key) {
+    document.cookie = setCookie(key, '', 0);
+}

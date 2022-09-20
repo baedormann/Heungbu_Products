@@ -27,20 +27,20 @@ const manageUtil = {
         
         // 토큰 없음
         if (!token) {
-            res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
-            return res.write("<script>alert('토큰이 없습니다.'); location.href = \'/login'</script>");
+            res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
+            return res.write("<script>alert('토큰이 없습니다.'); location.href = \'/login/logout'</script>");
         }
         // decode
         const user = await jwt.verify(token);
         // 유효기간 만료
         if (user === TOKEN_EXPIRED) {
-            res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
-            return res.write("<script>alert('토큰이 만료되었습니다.'); location.href = \'/login'</script>");
+            res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
+            return res.write("<script>alert('토큰이 만료되었습니다.'); location.href = \'/login/logout'</script>");
         }
         // 유효하지 않는 토큰
         if (user === TOKEN_INVALID) {
-            res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
-            return res.write("<script>alert('토큰이 유효하지 않습니다.'); location.href = \'/login'</script>");
+            res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
+            return res.write("<script>alert('토큰이 유효하지 않습니다.'); location.href = \'/login/logout'</script>");
         }
         next();
     }

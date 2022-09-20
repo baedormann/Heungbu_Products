@@ -4,9 +4,10 @@ const member = require('../models/member');
 const jwt = require('../config/jwt');
 const bcrypt = require("bcrypt");
 const secretKey = require('../config/secretKey').secretKey;
+const noLogin = require('../middlewares/noLogin').checkToken;
 
 /* GET login page. */
-router.get('/', function (req, res, next) {
+router.get('/', noLogin, function (req, res, next) {
     res.render('login');
 });
 
