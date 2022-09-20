@@ -124,10 +124,10 @@ body{
     font-size: 22px;
     background: rgb(243, 243, 243);
     color: #222222;
+    box-shadow: 1px 1px 1px 1px #cdcdcd;
 }
 .sidebar.open .fa-solid.fa-magnifying-glass:hover{
-    background: #1A374D;
-    color: #FFF;
+    background: rgb(243, 243, 243);
 }
 .sidebar .fa-solid.fa-magnifying-glass:hover{
     background: #FFF;

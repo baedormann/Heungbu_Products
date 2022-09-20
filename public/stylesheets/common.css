@@ -8,12 +8,8 @@
 * {
     font-family: "Pretendard-Regular";
 }
-
-.home-section{
+body {
     background-color: rgb(243, 243, 243);
-}
-
-.home-section * {
 }
 
 .btn-primary{
