@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
     <link rel='stylesheet' href='/stylesheets/login.css'/>
     <script src="/javascripts/login.js"></script>
     <script src="/javascripts/cookieModule.js"></script>
@@ -17,7 +18,7 @@
         <div><input type="text" name="emp_no" , id="emp_no" placeholder="ID"></div>
         <div><input type="password" name="password" , id="password" placeholder="Password"></div>
         <div class="checkboxDiv"><input type="checkbox" id="checkId"> Remember Me</div>
-        <button id="submitBtn" onclick="login()">로그인</button>
+        <button id="submitBtn" class="btn-primary" onclick="login()">로그인</button>
         <div class="formFooter">
             <a href="" class="hover-underline" onclick="alert('기억을 되짚어 보자.');">Forgot Password?</a>
         </div>
