@@ -1,0 +1,40 @@
+<% if(rentals) {%>
+<div class="content">
+    <div class="content__head" onclick="location.href='/rentStatus'">
+        <span class="content__title">대여 현황</span>
+        <span class="content__cnt"><%= rentalCount %></span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    <div class="content__body">
+        <table>
+            <thead>
+            <tr>
+                <th>물품 이름</th>
+                <th>물품 코드</th>
+                <th>대여일</th>
+                <th>반납일</th>
+                <th>대여자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% rentals.map((res) => { %>
+                <tr>
+                    <td><%= res.product_id.product_name %></td>
+                    <td><%= res.product_code %></td>
+                    <td><%= res.rental_date.getFullYear() %>-<%= res.rental_date.getMonth() + 1%>-<%=res.rental_date.getDate() %></td>
+                    <td><%= res.return_deadline.getFullYear() %>-<%= res.return_deadline.getMonth() + 1%>-<%=res.return_deadline.getDate() %></td>
+                    <td><%= res.emp_id.emp_name %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%}else{%>
+    <div class="content content--lock">
+        <div class="content__head"><span class="content__title">대여현황</span></div>
+        <div class="content__body">
+            <div><i class="fa-solid fa-lock fa-2xl"></i></div>
+        </div>
+    </div>
+<%}%>

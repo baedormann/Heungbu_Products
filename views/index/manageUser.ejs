@@ -1,0 +1,40 @@
+<% if(members) {%>
+<div class="content">
+    <div class="content__head" onclick="location.href='/manageUser'">
+        <span class="content__title">이용자 관리</span>
+        <span class="content__cnt"><%= memberCount %></span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    <div class="content__body">
+        <table>
+            <thead>
+            <tr>
+                <th>사번</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>부서</th>
+                <th>직책</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% members.map((res) => { %>
+                <tr>
+                    <td><%= res.emp_no %></td>
+                    <td><%= res.emp_name %></td>
+                    <td><%= res.email %></td>
+                    <td><%= res.dept %></td>
+                    <td><%= res.emp_position %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%}else{%>
+    <div class="content content--lock">
+        <div class="content__head"><span class="content__title">이용자 관리</span></div>
+        <div class="content__body">
+            <div><i class="fa-solid fa-lock fa-2xl"></i></div>
+        </div>
+    </div>
+<%}%>

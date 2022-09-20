@@ -1,0 +1,29 @@
+<div class="content">
+    <div class="content__head" onclick="location.href='/myPage'">
+        <span class="content__title">나의 대여 현황</span>
+        <span class="content__cnt"><%= myRentCount %></span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    <div class="content__body">
+        <table>
+            <thead>
+            <tr>
+                <th>물품 이름</th>
+                <th>물품 코드</th>
+                <th>대여일</th>
+                <th>반납일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% myRent.map((res) => { %>
+            <tr>
+                <td><%= res.product_id.product_name %></td>
+                <td><%= res.product_code %></td>
+                <td><%= res.rental_date.getFullYear() %>-<%= res.rental_date.getMonth() + 1%>-<%=res.rental_date.getDate() %></td>
+                <td><%= res.return_deadline.getFullYear() %>-<%= res.return_deadline.getMonth() + 1%>-<%=res.return_deadline.getDate() %></td>
+            </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="content__head" onclick="location.href='/myPage'">
+        <span class="content__title">내 정보</span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    <div class="content__body">
+        <div class="content__body__table">
+            <div class="content__body__group">
+                <div class="content__body__cell">사번</div>
+                <div class="content__body__cell"><%= myInfo.emp_no %></div>
+            </div>
+            <div class="content__body__group">
+                <div class="content__body__cell">사원명</div>
+                <div class="content__body__cell"><%= myInfo.emp_name %></div>
+            </div>
+            <div class="content__body__group">
+                <div class="content__body__cell">대여</div>
+                <div class="content__body__cell"><%= myRentCount %></div>
+            </div>
+
+        </div>
+        <div class="content__body__table">
+            <div class="content__body__group">
+                <div class="content__body__cell">직급</div>
+                <div class="content__body__cell"><%= myInfo.emp_position %></div>
+            </div>
+            <div class="content__body__group">
+                <div class="content__body__cell">부서</div>
+                <div class="content__body__cell"><%= myInfo.dept %></div>
+            </div>
+            <div class="content__body__group">
+                <div class="content__body__cell">반납</div>
+                <div class="content__body__cell"><%= myReturnCount %></div>
+            </div>
+        </div>
+    </div>
+</div>

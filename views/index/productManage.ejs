@@ -1,0 +1,31 @@
+<div class="content">
+    <div class="content__head" onclick="location.href='/productManage'">
+        <span class="content__title">물품관리</span>
+        <span class="content__cnt"><%= productCount %></span>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+    <div class="content__body">
+        <table>
+            <thead>
+            <tr>
+                <th>물품 이름</th>
+                <th>물품 코드</th>
+                <th>대여가능</th>
+                <th>반납필요</th>
+                <th>남은 수량</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% products.map((res) => {%>
+                <tr>
+                    <td><%= res.product_name %></td>
+                    <td><%= res.product_code %></td>
+                    <td><%= res.rental_availability ? 'O' : 'X'  %></td>
+                    <td><%= res.return_needed ? 'O' : 'X'  %></td>
+                    <td><%= res.leftQuantity %></td>
+                </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>

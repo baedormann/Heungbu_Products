@@ -13,20 +13,34 @@ router.get('/', authUtil, async function (req, res, next) {
     let rentals;
     let members;
     if(decode.manage||decode.open_auth){
-        rentals = await rental.find().sort({rental_date: -1}).limit(5);
+        rentals = await rental.find().sort({rental_date: -1}).limit(5)
+            .populate('product_id')
+            .populate({
+                path: 'emp_id',
+                select: 'emp_name'
+            });
     }
     if(decode.manage) members = await member.find().sort({emp_no: 1}).limit(5);
     const products = await product.find().sort({last_date: -1}).limit(5);
     const myInfo = await member.findOne({emp_no: decode.emp_no});
-    const myRent = await rental.find({emp_id: myInfo._id}).sort({rental_date: -1}).limit(5);
-
+    const myRent = await rental.find({emp_id: myInfo._id}).sort({rental_date: -1}).limit(5).populate('product_id');
+    const myRentCount = await rental.find({emp_id: myInfo._id, rental_status: "대여중" }).count();
+    const myReturnCount = await rental.find({emp_id: myInfo._id, rental_status: "반납" }).count().populate('product_id');
+    const productCount = await product.find().count();
+    const memberCount = await member.find().count();
+    const rentalCount = await rental.find().count();
     res.render('index', {
         stateUrl: 'home',
         products: products,
+        productCount: productCount,
         members: members,
+        memberCount: memberCount,
         myInfo: myInfo,
         myRent: myRent,
-        rentals: rentals
+        myRentCount: myRentCount,
+        myReturnCount: myReturnCount,
+        rentals: rentals,
+        rentalCount: rentalCount
     });
 });
 

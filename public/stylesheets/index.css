@@ -39,6 +39,10 @@ body {
     padding: 20px;
 }
 
+.content__head:hover:not(.content--lock > .content__head){
+    cursor:pointer;
+}
+
 .content__title {
     color: #222222;
     margin-left: 8px;
@@ -120,6 +124,7 @@ td {
     border: 5px solid white;
     padding: 10px;
     border-style: solid none;
+    text-align: center;
 }
 
 tr td:first-child {
@@ -136,13 +141,14 @@ tr td:last-child {
     width: 100px;
 }
 
-.content__body th {
-    font-weight: normal;
-    text-align: left;
+.content--lock{
+    background-color: rgba(255, 255, 255, 0);
+}
+.fa-lock{
+    color: #222222;
 }
 
-.content__body td {
-    font-size: 22px;
-    text-align: center;
+.fa-chevron-right {
+    float:right;
 }
 
