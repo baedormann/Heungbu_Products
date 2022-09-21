@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
     <link rel='stylesheet' href='/stylesheets/auth.css'/>
     <script src="/javascripts/auth.js"></script>
 </head>
@@ -11,7 +12,7 @@
     <div class="formContent" onkeyup="enter()">
         <div>
             <h4 class="clickable hover-underline" onclick="location.href='/login'">로그인</h4>
-            <h4 class="clickable hover-underline" onclick="location.href='/auth'">회원가입</h4>
+            <h4 class="clickable hover-underline currentPage">회원가입</h4>
         </div>
         <div><input type="text" name="emp_name" , id="emp_name" placeholder="이름"></div>
         <div><input type="text" name="dept" , id="dept" placeholder="부서"></div>
