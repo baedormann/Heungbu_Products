@@ -151,11 +151,11 @@ function rentalList() {
         //thead의 innerHTML 코드 작성
         let str = '';
         str += '<tr>';
-        str += '<td>대여자명</td>';
-        str += '<td>대여 사유</td>';
-        str += '<td>대여일</td>';
-        str += '<td>반납 기한</td>';
-        str += '<td>대여 상태</td>';
+        str += '<th>대여자명</th>';
+        str += '<th>대여 사유</th>';
+        str += '<th>대여일</th>';
+        str += '<th>반납 기한</th>';
+        str += '<th>대여 상태</th>';
         str += '</tr>';
         document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
         //변수 str 초기화
@@ -197,14 +197,14 @@ function history() {
     }).then(response => response.json()).then((data) => {
         let str = '';
         str += '<tr>';
-        str += '<td>상태</td>';
-        str += '<td>분류</td>';
-        str += '<td>물품명</td>';
-        str += '<td>물품 코드</td>';
-        str += '<td>대여자명</td>';
-        str += '<td>대여 사유</td>';
-        str += '<td>대여일</td>';
-        str += '<td>반납일</td>';
+        str += '<th>상태</th>';
+        str += '<th>분류</th>';
+        str += '<th>물품명</th>';
+        str += '<th>물품 코드</th>';
+        str += '<th>대여자명</th>';
+        str += '<th>대여 사유</th>';
+        str += '<th>대여일</th>';
+        str += '<th>반납일</th>';
         str += '</tr>';
         document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
 
