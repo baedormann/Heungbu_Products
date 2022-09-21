@@ -1,6 +1,7 @@
 const randToken = require('rand-token');
 const jwt = require('jsonwebtoken');
-
+const secretKey = require('./secretKey').secretKey;
+const options = require('./secretKey').option;
 const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
@@ -14,7 +15,7 @@ module.exports = {
             open_auth: user.open_auth
         };
         const result = {
-            //token: jwt.sign(payload, secretKey, options),
+            token: jwt.sign(payload, secretKey, options),
             refreshToken: randToken.uid(256)
         };
         return result;
@@ -23,7 +24,7 @@ module.exports = {
         let decoded;
         try {
             // verify를 통해 값 decode
-            //decoded = jwt.verify(token, secretKey);
+            decoded = jwt.verify(token, secretKey);
         } catch (err) {
             if (err.message === 'jwt expired') {
                 console.log('expired token');
