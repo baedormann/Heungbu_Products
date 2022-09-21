@@ -1,0 +1,102 @@
+html, body{
+    height: 100%;
+}
+.home-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+}
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+    min-height: 680px;
+}
+.formContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 60%;
+    min-width: 470px;
+    height: 100%;
+    position: relative;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    animation: fadeInDown 1s;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.content__top{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    height: 20%;
+    font-size: 24px;
+    font-weight: bold;
+}
+.content__mid{
+    height: 100%;
+    min-height: 500px;
+}
+.content__bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    min-height: 100px;
+}
+.emp_name, .emp_position, .emp_no, .emp_email, .password, .new_password, .emp_dept {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content__text{
+    width: 150px;
+    margin-bottom: 3%;
+    text-align: left;
+}
+.home-section input[type="text"], select, input[type="password"] {
+    background-color: rgb(243, 243, 243);
+    border: #f1f1f1;
+    border-radius: 6px;
+    width: 300px;
+    margin-bottom: 4%;
+    padding: 3%;
+    transition: all 0.3s ease-in-out;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus{
+    background-color: white;
+    outline: 2px solid #f6f6f6;
+}
+
+button{
+    color: white;
+    background-color: #4385F5;
+    padding: 10px;
+    margin: 5px 20px 60px 20px;
+    width: 110px;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: gray;
+}

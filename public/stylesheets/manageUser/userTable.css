@@ -15,10 +15,6 @@ table {
     overflow: hidden;
 }
 
-th {
-    text-align: left;
-}
-
 thead {
     font-weight: bold;
     color: #fff;
@@ -26,6 +22,7 @@ thead {
 }
 
 td, th {
+    text-align: center;
     padding: 1em .5em;
     vertical-align: middle;
 }

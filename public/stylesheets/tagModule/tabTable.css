@@ -14,10 +14,6 @@ table {
     overflow: hidden;
 }
 
-th {
-    text-align: left;
-}
-
 thead {
     font-weight: bold;
     color: black;
@@ -27,6 +23,7 @@ thead {
 td, th {
     padding: 1em .5em;
     vertical-align: middle;
+    text-align: center;
 }
 
 td {
