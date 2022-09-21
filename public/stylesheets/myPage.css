@@ -12,33 +12,119 @@
 }
 .myInfoComponent {
     min-width: 1200px;
+    height: 250px;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgb(233, 233, 233);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.myRent {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 .leftMyInfo {
     align-items: center;
     display: flex;
     float:left;
     width: 400px;
+    font-size:18px;
 }
 img {
     margin: 5px;
-    height: 200px;
+    height: 150px;
     border-radius: 100px;
 }
 .leftContent {
     margin-left: 30px;
 }
-.rightMyInfo {
+.midleMyInfo {
     display: flex;
     justify-content: center;
     margin-left: 10px;
     flex-direction: column;
     width: 400px;
 }
+.myPosition {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+.myPosition div {
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:rgba(0, 0, 0, 0.5);
+    margin:20px
+}
+.myPosition p {
+    font-size:20px;
+    font-weight: bolder;
+    color:black;
+}
+.rentalCount {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+}
+.rentalCount div{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:rgba(0, 0, 0, 0.5);
+}
+.rentalCount p {
+    font-size:20px;
+    color:black;
+    font-weight: bolder;
+}
+
 .myRent {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.rightMyInfo {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    float:right;
+    width: 400px;
+    font-size:18px;
+    flex-direction: column;
+}
+.myAuth {
+    display: flex;
+    height: 40%;
+    align-items: center;
+    justify-content: center;
+}
+.authTitle p {
+    font-size: 20px;
+    font-weight: bolder;
+}
+.myAuth div{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size:40px;
+    margin:10px
+}
+.myAuth p {
+    font-size:15px;
+    color:rgba(0, 0, 0, 0.5);
+}
+.fa-gear:hover {
+    cursor:pointer;
 }

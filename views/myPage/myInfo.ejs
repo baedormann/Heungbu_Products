@@ -6,12 +6,57 @@
         <p>이름: <%= user.emp_name %></p>
     </div>
 </div>
-<div class="rightMyInfo">
-    <p>부서: <%= user.dept %></p>
-    <p>직책: <%= user.emp_position %></p>
-    <p>권한</p>
-    <p>등록: <%= user.edit_auth %> 대여: <%= user.rent_auth %> 열람: <%= user.open_auth %></p>
-    <p>대여 수: <%= rent.length %></p>
-    <p>반납 수: <%= returns.length %></p>
-    <button onclick="location.href = '/myPage/modify'">정보수정</button>
+<div class="midleMyInfo">
+    <div class="myPosition">
+        <div>
+            <p><%= user.dept %></p>
+            부서
+        </div>
+        <div>
+            <p><%= user.emp_position %></p>
+            직책
+        </div>
+    </div>
+    <div class="rentalCount">
+        <div>
+            <p><%= rent.length %></p>
+            대여 수
+        </div>
+        <div>
+            <p><%= returns.length %></p>
+            반납 수
+        </div>
+    </div>
 </div>
+<div class="rightMyInfo">
+    <div class="authTitle">
+        <p>권한</p>
+    </div>
+    <div class="myAuth">
+        <div>
+            <% if(user.edit_auth) { %>
+                <i class="fa-solid fa-pen-to-square"></i>
+            <% }else{ %>
+                <i class="fa-solid fa-pen-to-square" style="opacity: 0.1"></i>
+            <% } %>
+            <p>등록</p>
+        </div>
+        <div>
+            <% if(user.rent_auth) { %>
+                <i class="fa-solid fa-truck-ramp-box"></i>
+            <% }else{ %>
+                    <i class="fa-solid fa-truck-ramp-box" style="opacity: 0.1"></i>
+            <% } %>
+            <p>대여</p>
+        </div>
+        <div>
+            <% if(user.open_auth) { %>
+                <i class="fa-solid fa-eye"></i>
+            <% }else{ %>
+                    <i class="fa-solid fa-eye" style="opacity: 0.1"></i>
+            <% } %>
+            <p>열람</p>
+        </div>
+    </div>
+</div>
+<i class="fa-solid fa-gear fa-xl" onclick="location.href = '/myPage/modify'" title="정보수정"></i>
