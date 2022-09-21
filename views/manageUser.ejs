@@ -5,8 +5,10 @@
     <script src="/javascripts/cookieModule.js"></script>
     <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='/stylesheets/common.css'/>
-    <link rel='stylesheet' href="/stylesheets/manageUser/userTable.css" />
-    <link rel='stylesheet' href="/stylesheets/manageUser/manageModal.css" />
+    <link rel='stylesheet' href='/stylesheets/manageUser.css'/>
+    <link rel='stylesheet' href="/stylesheets/manageUser/manageUserSearch.css"/>
+    <link rel='stylesheet' href="/stylesheets/manageUser/userTable.css"/>
+    <link rel='stylesheet' href="/stylesheets/manageUser/manageModal.css"/>
     <link rel='stylesheet' href="/stylesheets/tagModule/search.css"/>
 </head>
 <body>
@@ -14,10 +16,14 @@
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h1 id="name">이용자 관리</h1>
-    <%- include('./manageUser/manageSearch.ejs') %>
-    <div class="userTable">
-        <%- include('./manageUser/userTable.ejs') %>
+    <div class="manageUserDiv">
+        <h2 id="name">이용자 관리</h2>
+        <div class="manageUserComponent">
+            <%- include('./manageUser/manageSearch.ejs') %>
+            <div class="userTable">
+                <%- include('./manageUser/userTable.ejs') %>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/javascripts/manageUser.js"></script>

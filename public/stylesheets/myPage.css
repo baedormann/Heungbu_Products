@@ -131,3 +131,13 @@ img {
 .fa-gear:hover {
     cursor:pointer;
 }
+
+button{
+    color: black;
+    background-color: rgb(222,222,222);
+    padding: 5px;
+    width: 60px;
+    border: none;
+    border-radius: 6px;
+    transition: background-color, opacity 0.3s ease-in-out;
+}

@@ -16,8 +16,8 @@ table {
 
 thead {
     font-weight: bold;
-    color: black;
-    background: rgb(200,200,200);
+    color: #222222;
+    background-color: rgb(243, 243, 243);
 }
 
 td, th {

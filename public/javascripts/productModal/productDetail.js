@@ -36,6 +36,8 @@ function productModalOpen(product_code) {
             document.getElementById("inputText").innerHTML = `<div class="rentalTextDiv">대여 목적</div><input class="rentalInput" id="rentPurpose" type="text">`
             document.getElementById('rentalButton').innerHTML = `<button onClick="rental()">대여</button>`
             defaultStartEnd();
+        } else {
+            document.getElementsByClassName("rentalDiv")[0].innerHTML = "대여권한이 없습니다."
         }
         document.getElementsByClassName('product_code')[0].value = product_code;
         document.getElementsByClassName('product_id')[0].value = data._id;

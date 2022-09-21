@@ -1,0 +1,28 @@
+.home-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.productDiv {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    margin-top: 50px;
+    height: 800px;
+    align-items: center;
+}
+h2 {
+    margin-top:50px;
+    margin-bottom: 20px;
+}
+.productComponent {
+    flex-direction: column;
+    min-width: 1200px;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}

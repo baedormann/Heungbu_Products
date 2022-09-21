@@ -1,35 +1,36 @@
-<style>
-
-</style>
-<table id="productTable" class="productTable">
-    <thead class="productHead">
-    <tr>
-        <th>분류</th>
-        <th onclick="sortTable(1, this)">이름  <i class="fa-solid fa-sort-up" value="asc"></i></th>
-        <th>번호</th>
-        <th>대여 가능</th>
-        <th>반납 필요</th>
-        <th>남은 수량</th>
-        <th>대여 중</th>
-        <th>총 수량</th>
-        <th onclick="sortTable(8, this)">등록일(수정일) <i class="fa-solid fa-sort-up" value="asc"></i></th>
-    </tr>
-    </thead>
-    <tbody id="table_data">
-    <% data.map(res =>{ %>
-        <tr onclick="productModalOpen('<%= res.product_code %>')">
-            <td><%= res.product_category.firstCategory %>-<%= res.product_category.secondCategory %></td>
-            <td><%= res.product_name %></td>
-            <td><%= res.product_code %></td>
-            <td><%= res.rental_availability ? 'O' : 'X' %></td>
-            <td><%= res.return_needed ? 'O' : 'X' %></td>
-            <td><%= res.leftQuantity %></td>
-            <td><%= res.rentalQuantity %></td>
-            <td><%= res.quantity %></td>
-            <td><%= res.last_date.getFullYear() %>-<%= res.last_date.getMonth() + 1%>-<%=res.last_date.getDate() %></td>
-        </tr>
-    <% }) %>
-    </tbody>
-</table>
-
+<div class="table-box-wrap">
+    <div class="table-box">
+        <table id="productTable" class="productTable">
+            <thead class="productHead">
+            <tr>
+                <th>분류</th>
+                <th onclick="sortTable(1, this)">이름 <i class="fa-solid fa-sort-up" value="asc"></i></th>
+                <th>번호</th>
+                <th>대여 가능</th>
+                <th>반납 필요</th>
+                <th>남은 수량</th>
+                <th>대여 중</th>
+                <th>총 수량</th>
+                <th onclick="sortTable(8, this)">등록일(수정일) <i class="fa-solid fa-sort-up" value="asc"></i></th>
+            </tr>
+            </thead>
+            <tbody id="table_data">
+            <% data.map(res =>{ %>
+                <tr onclick="productModalOpen('<%= res.product_code %>')">
+                    <td><%= res.product_category.firstCategory %>-<%= res.product_category.secondCategory %></td>
+                    <td><%= res.product_name %></td>
+                    <td><%= res.product_code %></td>
+                    <td><%= res.rental_availability ? 'O' : 'X' %></td>
+                    <td><%= res.return_needed ? 'O' : 'X' %></td>
+                    <td><%= res.leftQuantity %></td>
+                    <td><%= res.rentalQuantity %></td>
+                    <td><%= res.quantity %></td>
+                    <td><%= res.last_date.getFullYear() %>-<%= res.last_date.getMonth() + 1 %>
+                        -<%= res.last_date.getDate() %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
 <%- include('./productModal') %>
