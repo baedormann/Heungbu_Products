@@ -95,3 +95,11 @@ function readExcel() {
 function excelDone() {
     document.getElementById('excelModal').style.display = 'none';
 }
+//모달 바깥 부분 클릭 시
+window.onclick = function (event) {
+    let modal = document.getElementById('excelModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+        location.reload();
+    }
+}

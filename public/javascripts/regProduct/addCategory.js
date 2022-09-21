@@ -43,7 +43,7 @@ function addCategoryModal() {
 //모달 닫기 버튼 클릭 시
 function addDone() {
     let modal = document.getElementById('addCategoryModal');
-    modal.style.display = "none";
+    /*modal.style.display = "none";
     if (document.getElementById('addSecondRadio').checked == true) {
         document.getElementById('addSecondRadio').checked = false;
         document.getElementById('addFirstRadio').checked = true;
@@ -51,7 +51,7 @@ function addDone() {
             document.getElementById('addSecondInput').parentElement.parentElement.remove();
         }
         document.getElementById('addFirstSelect').parentElement.innerHTML = '대분류 <input type="text" id="addFirstInput">';
-    }
+    }*/
     location.reload();
 }
 
@@ -59,12 +59,9 @@ function addDone() {
 //모달 바깥 부분 클릭 시
 window.onclick = function (event) {
     let modal = document.getElementById('addCategoryModal');
-    let modal2 = document.getElementById('excelModal');
     if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    if(event.target == modal2) {
-        modal2.style.display = "none";
+        /*modal.style.display = "none";*/
+        location.reload();
     }
 }
 

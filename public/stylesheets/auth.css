@@ -37,7 +37,7 @@ h4{
     display: inline-block;
     padding: 40px 8px 10px 8px;
 }
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], select{
     background-color: #f6f6f6;
     border: #f6f6f6;
     border-radius: 6px;
@@ -46,21 +46,10 @@ input[type="text"], input[type="password"]{
     margin-bottom: 10px;
     transition: all 0.3s ease-in-out;
 }
-input[type="text"]:focus,
-input[type="password"]:focus{
-    background-color: white;
-    outline: 2px solid #f6f6f6;
-}
 select{
-    background-color: #f6f6f6;
-    border: #f6f6f6;
-    border-radius: 6px;
-    width: 35%;
-    padding: 15px 32px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease-in-out;
+    width: 64%;
 }
-select:focus,
+
 button{
     color: white;
     padding: 15px 80px;
@@ -93,7 +82,7 @@ button:hover{
 .clickable:hover{
     cursor: pointer;
 }
-*.hover-underline .currentPage{
+*.hover-underline, .currentPage{
     position: relative;
 }
 *.hover-underline:before{

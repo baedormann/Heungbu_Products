@@ -12,17 +12,17 @@ function manageOpen(emp_no) {
             "Authorization": "Bearer " + getCookie('token')
         }
     }).then(response => response.json()).then((data) => {
-        document.getElementById("e_num").innerHTML = "사번 : " + data.emp_no;
-        document.getElementById("e_name").innerHTML = "이름 : " + data.emp_name;
-        document.getElementById("e_dept").innerHTML = "부서 : " + data.dept;
-        document.getElementById("e_position").innerHTML = "직책 : " + data.emp_position;
-        document.getElementById("e_email").innerHTML = "이메일 : " + data.email;
-        document.getElementById("p_edit").innerHTML = data.edit_auth ? "<input id='e_edit' type='checkbox' checked=data.rent_edit>" + "편집 권한" : "<input id='e_edit' type='checkbox'>" + "편집 권한";
-        document.getElementById("p_rent").innerHTML = data.rent_auth ? "<input id='e_rent' type='checkbox' checked=data.rent_auth>" + "대여 권한" : "<input id='e_rent' type='checkbox'>" + "대여 권한";
-        document.getElementById("p_open").innerHTML = data.open_auth ? "<input id='e_open' type='checkbox' checked=data.open_auth>" + "열람 권한" : "<input id='e_open' type='checkbox'>" + "열람 권한";
-        document.getElementById("save_button").innerHTML = `<button onclick=saveAuth('${emp_no}')>저장</button>`;
-        document.getElementById("ben_button").innerHTML = `<button onclick=userBen('${data._id}')>추방</button>`;
-        document.getElementById("init_button").innerHTML = `<button onclick="userInit('${emp_no}')">비밀번호 초기화</button>`;
+        document.getElementById("e_num").innerHTML = data.emp_no;
+        document.getElementById("e_name").innerHTML = data.emp_name;
+        document.getElementById("e_dept").innerHTML = data.dept;
+        document.getElementById("e_position").innerHTML = data.emp_position;
+        document.getElementById("e_email").innerHTML = data.email;
+        document.getElementById("p_edit").innerHTML = data.edit_auth ? "<input id='e_edit' type='checkbox' checked=data.rent_edit>" : "<input id='e_edit' type='checkbox'>";
+        document.getElementById("p_rent").innerHTML = data.rent_auth ? "<input id='e_rent' type='checkbox' checked=data.rent_auth>" : "<input id='e_rent' type='checkbox'>";
+        document.getElementById("p_open").innerHTML = data.open_auth ? "<input id='e_open' type='checkbox' checked=data.open_auth>" : "<input id='e_open' type='checkbox'>";
+        document.getElementById("save_button").innerHTML = `<button class="btn-primary" onclick=saveAuth('${emp_no}')>저장</button>`;
+        document.getElementById("ben_button").innerHTML = `<button class="btn-red" onclick=userBen('${data._id}')>추방</button>`;
+        document.getElementById("init_button").innerHTML = `<button class="btn-empty" onclick="userInit('${emp_no}')">비밀번호 초기화</button>`;
     });
 }
 
