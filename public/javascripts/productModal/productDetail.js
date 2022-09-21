@@ -23,17 +23,17 @@ function productModalOpen(product_code) {
         document.getElementById("inputEnd").innerHTML = ``
         document.getElementById("inputText").innerHTML = ``
         document.getElementById('rentalButton').innerHTML = ``
-        document.getElementById("product_name").innerHTML = `물품 이름 : ${data.product_name}`
+        document.getElementById("product_name").innerHTML = `${data.product_name}`
         document.getElementById("product_name").value = `${data.product_name}`
-        document.getElementById("product_category").innerHTML = `대분류 : ${data.product_category.firstCategory} 소분류 : ${data.product_category.secondCategory}`
-        document.getElementById("product_code").innerHTML = `물품코드 : ${data.product_code}`
-        document.getElementById("rental_availability").innerHTML = `대여 여부 : ${data.rental_availability ? 'O' : 'X'}`
-        document.getElementById("return_needed").innerHTML = `반납 여부 : ${data.return_needed ? 'O' : 'X'}`
-        document.getElementById("quantity").innerHTML = `물품 남은 수량 : ${data.leftQuantity}`
+        document.getElementById("product_category").innerHTML = `${data.product_category.firstCategory} - ${data.product_category.secondCategory}`
+        document.getElementById("product_code").innerHTML = `${data.product_code}`
+        document.getElementById("rental_availability").innerHTML = ` ${data.rental_availability ? 'O' : 'X'}`
+        document.getElementById("return_needed").innerHTML = `${data.return_needed ? 'O' : 'X'}`
+        document.getElementById("quantity").innerHTML = `${data.leftQuantity}`
         if (data.rental_availability && (JSON.parse(localStorage.getItem('rent_auth')) || (JSON.parse(localStorage.getItem('manage'))))) {
-            document.getElementById("inputStart").innerHTML = `시작일 : <input id="startDate" type="datetime-local" onchange="startEnd()">`
-            document.getElementById("inputEnd").innerHTML = `종료일 : <input id="endDate" type="datetime-local" onchange="startEnd()">`
-            document.getElementById("inputText").innerHTML = `대여 목적 : <input id="rentPurpose" type="text">`
+            document.getElementById("inputStart").innerHTML = `<div class="rentalTextDiv">시작일</div><input class="rentalInput" id="startDate" type="datetime-local" onchange="startEnd()">`
+            document.getElementById("inputEnd").innerHTML = `<div class="rentalTextDiv">종료일</div><input class="rentalInput" id="endDate" type="datetime-local" onchange="startEnd()">`
+            document.getElementById("inputText").innerHTML = `<div class="rentalTextDiv">대여 목적</div><input class="rentalInput" id="rentPurpose" type="text">`
             document.getElementById('rentalButton').innerHTML = `<button onClick="rental()">대여</button>`
             defaultStartEnd();
         }

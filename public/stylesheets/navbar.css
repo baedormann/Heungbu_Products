@@ -214,7 +214,7 @@ body{
 .home-section{
     position: relative;
     left: 78px;
-    width: calc(100% - 78px);
+    width: calc(100% - 155px);
     transition: all 0.5s ease;
     z-index: 2;
 }

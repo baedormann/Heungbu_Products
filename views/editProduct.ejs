@@ -2,74 +2,92 @@
 <html>
 <head>
     <title><%= stateUrl %></title>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
     <link rel='stylesheet' href='/stylesheets/regProduct.css'/>
+    <link rel='stylesheet' href="/stylesheets/regProduct/addCategoryModal.css">
+    <script defer src="/javascripts/regProduct/common.js"></script>
     <script defer src="/javascripts/regProduct/editProduct.js"></script>
     <script defer src="/javascripts/regProduct/addCategory.js"></script>
-    <script defer src="/javascripts/regProduct/common.js"></script>
     <script src="/javascripts/cookieModule.js"></script>
-    <link rel='stylesheet' href="/stylesheets/regProduct/addCategoryModal.css"></script>
+    </script>
 </head>
 <body>
 <div class="sideBar">
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h2>물품 편집 페이지</h2>
     <div class="wrapper">
         <div class="formContent">
-            <div>
-                <h4>물품 정보 수정</h4>
-            </div>
-            <div id="categoryBox">
-                <div id="selectBox">
+            <div class="content">
+                <div class="content__top">물품 정보 수정</div>
+                <div class="content__mid">
                     <div class="firstCategoryDiv">
-                        대분류 <select name="firstCategory" id="firstCategory" onchange="findSecondCategory()">
+                        <div class="content__text">대분류</div>
+                        <select name="firstCategory" id="firstCategory" onchange="findSecondCategory()">
                             <option id="first_category_default" value="" disabled selected>선택</option>
                             <% for(var i = 0; i < category.length; i++){ %>
                                 <option value="<%= category[i].firstCategory %>"><%= category[i].firstCategory %></option>
-                            <% }%>
+                            <% } %>
                         </select>
                     </div>
                     <div class="secondCategoryDiv">
-                        소분류 <select name="secondCategory" id="secondCategory" disabled>
+                        <div class="content__text">소분류</div>
+                        <select name="secondCategory" id="secondCategory" disabled>
                             <option id="second_category_default" value="" disabled selected>선택</option>
                         </select>
                     </div>
+                    <div class="secondCategoryDiv">
+                        <div class="content__text">새 분류 추가</div>
+                        <button id="addCategory" onclick="addCategoryModal();">분류 추가</button>
+                    </div>
+                    <div class="codeDiv">
+                        <div class="content__text">물품코드</div>
+                        <input id="product_code" type="text" name="name" , placeholder="제품코드"
+                               value="<%= data.product_code %>"
+                               disabled>
+                    </div>
+                    <div class="nameDiv">
+                        <div class="content__text">물품명</div>
+                        <input id="product_name" type="text" name="name" , placeholder="물품명"
+                               value="<%= data.product_name %>">
+                    </div>
+                    <div class="quantityDiv">
+                        <div class="content__text">수량</div>
+                        <input id="quantity" type="number" value="<%= data.quantity %>" oninput="underZero()" min="0">
+                    </div>
+                    <div class="rentalAvailityDiv">
+                        <div class="radioDiv">
+                            <div class="content__text">대여 가능 여부</div>
+                            <input class="rental_availability" type="radio" name="rental_availability" value="true">
+                            <div class="radioText">가능</div>
+                            <input class="rental_availability" type="radio" name="rental_availability" value="false">
+                            <div class="radioText">불가능</div>
+                        </div>
+                    </div>
+                    <div class="returnNeededDiv">
+                        <div class="radioDiv">
+                            <div class="content__text">반환 필요 여부</div>
+                            <input class="return_needed" type="radio" name="return_needed" value="true">
+                            <div class="radioText">필요</div>
+                            <input class="return_needed" type="radio" name="return_needed" value="false">
+                            <div class="radioText">불필요</div>
+                        </div>
+                    </div>
+                    <div class="content__bottom">
+                        <div class="btnDiv">
+                            <button id="initBtn" class="btn-green" onclick="confirmInit();">초기화</button>
+                            <button id="cancelBtn" class="btn-empty" onclick="location.href='/';">취소</button>
+                            <button id="submitBtn" class="btn-primary" onclick="editProduct();">편집</button>
+                        </div>
+                    </div>
                 </div>
-                <div id="buttonBox">
-                    <button id="addCategory" onclick="addCategoryModal();">분류 추가</button>
-                </div>
             </div>
-            <div>
-                제품코드 <input id="product_code" type="text" name="name", placeholder="제품코드" value="<%= data.product_code %>" disabled>
-            </div>
-            <div>
-                물품명 <input id="product_name" type="text" name="name", placeholder="물품명" value="<%= data.product_name %>">
-            </div>
-            <div>
-                수량 <input id="quantity" type="number" value="<%= data.quantity %>" oninput="underZero()" min="0">
-            </div>
-            <div>
-                대여 가능 여부
-                <input class="rental_availability" type="radio" name="rental_availability" value="true"> 가능
-                <input class="rental_availability" type="radio" name="rental_availability" value="false"> 불가능
-            </div>
-            <div>
-                반환 필요 여부
-                <input class="return_needed" type="radio" name="return_needed" value="true"> 필요
-                <input class="return_needed" type="radio" name="return_needed" value="false"> 불필요
-            </div>
-
-            <button id="submitBtn" onclick="editProduct();">편집</button>
-            <button id="cancelBtn" onclick="location.href='/';">취소</button>
-            <button id="initBtn" onclick="confirmInit();">초기화</button>
         </div>
-    </div>
     <div>
-        <input id="firstCategoryHidden" type="hidden" value="<%= data.product_category.firstCategory%>">
-        <input id="secondCategoryHidden" type="hidden" value="<%= data.product_category.secondCategory%>">
-        <input id="rentalAvailailityHidden" type="hidden" value="<%= data.rental_availability%>">
-        <input id="returnNeededHidden" type="hidden" value="<%= data.return_needed%>">
+        <input id="firstCategoryHidden" type="hidden" value="<%= data.product_category.firstCategory %>">
+        <input id="secondCategoryHidden" type="hidden" value="<%= data.product_category.secondCategory %>">
+        <input id="rentalAvailailityHidden" type="hidden" value="<%= data.rental_availability %>">
+        <input id="returnNeededHidden" type="hidden" value="<%= data.return_needed %>">
     </div>
     <div class="modalDiv">
         <%- include('regProduct/addCategoryModal.ejs') %>
