@@ -1,25 +1,46 @@
 <h1 class="modal-title">물품 대여</h1>
-<p id="product_name"></p>
-<p id="product_category"></p>
-<p id="product_code"></p>
-<p id="rental_availability"></p>
-<p id="return_needed"></p>
-<p id="quantity"></p>
+<div class="content__detail">
+    <div class="pDiv">
+        <p>물품명</p>
+        <p id="product_name"></p>
+    </div>
+    <div class="pDiv">
+        <p>카테고리</p>
+        <p id="product_category"></p>
+    </div>
+    <div class="pDiv">
+        <p>물품 코드</p>
+        <p id="product_code"></p>
+    </div>
+    <div class="pDiv">
+        <p>대여 가능 여부</p>
+        <p id="rental_availability"></p>
+    </div>
+    <div class="pDiv">
+        <p>반환 필요 여부</p>
+        <p id="return_needed"></p>
+    </div>
+    <div class="pDiv">
+        <p>수량</p>
+        <p id="quantity"></p>
+    </div>
 
-<input class="product_code" type="hidden" value="">
-<input class="product_id" type="hidden" value="">
+    <input class="product_code" type="hidden" value="">
+    <input class="product_id" type="hidden" value="">
 
-<div class="manageOk">
-    <button onclick="rentalList()">대여자 명단</button>
-    <button onclick="history()">대여 이력</button>
+    <div class="manageOk">
+        <button class="btn-empty" onclick="rentalList()">대여자 명단</button>
+        <button class="btn-empty" onclick="history()">대여 이력</button>
+    </div>
+    <div class="editOk">
+        <button onclick="edit()">편집</button>
+        <button class="btn-red" onclick="productDelete()">물품 삭제</button>
+    </div>
 </div>
 
-<div class="editOk">
-    <button onclick="edit()">편집</button>
-    <button onclick="productDelete()">물품 삭제</button>
-</div>
 
-<div>
+
+<div class="rentalDiv">
     <div id="inputStart"></div>
     <div id="inputEnd"></div>
     <div id="inputText"></div>

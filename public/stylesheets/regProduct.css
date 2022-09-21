@@ -101,16 +101,6 @@ select:focus{
     outline: 2px solid #f6f6f6;
 }
 
-button{
-    color: white;
-    background-color: #4385F5;
-    padding: 10px;
-    margin: 5px 20px 15px 20px;
-    width: 110px;
-    border: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease-in-out;
-}
 #uploadBtn, #addCategory{
     color: #222222;
     border: 1px solid #cccccc;

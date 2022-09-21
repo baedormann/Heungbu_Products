@@ -1,3 +1,4 @@
+
 .modal {
     display: none;
     position: fixed;
@@ -17,13 +18,19 @@
     border: 5px solid #888;
     border-radius: 20px;
     width: 60%;
-    min-height: 550px;
-    max-height: 500px;
+    height: 100%;
+    min-height: 600px;
+    max-height: 700px;
     transition: all 0.5s ease-in-out;
+}
+.modal_rental{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .modal-productDetail{
     max-width: 500px;
-    height:50%;
+    height:100%;
     transition: all 0.5s ease-in-out;
 }
 .modal-rentalList{
@@ -47,4 +54,52 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+.content__detail{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.pDiv{
+    font-size: 18px;
+    position: relative;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.pDiv p:first-child{
+    width: 30%;
+    text-align: left;
+}
+.pDiv p:nth-child(2){
+    width: 70%;
+    text-align: left;
+}
+.rentalDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+}
+.rentalTextDiv{
+    width:20%;
+}
+.rentalInput, #rentPurpose{
+    width: 80%;
+}
+#inputStart, #inputEnd, #inputText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 90%;
+}
+#rentalButton{
+    margin-top: 14px;
 }
