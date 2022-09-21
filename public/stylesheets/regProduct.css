@@ -8,36 +8,91 @@
         transform: translateZ(0);
     }
 }
+html, body{
+    height: 100%;
+}
+.home-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 18px;
+}
 .wrapper{
     display: flex;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
     width: 100%;
-    min-height: 100%;
+    height: 80%;
+    min-height: 680px;
 }
 .formContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     border-radius: 10px;
-    max-width: 1000px;
-    width: 90%;
+    width: 80%;
+    min-width: 470px;
+    height: 100%;
     position: relative;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
     animation: fadeInDown 1s;
 }
-h4{
-    display: inline-block;
-    padding: 40px 8px 10px 8px;
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
-.wrapper input[type="text"]{
-    background-color: #f6f6f6;
-    border: #f6f6f6;
+.content__top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    font-size: 24px;
+    font-weight: bold;
+}
+.content__mid{
+    height: 65%;
+    min-height: 500px;
+}
+.content__bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    min-height: 100px;
+}
+.firstCategoryDiv, .secondCategoryDiv, .codeDiv, .nameDiv, .quantityDiv, .radioDiv, .excelDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content__text{
+    width: 150px;
+    margin-bottom: 3%;
+    text-align: left;
+}
+.home-section input[type="text"], input[type="number"], select, input[type="radio"], #uploadBtn, #addCategory{
+    background-color: rgb(243, 243, 243);
+    border: #f1f1f1;
     border-radius: 6px;
-    width: 50%;
-    padding: 15px 32px;
-    margin-bottom: 10px;
+    width: 300px;
+    margin-bottom: 4%;
+    padding: 3%;
     transition: all 0.3s ease-in-out;
+}
+input[type="radio"]{
+    width: 30px;
+    margin: 0 10px 3% 40px;
+}
+.radioText{
+    width: 50px;
+    margin: 0 20px 3% 0;
 }
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -45,37 +100,26 @@ select:focus{
     background-color: white;
     outline: 2px solid #f6f6f6;
 }
-select{
-    width : 200px;
-    background-color: #f6f6f6;
-    border: #f6f6f6;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease-in-out;
-}
-#categoryBox, #buttonBox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 button{
     color: white;
     background-color: #4385F5;
     padding: 10px;
     margin: 5px 20px 15px 20px;
+    width: 110px;
     border: none;
     border-radius: 6px;
     transition: background-color 0.3s ease-in-out;
 }
+#uploadBtn, #addCategory{
+    color: #222222;
+    border: 1px solid #cccccc;
+    margin: 0 0 3% 0;
+}
+
 button:hover{
     cursor: pointer;
     background-color: #3274E4;
-}
-.checkboxDiv{
-    display: inline-block;
-    width: 64%;
-    text-align: left;
-    margin-bottom: 10px;
 }
 .formFooter{
     width: 100%;

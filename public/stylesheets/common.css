@@ -22,6 +22,11 @@ body {
     background-color: white;
     border: 1px solid #a8a8a8;
 }
+.btn-green{
+    color: white;
+    background-color: #198754;
+    border: 1px solid transparent;
+}
 
 
 
