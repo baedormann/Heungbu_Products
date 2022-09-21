@@ -45,7 +45,9 @@ function auth() {
     if(!Boolean(document.getElementById("emp_no").value)){
         return alert("사번을 입력하세요");
     }else if(!Boolean(document.getElementById("emp_name").value)){
-        return alert("이름 입력하세요");
+        return alert("이름을 입력하세요");
+    }else if(Boolean(document.getElementById("emp_position").value == '')){
+        return alert("직급을 선택하세요");
     }
     if(!emailKeyUp() || !passwordKeyUp() || document.getElementById('password').value.length < 4){
         return alert("회원가입형식에 맞게 입력해주세요.");

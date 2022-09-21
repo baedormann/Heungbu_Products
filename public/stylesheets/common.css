@@ -20,6 +20,11 @@ button{
     border-radius: 6px;
     transition: background-color, opacity 0.3s ease-in-out;
 }
+input[type="text"]:focus, input[type="datetime-local"]:focus,
+input[type="password"]:focus, select:focus, input[type="number"]:focus{
+    background-color: white;
+    outline: 2px solid #f6f6f6;
+}
 button:hover{
     cursor: pointer;
     opacity: 0.5;

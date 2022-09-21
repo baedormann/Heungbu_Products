@@ -107,10 +107,6 @@ select:focus{
     margin: 0 0 3% 0;
 }
 
-button:hover{
-    cursor: pointer;
-    background-color: #3274E4;
-}
 .formFooter{
     width: 100%;
     background-color: #f6f6f6;
