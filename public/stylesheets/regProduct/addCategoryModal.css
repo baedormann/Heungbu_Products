@@ -20,8 +20,41 @@
     width: 50%;
     max-width: 700px;
     height:50%;
+    min-height: 300px;
 }
+.modal__body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+.modal__top{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 
+}
+.modal__mid{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.modal__bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    height: 30%;
+}
+#addCategoryInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .close {
     float: right;
     font-size: 28px;
@@ -33,4 +66,19 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.btnUpload {
+    width: 200px;
+    height: 200px;
+    background: rgb(243, 243, 243);
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 1px 1px 15px 0px #cdcdcd;
+}
+#excelBtn{
 }

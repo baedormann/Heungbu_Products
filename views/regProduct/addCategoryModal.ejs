@@ -2,13 +2,21 @@
     <div class="modal-content" id="content">
         <span class="close" onclick="addDone()"><i class="fa-regular fa-circle-xmark"></i></span>
         <h3>카테고리 추가</h3>
-        <div>
-            <input type="radio" name="selectNth" id="addFirstRadio" value="addFirstCategory" checked> 대분류 추가
-            <input type="radio" name="selectNth" id="addSecondRadio" value="addSecondCategory"> 소분류 추가
+        <div class="modal__body">
+            <div class="modal__top">
+                <div>
+                    <input type="radio" name="selectNth" id="addFirstRadio" value="addFirstCategory" checked> 대분류 추가
+                    <input type="radio" name="selectNth" id="addSecondRadio" value="addSecondCategory"> 소분류 추가
+                </div>
+            </div>
+            <div class="modal__mid">
+                <div id="addCategoryInput">
+                    <span>대분류 <input type="text" id="addFirstInput"></span>
+                </div>
+            </div>
+            <div class="modal__bottom">
+                <button onclick="regCategory()">등록</button>
+            </div>
         </div>
-        <div id="addCategoryInput">
-            <span>대분류 <input type="text" id="addFirstInput"></span>
-        </div>
-        <div><button onclick="regCategory()">등록</button></div>
     </div>
 </div>
