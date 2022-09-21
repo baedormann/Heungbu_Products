@@ -5,7 +5,7 @@ const product = require('../models/product');
 const member = require('../models/member');
 const rental = require('../models/rental');
 const jwt = require("../config/jwt");
-const {secretKey} = require("../config/secretkey");
+const {secretKey} = require("../config/secretKey");
 
 /* GET home page. */
 router.get('/', authUtil, async function (req, res, next) {
