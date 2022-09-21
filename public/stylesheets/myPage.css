@@ -109,6 +109,9 @@ img {
     align-items: center;
     justify-content: center;
 }
+.myAuth i {
+    margin-top: 60px;
+}
 .authTitle p {
     font-size: 20px;
     font-weight: bolder;

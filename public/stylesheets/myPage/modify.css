@@ -95,8 +95,3 @@ button{
     border-radius: 6px;
     transition: background-color 0.3s ease-in-out;
 }
-
-button:hover{
-    cursor: pointer;
-    background-color: gray;
-}
