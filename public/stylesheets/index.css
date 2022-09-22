@@ -30,6 +30,12 @@
     border-radius: 6px;
     min-width: 300px;
     box-shadow: 1px 1px 15px 0px #cdcdcd;
+    transition: all 0.3s ease-in-out;
+}
+.content:hover{
+    width: calc(30% + 24px);
+    height: calc(340px + 24px);
+    margin: 0;
 }
 
 .content__head {
