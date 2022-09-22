@@ -50,5 +50,8 @@ button:hover{
     border: 1px solid transparent;
 }
 
+.home-section > div:first-child:not(.background){
+    box-shadow: 5px 5px 15px 5px #cdcdcd;
+}
 
 

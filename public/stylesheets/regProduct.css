@@ -1,13 +1,3 @@
-@keyframes fadeInDown {
-    0%{
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translateZ(0);
-    }
-}
 html, body{
     height: 100%;
 }
@@ -18,23 +8,16 @@ html, body{
     height: 100%;
     font-size: 18px;
 }
-.wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 80%;
-    min-height: 680px;
-}
+
 .formContent{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
     min-width: 470px;
-    height: 100%;
+    height: 80%;
     position: relative;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
