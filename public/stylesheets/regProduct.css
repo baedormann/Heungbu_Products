@@ -21,7 +21,8 @@ html, body{
     position: relative;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
-    animation: fadeInDown 1s;
+    animation: fadeIn 1.5s;
+    animation-fill-mode: backwards;
 }
 .content{
     display: flex;
