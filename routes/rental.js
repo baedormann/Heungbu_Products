@@ -21,7 +21,7 @@ router.post('/', async function (req, res) {
     rentalData.product_id = productCount._id;
     try {
         const rentCount = await rental.find({
-            product_code: rentalData.product_code,
+            product_code: req.body.product_code,
             rental_status: "대여중"
         }).count().exec();
         let leftQuantity = productCount.quantity - rentCount;
@@ -29,13 +29,12 @@ router.post('/', async function (req, res) {
             return res.status(402).send({message: '수량이 없습니다.'});
         }
         const newRental = await rentalData.save();
-
+        console.log(newRental.product_code)
         await product.update({product_code: newRental.product_code}, {
             leftQuantity: leftQuantity,
             rentalQuantity: rentCount,
             $push: {rental_id: newRental._id}
         });
-
         return res.status(201).json(newRental);
     } catch (err) {
         res.status(400).json({message: err.message});
