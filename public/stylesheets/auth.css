@@ -8,9 +8,7 @@
         transform: translateZ(0);
     }
 }
-html{
-    background-color: #406882;
-}
+
 body{
     height: 100vh;
     margin: 0;

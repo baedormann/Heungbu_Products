@@ -3,7 +3,7 @@
     align-items: center;
     flex-direction: column;
 }
-.manageUserDiv {
+.rentalCheckDiv {
     display: flex;
     flex-direction: column;
     background: white;
@@ -16,7 +16,7 @@ h2 {
     margin-top:50px;
     margin-bottom: 20px;
 }
-.manageUserComponent {
+.rentalCheckComponent {
     flex-direction: column;
     min-width: 1200px;
     display: flex;
@@ -27,3 +27,14 @@ h2 {
     padding-right: 50px;
 }
 
+.table-box-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.table-box-wrap .table-box {
+    width: 1230px;
+    height: 500px;
+    overflow: auto;
+}

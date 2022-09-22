@@ -8,22 +8,17 @@
             </div>
             <div class="modal__mid">
                 <div id="excelInput">
-
-                    <input id="excelBtn" type="file" onchange="" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    <div class="filebox">
+                        <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                        <label for="excelBtn">파일찾기</label>
+                        <input id="excelBtn" type="file" onchange="inputFile(this)"
+                               accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    </div>
                 </div>
             </div>
             <div class="modal__bottom">
                 <button onclick="readExcel()">등록</button>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
     </div>
 </div>

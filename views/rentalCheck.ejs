@@ -4,17 +4,22 @@
     <title><%= stateUrl %></title>
     <script src="/javascripts/cookieModule.js"></script>
     <link rel='stylesheet' href='/stylesheets/common.css'/>
-    <link rel='stylesheet' href="/stylesheets/tagModule/tab.css" />
-    <link rel='stylesheet' href="/stylesheets/tagModule/table.css" />
-    <link rel="stylesheet" href="/stylesheets/tagModule/tabTable.css" />
+    <link rel='stylesheet' href='/stylesheets/rentalCheck.css'/>
+    <link rel='stylesheet' href="/stylesheets/tagModule/tab.css"/>
+    <link rel='stylesheet' href="/stylesheets/tagModule/table.css"/>
+    <link rel="stylesheet" href="/stylesheets/tagModule/tabTable.css"/>
 </head>
 <body>
 <div class="sideBar">
     <%- include('./layout/navbar.ejs') %>
 </div>
 <div class="home-section">
-    <h1 id="name">대여 현황</h1>
-    <%- include('./rentalCheck/rentalCheckTable.ejs') %>
+    <div class="rentalCheckDiv">
+        <h2 id="name">대여 현황</h2>
+        <div class="rentalCheckComponent">
+            <%- include('./rentalCheck/rentalCheckTable.ejs') %>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -3,6 +3,11 @@ function excelModal() {
     document.getElementById('excelModal').style.display = 'block';
 }
 
+// 엑셀 인풋 value
+function inputFile(e) {
+    document.getElementsByClassName("upload-name")[0].value = e.value
+}
+
 //엑셀 등록 버튼 클릭 시
 function readExcel() {
     let input = document.getElementById('excelBtn');
