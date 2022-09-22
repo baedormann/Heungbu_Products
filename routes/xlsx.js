@@ -2,9 +2,15 @@ const express = require('express');
 const router = express.Router();
 const xlsx = require("xlsx");
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 엑셀 내보내기 API
+ * 주요 기능 : req로 받아온 데이터를 통해 jsonSheet를 생성후 response
+ */
 router.post('/', async function (req, res, next) {
     try {
         let excelTabe = [];
+        /** 양식에 맞는 헤더로 json 데이터 가공 */
         req.body.tableData.map((data) => {
             excelTabe.push({
                 "대분류": data.first_category,
@@ -16,6 +22,7 @@ router.post('/', async function (req, res, next) {
                 "수량": data.quantity
             })
         });
+        /** jsonSheet생성후 셀의 너비 설정 */
         let excelData = xlsx.utils.json_to_sheet(excelTabe);
         excelData['!cols'] = [
             {'width':10},

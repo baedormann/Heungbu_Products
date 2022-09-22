@@ -1,4 +1,8 @@
-// 로그아웃 요청 api
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 로그아웃 APi 요청
+ * 주요 기능 : 로그아웃시 localStorage정리
+ */
 function logout(cookie) {
     const url = '/login/logout';
     fetch(url, {

@@ -5,7 +5,11 @@ const rental = require("./rental");
 const product = require("./product");
 const saltRounds = 10;
 
-// 유저 스키마
+/**
+ * 담당자 : 공통
+ * 함수 설명 : 사용자 모델
+ * 주요 기능 : 사용자 스키마 설계
+ */
 const memberSchema = new Schema({
     emp_no:
         {
@@ -59,6 +63,12 @@ const memberSchema = new Schema({
         },
 }, {versionKey: false})
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 회원가입시 비밀번호 암호화 DB미들웨어
+ * 주요 기능 : 사용자 컬렉션의 save메서드 실행시
+ * 비밀번호 부분을 bcrypt 모듈을 활용한 비밀번호 암호화먼저 실행 후 원래 함수 실행
+ */
 memberSchema.pre('save', function (next) {
     const user = this;
     if (user.isModified('password')) {
@@ -75,6 +85,12 @@ memberSchema.pre('save', function (next) {
     }
 })
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 비밀번호 변경시 비밀번호 암호화 DB미들웨어
+ * 주요 기능 : 사용자 컬렉션의 findOneAndUpdate 메서드 실행시
+ * bcrypt 모듈을 활용한 비밀번호 암호화먼저 실행 후 원래 함수 실행
+ */
 memberSchema.pre('findOneAndUpdate', function (next) {
     const user = this;
     if (user.getUpdate().password) {
@@ -91,6 +107,13 @@ memberSchema.pre('findOneAndUpdate', function (next) {
     }
 })
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 사용자 추방시 대여 스키마와의 연관관계 해지, 대여한 물품의 수량 업데이트 DB미들웨어
+ * 주요 기능 : 사용자 컬렉션의 deleteOne 메서드 실행시
+ * 사용된 사용자 _id 필터를 가져와 삭제되는 사용자와 연관된 대여 컬렉션 데이터 삭제 및
+ * 관련된 물품 수량 업데이트 후 원래 함수 실행
+ */
 memberSchema.pre("deleteOne", async function (next) {
         const {_id} = this.getFilter();
         await rental.find({emp_id: _id}).exec((err, result) => {

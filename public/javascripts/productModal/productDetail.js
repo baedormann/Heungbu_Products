@@ -1,13 +1,19 @@
-// 권한에 따른 UI
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 매니저 권한 등록 권한에 따른 UI 표시
+ */
 if (!JSON.parse(localStorage.getItem('manage'))) {
     document.getElementsByClassName('manageOk')[0].style.display = "none";
 }
-
 if (!(JSON.parse(localStorage.getItem('edit_auth')) || JSON.parse(localStorage.getItem('manage')))) {
     document.getElementsByClassName('editOk')[0].style.display = "none";
 }
 
-// 물품 상세 화면
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 물품 상세 모달 창
+ * 주요 기능 : 모달창 띄우기 또는 선택한 물품의 데이터를 가져와 바인딩하는 기능
+ */
 function productModalOpen(product_code) {
     var modal = document.getElementById('productModal');
     modal.style.display = "block";
@@ -30,6 +36,7 @@ function productModalOpen(product_code) {
         document.getElementById("rental_availability").innerHTML = ` ${data.rental_availability ? 'O' : 'X'}`
         document.getElementById("return_needed").innerHTML = `${data.return_needed ? 'O' : 'X'}`
         document.getElementById("quantity").innerHTML = `${data.leftQuantity}`
+        /** 대여 권한에 따른 대여화면 표시 */
         if (data.rental_availability && (JSON.parse(localStorage.getItem('rent_auth')) || (JSON.parse(localStorage.getItem('manage'))))) {
             document.getElementById("inputStart").innerHTML = `<div class="rentalTextDiv">시작일</div><input class="rentalInput" id="startDate" type="datetime-local" onchange="startEnd()">`
             document.getElementById("inputEnd").innerHTML = `<div class="rentalTextDiv">종료일</div><input class="rentalInput" id="endDate" type="datetime-local" onchange="startEnd()">`
@@ -45,7 +52,11 @@ function productModalOpen(product_code) {
     });
 }
 
-// 시작일 종료일 기본값
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대여화면에서 대여 시작일, 반납 예정일 초기값 설정
+ * 주요 기능 : 대여시작일을 현재 시간을 기본값으로 설정하는 기능, 반납일을 시작일보다 높게 설정하는 기능
+ */
 function defaultStartEnd() {
     let startElement = document.getElementById('startDate');
     let endElement = document.getElementById('endDate');
@@ -55,7 +66,12 @@ function defaultStartEnd() {
     endElement.min = date;
 }
 
-// 시작일 종료일
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대여 시작일과 반납예정일의 유효성 체크 후 정상값으로 반환되는 함수
+ * 주요 기능 : 시작일에따른 반납예정일의 최소값 설정, 반납예정일에따른 시작일의 최댓값 설정
+ * 시작일이 반납예정일보다 높을경우 정상값 반환
+ */
 function startEnd() {
     let start = document.getElementById('startDate');
     let end = document.getElementById('endDate');
@@ -69,13 +85,18 @@ function startEnd() {
     }
 }
 
-// 대여
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대여를 등록하기위한 함수
+ * 주요 기능 : 대여시 유효성검사와 대여에 필요한 데이터들을 가져와 대여 API요청
+ */
 function rental() {
     let start = document.getElementById('startDate');
     let end = document.getElementById('endDate');
     let text = document.getElementById('rentPurpose');
     let product_code = document.getElementsByClassName('product_code')[0].value;
     if (!end.value) return alert('반납일을 정해주세요.');
+    /** 대여에 대한 데이터들을 가공 */
     const data = {
         product_code: product_code,
         emp_no: localStorage.getItem('emp_no'),
@@ -83,6 +104,7 @@ function rental() {
         start: start.value,
         end: end.value,
     }
+    /** 대여 API 요청 */
     const url = '/rental';
     fetch(url, {
         method: "post",
@@ -104,7 +126,11 @@ function rental() {
     })
 }
 
-// 물품 삭제
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 물품삭제 하는 API 호출
+ * 주요 기능 : confirm을통해 물품삭제 재확인후 삭제 API 요청
+ */
 function productDelete() {
     const product_id = document.getElementsByClassName('product_id')[0].value;
     const url = '/productManage/' + product_id;

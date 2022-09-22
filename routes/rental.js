@@ -4,8 +4,14 @@ const rental = require('../models/rental');
 const product = require('../models/product');
 const member = require('../models/member');
 
-// 대여추가
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대여등록 API
+ * 주요 기능 : req데이터를 통해 대여등록 후 물품 수량 계산 및 물품, 사용자 연관관계 주입
+ * 대여 유효성 검사 기능
+ */
 router.post('/', async function (req, res) {
+    /** req데이터로 대여모델 생성 */
     let rentalData = new rental({
         product_id: '',
         product_code: req.body.product_code,
@@ -20,6 +26,7 @@ router.post('/', async function (req, res) {
     rentalData.emp_id = emp_id._id;
     rentalData.product_id = productCount._id;
     try {
+        /** 물품의 수량이 없을경우 메세지및 에러처리 */
         if (productCount.leftQuantity <= 0) {
             return res.status(402).send({message: '수량이 없습니다.'});
         }
@@ -28,7 +35,9 @@ router.post('/', async function (req, res) {
             product_code: req.body.product_code,
             rental_status: "대여중"
         }).count().exec();
+        /** 남은 수량 계산 */
         let leftQuantity = productCount.quantity - rentCount;
+        /** 물품수량 계산 및 대여컬렉션 연관관계주입 */
         await product.update({product_code: newRental.product_code}, {
             leftQuantity: leftQuantity,
             rentalQuantity: rentCount,

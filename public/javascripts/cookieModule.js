@@ -1,4 +1,8 @@
-// 쿠키 데이터 가져오기
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 등록된 쿠키 데이터 가져오기
+ * 주요 기능 : 받아온 쿠키데이터를 매게변수에 맞는 쿠키데이터를 값만 가져올수 있도록 데이터 가공
+ */
 function getCookie(cName) {
     cName = cName + '=';
     let cookieData = document.cookie;
@@ -14,14 +18,22 @@ function getCookie(cName) {
     return cValue;
 }
 
-// 쿠키 저장
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 쿠키저장 함수
+ * 주요 기능 : 쿠키형식에 맞게 key, value, day값을 받아와 쿠키저장
+ */
 function setCookie(key, value, day) {
     let toDay = new Date();
     toDay.setDate(toDay.getDate() + day);
     document.cookie = key + "=" + escape(value) + "; path=/; expries=" + toDay.toUTCString() + ";"
 }
 
-// 쿠키 삭제
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 쿠키삭제
+ * 주요 기능 : 쿠키데이터를 비움으로써 데이터 삭제
+ */
 function deleteCookie(key) {
     document.cookie = setCookie(key, '', 0);
 }

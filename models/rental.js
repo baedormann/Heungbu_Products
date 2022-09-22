@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// 대여 스키마
+/**
+ * 담당자 : 공통
+ * 함수 설명 : 대여 모델
+ * 주요 기능 : 대여 스키마 설계
+ */
 const rentalSchema = new Schema({
+    /** 물품 컬렉션 다대일 연관관계 양방향 매핑 */
     product_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "product"
@@ -11,6 +16,7 @@ const rentalSchema = new Schema({
         type: String,
         required: true
     },
+    /** 사용자 컬렉션 다대일 연관관계 단방향 매핑 */
     emp_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "member"

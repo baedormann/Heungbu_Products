@@ -5,7 +5,7 @@ const TOKEN_INVALID = -2;
 
 /**
  * 담당자 : 박신욱
- * 함수 설명 : jwt 등록 권한 인증 미들웨어
+ * 함수 설명 : jwt 열람 권한 인증 미들웨어
  * 주요 기능 : response header 토큰 값 또는 쿠키 토큰 값을 통한 권한 처리
  */
 const openUtil = {
@@ -23,7 +23,7 @@ const openUtil = {
             token = req.cookies.token
         }
 
-        /** 쿠키 토큰 검증 */
+        /** 열람권한이 없을 경우 */
         const decode = await jwt.verify(token, secretKey);
         if(!(decode.manage || decode.open_auth)){
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})

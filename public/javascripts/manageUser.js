@@ -1,7 +1,11 @@
 // manage 모달관리
 var modal = document.getElementById('manageModal');
 
-// 유저 모달창
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이용자관리의 사용자에 대한 모달창 표시
+ * 주요 기능 : 사번을 매게변수로 사용자상세정보 요청 API호출후 데이터 바인딩
+ */
 function manageOpen(emp_no) {
     modal.style.display = "block";
     const url = '/member/auth/' + emp_no;
@@ -26,17 +30,31 @@ function manageOpen(emp_no) {
     });
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 사용자 모달창 닫기
+ * 주요 기능 : 모달창의 속성을 none으로 주어 닫기기능
+ */
 function manageDone() {
     modal.style.display = "none";
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 모달창 닫기기능
+ * 주요 기능 : 모달창 띄었을때 다른곳 누를시 모달창 스타일 none
+ */
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-// 권한 부여 및 회수
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 사용자에 대한 권한 부여및 회수
+ * 주요 기능 : 사번을 매게변수로 받아 보낼 데이터 가공 후 권한 수정 API 요청
+ */
 function saveAuth(emp_no) {
     console.log(emp_no)
     const data = {
@@ -45,7 +63,6 @@ function saveAuth(emp_no) {
         rent_auth: document.getElementById("e_rent").checked,
         open_auth: document.getElementById("e_open").checked
     }
-    console.log(data);
     const url = '/manageUser';
     fetch(url, {
         method: "PATCH",
@@ -60,7 +77,11 @@ function saveAuth(emp_no) {
     });
 }
 
-// 비밀번호 초기화
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 선택된 사용자의 비밀번호 초기화 함수
+ * 주요 기능 : confirm으로 재 확인후 사번으로 비밀번호 초기화 API 요청
+ */
 function userInit(emp_no) {
     if (confirm("비밀번호를 초기화 하시겠습니까?") == true) {
         const url = '/manageUser/init';
@@ -82,7 +103,11 @@ function userInit(emp_no) {
 }
 
 
-// 유저 추방
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 선택된 사용자를 추방하는 기능
+ * 주요 기능 : 파라미터로 사번을 넣고 추방 API요청
+ */
 function userBen(emp_no) {
     if (confirm("정말 추방하시겠습니까?") == true) {
         const url = '/member/auth/' + emp_no;

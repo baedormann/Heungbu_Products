@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const rental = require('../models/rental');
-/* GET rentalCheck page. */
+
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 대여현황 페이지에 사용될 데이터 와 ejs 렌더링
+ * 주요 기능 : 전체, 대여, 반납각각의 데이터들을 response
+ */
 router.get('/', async function(req, res, next) {
     const rentalList = await rental.find()
         .populate('product_id')

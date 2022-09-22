@@ -2,13 +2,21 @@ const express = require('express');
 const router = express.Router();
 const member = require('../models/member')
 
-/* GET manageUser page. */
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이용자관리 ejs 렌더링
+ * 주요 기능 : 이용자 관리의 초기 데이터 response
+ */
 router.get('/', async function (req, res, next) {
     const data = await member.find().exec();
     res.render('manageUser', {stateUrl: 'manageUser', data: data});
 });
 
-// 권한 회수 및 부여
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이용자관리 권한 회수 및 부여
+ * 주요 기능 : req로받은 데이터를 통해 사용자 컬렉션을 업데이트 후 변경된 사용자 데이터 response
+ */
 router.patch('/', async function (req, res) {
     try {
         const update = await member.update({emp_no: req.body.emp_no},
@@ -24,7 +32,11 @@ router.patch('/', async function (req, res) {
     }
 })
 
-// 비밀번호 초기화
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이용자 관리 비밀번호 초기화 API
+ * 주요 기능 : 0405로 비밀번호 초기화 기능
+ */
 router.patch('/init', async function (req, res) {
     try {
         const update = await member.findOneAndUpdate({emp_no: req.body.emp_no},
@@ -38,7 +50,11 @@ router.patch('/init', async function (req, res) {
 })
 
 
-// 물품 검색
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이용자관리의 이용자 검색 API
+ * 주요 기능 : req로 받아온 데이터로 select된 데이터별로 사용자 컬렉션 find 후 response
+ */
 router.post('/search', async function (req, res) {
     let condition = req.body.condition;
     let text = req.body.text;
