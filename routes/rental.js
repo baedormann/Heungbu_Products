@@ -28,13 +28,13 @@ router.post('/', async function (req, res) {
         let leftQuantity = productCount.quantity - rentCount;
         if (leftQuantity < 0) {
             return res.status(402).send({message: '수량이 없습니다.'});
+        }else {
+            await product.update({product_code: newRental.product_code}, {
+                leftQuantity: leftQuantity,
+                rentalQuantity: rentCount,
+                $push: {rental_id: newRental._id}
+            });
         }
-        await product.update({product_code: newRental.product_code}, {
-            leftQuantity: leftQuantity,
-            rentalQuantity: rentCount,
-            $push: {rental_id: newRental._id}
-        });
-
         return res.status(201).json(newRental);
     } catch (err) {
         res.status(400).json({message: err.message});
