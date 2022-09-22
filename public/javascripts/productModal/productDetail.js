@@ -284,7 +284,11 @@ function detail() {
     modalContent.classList.add('modal-productDetail');
 }
 
-//뒤로가기
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 모달창내의 뒤로가기 기능
+ * 주요 기능 : 모달데이터 함수 재요청후 대여현황, 이력 html 초기화
+ */
 function back() {
     detail();
     document.getElementsByClassName('rentalList__thead')[0].innerHTML = '';
