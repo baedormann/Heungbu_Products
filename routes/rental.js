@@ -20,15 +20,16 @@ router.post('/', async function (req, res) {
     rentalData.emp_id = emp_id._id;
     rentalData.product_id = productCount._id;
     try {
+        const rentCount = await rental.find({
+            product_code: rentalData.product_code,
+            rental_status: "대여중"
+        }).count().exec();
+        let leftQuantity = productCount.quantity - rentCount;
         if (leftQuantity < 0) {
             return res.status(402).send({message: '수량이 없습니다.'});
         }
         const newRental = await rentalData.save();
-        const rentCount = await rental.find({
-            product_code: newRental.product_code,
-            rental_status: "대여중"
-        }).count().exec();
-        let leftQuantity = productCount.quantity - rentCount;
+
         await product.update({product_code: newRental.product_code}, {
             leftQuantity: leftQuantity,
             rentalQuantity: rentCount,
