@@ -4,7 +4,7 @@ let time = 0;
 window.onload=function(){
     if(!JSON.parse(localStorage.getItem('manage')))
         document.querySelector(".manageTap").remove();
-    if(!JSON.parse(localStorage.getItem('open_auth')) || !JSON.parse(localStorage.getItem('manage')))
+    if(!(JSON.parse(localStorage.getItem('open_auth')) || JSON.parse(localStorage.getItem('manage'))))
         document.querySelector(".rentStatus").remove();
     const url = '/login/exp';
     fetch(url, {
