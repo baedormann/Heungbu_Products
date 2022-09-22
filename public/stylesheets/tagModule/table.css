@@ -1,7 +1,9 @@
 table {
+    position: absolute;
+    top: 0;
+    left : 0;
     width: 95%;
-    height: 95%;
-    margin: 0 auto;
+    margin: 12px;
     border-collapse: separate;
     border-spacing: 0;
     font-size: 12px;
@@ -12,11 +14,14 @@ th {
     color: #8e8e8e;
 }
 
+tr{
+}
 td {
     background-color: rgb(243, 243, 243);
     border: 5px solid white;
     border-style: solid none;
     text-align: center;
+    padding: 12px 0px;
 }
 
 tr td:first-child {
