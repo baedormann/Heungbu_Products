@@ -3,41 +3,46 @@ const secretKey = require('../config/secretKey').secretKey;
 const TOKEN_EXPIRED = -3;
 const TOKEN_INVALID = -2;
 
-// jwt 미들웨어
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : jwt 관리자 인증 미들웨어
+ * 주요 기능 : response header 토큰 값 또는 쿠키 토큰 값을 통한 권한 처리
+ */
 const manageUtil = {
-    // jwt 토큰 검증
+    /** jwt 토큰 검증 */
     checkToken: async (req, res, next) => {
         let token
-
+        /** response header 토큰 검증 */
         if (req.headers.authorization)
             token = req.headers.authorization.split(" ")[1];
         else {
+            /** 쿠키 토큰 검증 */
             if(!req.cookies.token) {
                 return res.redirect('/login');
             }
             token = req.cookies.token
         }
 
-        // 관리자 검증
+        /** 관리자 검증 */
         const decode = await jwt.verify(token, secretKey);
+        /** 관리자가 아닐 경우 */
         if(!decode.manage){
             res.writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('관리자가 아닙니다.'); location.href = \'/'</script>");
         }
-        
-        // 토큰 없음
+
+        /** 토큰이 없는 경우 */
         if (!token) {
             res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('토큰이 없습니다.'); location.href = \'/login'</script>");
         }
-        // decode
         const user = await jwt.verify(token);
-        // 유효기간 만료
+        /** 유효기간 만료됐을 경우 */
         if (user === TOKEN_EXPIRED) {
             res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('토큰이 만료되었습니다.'); location.href = \'/login'</script>");
         }
-        // 유효하지 않는 토큰
+        /** 유효하지 않은 토큰일 경우 */
         if (user === TOKEN_INVALID) {
             res.clearCookie('token').writeHead(200, {'Content-Type':'text/html; charset=utf-8'})
             return res.write("<script>alert('토큰이 유효하지 않습니다.'); location.href = \'/login'</script>");
