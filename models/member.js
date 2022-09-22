@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const rental = require("./rental");
+const product = require("./product");
 const saltRounds = 10;
 
 // 유저 스키마
@@ -56,9 +57,9 @@ const memberSchema = new Schema({
             type: Boolean,
             default: false
         },
-}, {versionKey : false})
+}, {versionKey: false})
 
-memberSchema.pre('save', function(next) {
+memberSchema.pre('save', function (next) {
     const user = this;
     if (user.isModified('password')) {
         bcrypt.genSalt(saltRounds, function (err, salt) {
@@ -74,7 +75,7 @@ memberSchema.pre('save', function(next) {
     }
 })
 
-memberSchema.pre('findOneAndUpdate', function(next) {
+memberSchema.pre('findOneAndUpdate', function (next) {
     const user = this;
     if (user.getUpdate().password) {
         bcrypt.genSalt(saltRounds, function (err, salt) {
@@ -91,8 +92,18 @@ memberSchema.pre('findOneAndUpdate', function(next) {
 })
 
 memberSchema.pre("deleteOne", async function (next) {
-        const { _id } = this.getFilter();
-        await rental.deleteMany({ emp_id: _id });
+        const {_id} = this.getFilter();
+        await rental.find({emp_id: _id}).exec((err, result) => {
+            result.map(async (data) => {
+                await product.update({_id: data.product_id}, {
+                    $inc: {
+                        leftQuantity: +1,
+                        rentalQuantity: -1
+                    }
+                });
+            })
+        })
+        await rental.deleteMany({emp_id: _id});
         next();
     }
 )
