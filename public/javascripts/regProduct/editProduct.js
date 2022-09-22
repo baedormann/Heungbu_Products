@@ -1,4 +1,8 @@
-//페이지 로드 시 실행되는 코드
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 초기화를 위해 기존의 물품 상세정보를 저장
+ * 주요 기능 : 페이지 로드 시 초기화되는 변수들
+ */
 const firstCategory = document.getElementById('firstCategoryHidden').value;
 const secondCategory = document.getElementById('secondCategoryHidden').value;
 const productName = document.getElementById('product_name').value;
@@ -6,21 +10,29 @@ const quantity = document.getElementById('quantity').value;
 let rentalAvailability;
 let returnNeeded;
 
+/** 대여가능여부 초기화 */
 if (document.getElementById('rentalAvailailityHidden').value == 'true') {
     rentalAvailability = true;
-} else {
+}
+else {
     rentalAvailability = false;
 }
 
+/** 반환필요여부 초기화 */
 if (document.getElementById('returnNeededHidden').value == 'true') {
     returnNeeded = true;
 } else {
     returnNeeded = false;
 }
 
+/** 초기화 함수 실행 */
 initReg();
 
-// 물품등록 api
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 편집 시 유효성 검사를 실행하는 함수
+ * 주요 기능 : 대분류, 소분류, 물품명, 수량 null 체크
+ */
 function editProduct() {
     if (!Boolean(document.getElementById("firstCategory").value)) {
         return alert("대분류를 선택하세요");
@@ -31,10 +43,16 @@ function editProduct() {
     } else if (!Boolean(document.getElementById("quantity").value)) {
         return alert("수량을 입력하세요");
     }
-    editProductApi()
+
+    /** 물품 편집 api를 호출하는 함수 실행 */
+    editProductApi();
 }
 
-// 편집 api호출
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 편집 api를 호출하는 함수
+ * 주요 기능 : 물품 편집 api호출, 라우터에서 유효성 검사 실행 후 반환된 결과 메세지 표시
+ */
 function editProductApi() {
     let url = "/editProduct"
     let product = {
@@ -60,6 +78,7 @@ function editProductApi() {
             return response.json()
         }
     }).then((data) => {
+        /** 성공 시 alert 표시 및 새로고침 */
         alert(data.message);
         console.log(data);
         location.reload();
@@ -69,7 +88,11 @@ function editProductApi() {
     });
 }
 
-//초기화 컨펌
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 초기화 버튼 클릭 시 confirm 표시 함수
+ * 주요 기능 : 초기화 실행 전 confirm을 거침
+ */
 function confirmInit() {
     if (confirm('내용을 초기화하시겠습니까?')) {
         initReg();
@@ -77,32 +100,36 @@ function confirmInit() {
     }
 }
 
-//내용 초기화
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 초기화. 물품 편집 페이지에서 입력한 내용을 초기화하는 함수
+ * 주요 기능 : 초기화 버튼 클릭 및 confirm 확인 시 기존의 물품 상세 정보로 입력값 초기화
+ */
 function initReg() {
     document.getElementById('secondCategory').disabled = false;
     const firstOptions = document.getElementById('firstCategory').children;
 
-    //대분류 selected 결정 반복문
+    /** 초기화 시 대분류 selected 옵션을 결정하는 반복문 */
     for (var i = 1; i < firstOptions.length; i++) {
         if (firstOptions[i].value == firstCategory) {
             document.getElementById('firstCategory').children[i].selected = true;
-            //초기화 시 소분류 조회
+            /** 해당 대분류의 하위 소분류 조회 */
             init_findSecondCategory(firstCategory);
             document.getElementById('secondCategory').value = '';
             break;
         }
     }
-    //input 초기화
+    /** input 초기화 */
     document.getElementById('product_name').value = productName;
     document.getElementById('quantity').value = quantity;
 
-    //라디오버튼 초기화
+    /** 대여 가능 여부 라디오버튼 초기화 */
     if (rentalAvailability) {
         document.getElementsByName('rental_availability')[0].checked = true;
     } else {
         document.getElementsByName('rental_availability')[1].checked = true;
     }
-
+    /** 반환 필요 여부 라디오버튼 초기화 */
     if (returnNeeded) {
         document.getElementsByName('return_needed')[0].checked = true;
     } else {
@@ -110,7 +137,11 @@ function initReg() {
     }
 }
 
-//초기화 시 소분류 조회
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 편집 페이지에서 입력한 내용을 초기화하는 함수
+ * 주요 기능 : 초기화 버튼 클릭 및 confirm 확인 시 기존의 물품 상세 정보로 입력값 초기화
+ */
 function init_findSecondCategory(firstCategory) {
     document.getElementById('secondCategory').disabled = false;
     let selectedElement = document.getElementById("firstCategory");
