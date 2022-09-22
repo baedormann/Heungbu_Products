@@ -128,12 +128,18 @@ function productDelete() {
     }
 }
 
-// 대여자 명단 모달창 띄우기
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 대여자 명단 모달창을 나타내는 함수
+ * 주요 기능 : 물품 대여자 명단 데이터를 모달창에 나타냄
+ */
 function rentalList() {
+    /** 모달창 제목과 내용을 설정 */
     document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여자 명단';
     document.getElementById('modal-rentalList').style.display = 'block';
     document.getElementById('modal-rental').style.display = 'none';
 
+    /** 모달 안의 상세 내용을 설정 */
     const modalContent = document.getElementById('modal-content');
     modalContent.classList.remove('modal-productDetail');
     modalContent.classList.remove('modal-historyList');
@@ -141,6 +147,7 @@ function rentalList() {
 
     const productCode = document.getElementsByClassName('product_code')[0].value;
 
+    /** 데이터 요청 */
     const url = '/productManage/rentalList';
     fetch(url, {
         method: "post",
@@ -150,7 +157,7 @@ function rentalList() {
         },
         body: JSON.stringify({product_code: productCode})
     }).then(response => response.json()).then((data) => {
-        //thead의 innerHTML 코드 작성
+        /** thead에 들어갈 innerHTML 코드 작성 및 삽입 */
         let str = '';
         str += '<tr>';
         str += '<th>대여자명</th>';
@@ -160,7 +167,8 @@ function rentalList() {
         str += '<th>대여 상태</th>';
         str += '</tr>';
         document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
-        //변수 str 초기화
+
+        /** 변수 str 초기화, 대여명단 데이터 바인딩 */
         str = '';
         for (var i = 0; i < data.length; i++) {
             str += '<tr>';
@@ -175,12 +183,18 @@ function rentalList() {
     });
 }
 
-// 대여이력 모달창 띄우기
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 대여 이력 모달창을 나타내는 함수
+ * 주요 기능 : 대여 이력 데이터를 모달창에 나타냄
+ */
 function history() {
+    /** 모달창 제목과 내용을 설정 */
     document.getElementById('modal-title').innerHTML = document.getElementById('product_name').value + ' 대여 이력';
     document.getElementById('modal-rental').style.display = 'none';
     document.getElementById('modal-rentalList').style.display = 'block';
 
+    /** 모달 안의 상세 내용을 설정 */
     const modalContent = document.getElementById('modal-content');
     modalContent.classList.remove('modal-productDetail');
     modalContent.classList.remove('modal-rentalList');
@@ -188,6 +202,7 @@ function history() {
 
     const productCode = document.getElementsByClassName('product_code')[0].value;
 
+    /** 데이터 요청 */
     const url = '/productManage/rentalList';
     fetch(url, {
         method: "post",
@@ -197,6 +212,7 @@ function history() {
         },
         body: JSON.stringify({product_code: productCode})
     }).then(response => response.json()).then((data) => {
+        /** thead에 들어갈 innerHTML 코드 작성 및 삽입 */
         let str = '';
         str += '<tr>';
         str += '<th>상태</th>';
@@ -210,7 +226,7 @@ function history() {
         str += '</tr>';
         document.getElementsByClassName('rentalList__thead')[0].innerHTML = str;
 
-        //변수 str 초기화
+        /** 변수 str 초기화, 데이터 바인딩 */
         str = '';
         for (var i = 0; i < data.length; i++) {
             str += '<tr>';
@@ -225,11 +241,14 @@ function history() {
             str += '</tr>';
         }
         document.getElementsByClassName('rentalList__tbody')[0].innerHTML = str;
-
     });
 }
 
-// 물품 대여 모달창 띄우기
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 대여자 명단 모달창을 나타내는 함수
+ * 주요 기능 : 대여자 명단 데이터를 모달창에 나타냄
+ */
 function detail() {
     document.getElementById('modal-rental').style.display = 'block';
     document.getElementById('modal-rentalList').style.display = 'none';
@@ -246,7 +265,11 @@ function back() {
     document.getElementsByClassName('rentalList__tbody')[0].innerHTML = '';
 }
 
-//물품편집 화면으로 이동
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 수정 페이지로 이동하는 함수
+ * 주요 기능 : 물품 코드를 파라미터로 가지고 물품 수정 페이지 GET요청
+ */
 function edit() {
     const product_code = document.getElementsByClassName('product_code')[0].value;
     location.href = '/productManage/edit/' + product_code;
