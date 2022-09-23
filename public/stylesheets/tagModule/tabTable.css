@@ -1,3 +1,8 @@
+/**
+* 담당자: 박신욱
+* 설명: 탭 테이블 css
+* 주요 기능: 공통으로 사용할 수 있도록 탭기능을 가진 테이블 css 모듈
+*/
 .divProductTable {
     display: flex;
     justify-content: center;

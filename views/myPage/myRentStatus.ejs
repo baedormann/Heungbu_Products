@@ -1,4 +1,8 @@
-
+<!--
+    * 담당자 : 박신욱
+    * 기능 : 마이 페이지
+    * 설명 : 나의 전체 대여현황, 대여현황, 반납현황을 탭기능으로 각 요소에 필요한 컴포넌트 배치
+-->
 <div class="container">
 
     <ul class="tabs">
@@ -19,6 +23,12 @@
 </div>
 
 <script>
+    /**
+     * 담당자 : 박신욱
+     * 함수 설명 : 탭의 클릭이벤트
+     * 주요 기능 : 선택한 탭의 Element 를 가져와 ClassName을 통해 탭기능 활성화
+     * ClssName - current 일경우 css를 통해 화면에 표시
+     */
     function tabClick(e) {
         let tab_link = document.getElementsByClassName('tab-link')
         for (let i = 0; i < tab_link.length; i++) {

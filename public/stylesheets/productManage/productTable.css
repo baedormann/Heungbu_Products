@@ -1,3 +1,8 @@
+/**
+* 담당자: 박신욱
+* 설명: 물품관리 테이블 css
+* 주요 기능: 물품관리의 테이블에 대한 UI, 테이블내의 스크롤기능, 일정크기부터 다른 UI적용
+*/
 .divProductTable {
     display: flex;
     justify-content: center;

@@ -1,3 +1,8 @@
+/**
+* 담당자: 박신욱
+* 설명: 이용자 관리 검색창 css
+* 주요 기능: 이용자 관리에 배치된 검색창의 세부 css
+*/
 .searchBox {
     display: flex;
     justify-content: center;

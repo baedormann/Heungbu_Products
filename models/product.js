@@ -29,6 +29,7 @@ const productSchema = new Schema({
             type: String,
             unique: true,
             required: true,
+            /** 물품 코드에 관한 인덱싱 처리 */
             tags: {type: [String], index: true}
         },
     rental_availability:
