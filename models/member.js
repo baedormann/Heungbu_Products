@@ -118,7 +118,6 @@ memberSchema.pre("deleteOne", async function (next) {
         const {_id} = this.getFilter();
         await rental.find({emp_id: _id}).exec(async (err, result) => {
             result.map(async (data) => {
-                console.log(data);
                 await product.updateOne({_id: data.product_id}, {
                         $inc: {
                             leftQuantity: +1,
@@ -129,7 +128,6 @@ memberSchema.pre("deleteOne", async function (next) {
                         }
                     }
                 );
-                console.log("실행");
             })
             await rental.deleteMany({emp_id: _id});
         })
