@@ -38,7 +38,7 @@ router.get('/', authUtil, async function (req, res, next) {
         const myReturnCount = await rental.find({emp_id: myInfo._id, rental_status: "반납" }).count().populate('product_id');
         const productCount = await product.find().count();
         const memberCount = await member.find().count();
-        const rentalCount = await rental.find().count();
+        const rentalCount = await rental.find({rental_status: "대여중"}).count();
         res.render('index', {
             stateUrl: 'home',
             products: products,
