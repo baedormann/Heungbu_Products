@@ -7,7 +7,11 @@ function excelModal() {
     document.getElementById('excelModal').style.display = 'block';
 }
 
-/** 신욱씨? */
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : Input File 태그 커스텀
+ * 주요 기능 : Input File 태그 커스텀에 대한 input 태그 value 설정
+ */
 function inputFile(e) {
     document.getElementsByClassName("upload-name")[0].value = e.value
 }

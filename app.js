@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 /**
- * 담당자 : 박신욱
+ * 담당자 : 공동
  * 함수 설명 : Controller 구성
  */
 const indexRouter = require('./routes/index');
@@ -68,7 +68,7 @@ mongoose
     .catch(e => console.error(e));
 
 /**
- * 담당자 : 박신욱
+ * 담당자 : 공동
  * 함수 설명 : API connect
  * 주요 기능 : 각각의 API마다 middleWare 주입
  */

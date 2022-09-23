@@ -119,7 +119,7 @@ router.post('/search', authUtil, async function (req, res) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 대여 목록을 조회하는 함수
+ * 함수 설명 : 대여 목록을 조회하는 API
  * 주요 기능 : 해당 물품을 대여 중인 사용자 목록을 조회
  */
 router.post('/rentalList', manage, async function (req, res) {

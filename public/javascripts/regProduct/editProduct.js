@@ -1,7 +1,7 @@
 /**
  * 담당자 : 배도훈
  * 함수 설명 : 초기화를 위해 기존의 물품 상세정보를 저장
- * 주요 기능 : 페이지 로드 시 초기화되는 변수들
+ * 주요 기능 : 페이지 로드 시 초기화되는 변수들 선언
  */
 const firstCategory = document.getElementById('firstCategoryHidden').value;
 const secondCategory = document.getElementById('secondCategoryHidden').value;
@@ -31,7 +31,7 @@ initReg();
 /**
  * 담당자 : 배도훈
  * 함수 설명 : 물품 편집 시 유효성 검사를 실행하는 함수
- * 주요 기능 : 대분류, 소분류, 물품명, 수량 null 체크
+ * 주요 기능 : 대분류, 소분류, 물품명, 수량 null 체크 후 alert 메시지 처리
  */
 function editProduct() {
     if (!Boolean(document.getElementById("firstCategory").value)) {
@@ -50,8 +50,8 @@ function editProduct() {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 물품 편집 api를 호출하는 함수
- * 주요 기능 : 물품 편집 api호출, 라우터에서 유효성 검사 실행 후 반환된 결과 메세지 표시
+ * 함수 설명 : 물품 편집 API 를 요청하는 함수
+ * 주요 기능 : 물품 편집 API 요청, 라우터에서 유효성 검사 실행 후 반환된 결과 메세지 표시
  */
 function editProductApi() {
     let url = "/editProduct"
@@ -71,6 +71,7 @@ function editProductApi() {
         },
         body: JSON.stringify(product)
     }).then(response => {
+        /** 400번에러에 관해서 중복된 물품 에러 처리 */
         const {status} = response;
         if (status == 400) {
             alert("중복된 물품코드입니다.")
@@ -140,7 +141,7 @@ function initReg() {
 /**
  * 담당자 : 배도훈
  * 함수 설명 : 소분류 조회 - 초기화 시 해당 물품의 소분류 option들을 조회하는 함수
- * 주요 기능 : 대분류를 parameter로 해당 대분류의 하위 소분류 목록을 조회
+ * 주요 기능 : 대분류를 parameter로 해당 대분류의 하위 소분류 목록을 조회하여 Select 요소에 배치하는 기능
  */
 function init_findSecondCategory(firstCategory) {
     /** 소분류 비활성화 해제 및 선택된 대분류를 변수로 저장 */

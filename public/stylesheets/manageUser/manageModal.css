@@ -1,3 +1,8 @@
+/**
+* 담당자: 배도훈
+* 설명: 이용자 관리 모달창 css
+* 주요 기능: 이용자 관리에 들어갈 Elements의 배치 및 디자인
+*/
 .modal {
     display: none;
     position: fixed;

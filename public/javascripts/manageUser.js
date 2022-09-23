@@ -126,7 +126,11 @@ function userBen(emp_no) {
     }
 }
 
-// 유저 검색
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 조건의 맞는 사용자 검색 함수
+ * 주요 기능 : 사용자 검색 API를 요청해 response된 데이터들을 각 요소에 맞게 바인딩
+ */
 function manageSearch() {
     let selectSearch = document.getElementById("select_search");
     let text = document.getElementById("input_text");

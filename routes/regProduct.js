@@ -6,8 +6,8 @@ const rental = require('../models/rental');
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 물품 등록 페이지로 이동 - 물품 등록 페이지를 렌더링하는 함수
- * 주요 기능 : 물품 등록 페이지 렌더링
+ * 함수 설명 : 물품 등록 페이지를 렌더링하는 함수
+ * 주요 기능 : 물품 컬렉션, 카테고리 컬렉션 find 후 데이터 response
  */
 router.get('/', async function (req, res, next) {
     const productData = await product.find().exec();
@@ -17,7 +17,7 @@ router.get('/', async function (req, res, next) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 소분류 조회 - 대분류의 하위 소분류 목록을 조회하는 함수
+ * 함수 설명 : 소분류 조회 - 대분류의 하위 소분류 목록을 조회하는 API
  * 주요 기능 : 대분류를 parameter로 받아서 해당 대분류의 하위 소분류 목록을 조회
  */
 router.get('/findSecondCategory/:firstCategory', async function (req, res) {
@@ -31,10 +31,11 @@ router.get('/findSecondCategory/:firstCategory', async function (req, res) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 물품 등록 - 뮬퓸 데이터를 등록하는 함수
- * 주요 기능 : 사용자가 입력한 데이터들로 물품을 등록
+ * 함수 설명 : 물품 등록 - 뮬퓸 데이터를 등록하는 API
+ * 주요 기능 : req로 받은 데이터로 물품컬렉션에 save 하여 등록하는 기능
  */
 router.post('/', async function (req, res) {
+    /** request로 받은 데이터를 가공해 새로운 물품 객체 생성 */
     let data = new product({
         product_name: req.body.product_name,
         product_category: {
@@ -48,7 +49,7 @@ router.post('/', async function (req, res) {
         leftQuantity: req.body.quantity
     });
     try {
-        /** 중복 검사 */
+        /** 물품 코드로 물품 중복 체크 후 물품 등록 */
         await product.findOne({product_code: data.product_code}).exec(async (err, result) => {
             if (result) {
                 return res.status(400).json({message: "이미 등록된 코드입니다."});
@@ -71,6 +72,7 @@ router.post('/', async function (req, res) {
 router.post('/regExcel', async function (req, res) {
     try {
         let data = [];
+        /** req로 받은 데이터들을 insert할 수 있도록 데이터 가공 */
         for (let i = 0; i < req.body.length; i++) {
             data.push({
                 product_code: req.body[i]['제품 코드'],
@@ -87,7 +89,7 @@ router.post('/regExcel', async function (req, res) {
             });
         }
 
-        /** 유효하지 않은 물품들의 코드를 저장할 변수 생성(유효하지 않은 코드 or 대분류 or 소분류) */
+        /** 유효하지 않은 물품들의 코드를 저장할 변수 선언(유효하지 않은 코드 or 대분류 or 소분류) */
         let wrongCode = [];
         let wrongCategory1 = [];
         let wrongCategory2 = [];
@@ -140,7 +142,7 @@ router.post('/regExcel', async function (req, res) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 대분류 조회 - 대분류 목록을 조회하는 함수
+ * 함수 설명 : 대분류 조회 - 대분류 목록을 조회하는 API
  * 주요 기능 : 카테고리 추가 모달에서 소분류 추가 선택 시 대분류 목록을 조회
  */
 router.get('/findFirstCategory', async function (req, res) {
@@ -154,7 +156,7 @@ router.get('/findFirstCategory', async function (req, res) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 대분류 등록 - 대분류를 등록하는 함수
+ * 함수 설명 : 대분류 등록 - 대분류를 등록하는 API
  * 주요 기능 : 카테고리 추가 모달에서 대분류 등록 요청 시 실행되는 함수
  */
 router.post('/regFirstCategory', async function (req, res) {
@@ -162,6 +164,7 @@ router.post('/regFirstCategory', async function (req, res) {
         firstCategory: req.body.firstCategory,
     });
     try {
+        /** 중복된 대분류 체크 */
         await category.findOne({firstCategory: data.firstCategory}).exec(async (err, result) => {
             if (result) {
                 return res.status(400).json({message: "이미 등록된 대분류입니다."});
@@ -178,7 +181,7 @@ router.post('/regFirstCategory', async function (req, res) {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 소분류 등록 - 대분류를 등록하는 함수
+ * 함수 설명 : 소분류 등록 - 대분류를 등록하는 API
  * 주요 기능 : 카테고리 추가 모달에서 소분류 등록 요청 시 실행되는 함수
  */
 router.post('/regCategory', function (req, res, next) {
@@ -197,11 +200,6 @@ router.post('/regCategory', function (req, res, next) {
                     res.status(201).json({message: "소분류 등록완료."})
                 }
             } else {
-                /*const data = new category({
-                    firstCategory: req.body.firstCategory,
-                    secondCategory: req.body.secondCategory
-                })
-                const newCategory = await data.save();*/
                 return res.status(201).json({message: "잘못된 경로입니다."})
             }
         })
