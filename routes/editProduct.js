@@ -4,7 +4,11 @@ const product = require('../models/product');
 const category = require('../models/category');
 const moment = require('moment');
 
-//대분류 선택 시
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 물품관리에서 사용될 카테고리 컬렉션의 소분류를 보내주는 API
+ * 주요 기능 : req로받은 대분류데이터를 통해 소분류데이터 response
+ */
 router.get('/findSecondCategory/:firstCategory', async function (req, res) {
     try {
         const data = await category.find({firstCategory: req.params.firstCategory}).exec();
@@ -14,7 +18,11 @@ router.get('/findSecondCategory/:firstCategory', async function (req, res) {
     }
 })
 
-//물품 편집
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 편집 - 뮬퓸 데이터를 편집하는 함수
+ * 주요 기능 : 사용자가 입력한 데이터들로 해당 물품을 편집
+ */
 router.patch('/', async function (req, res) {
     let newDate = moment().format('YYYY-MM-DDTHH:mm:ss');
     const data = new product({
@@ -48,14 +56,17 @@ router.patch('/', async function (req, res) {
                     last_date: data.last_date
                 }
             })
-    return res.status(201).json({data: newProduct, message: "물품편집이 완료되었습니다."});
-    }
-    catch (err) {
+        return res.status(201).json({data: newProduct, message: "물품편집이 완료되었습니다."});
+    } catch (err) {
         res.status(400).json({message: err.message});
     }
 })
 
-//카테고리 추가 모달에서 소분류 추가 선택 시
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 대분류 조회 - 대분류 목록을 조회하는 함수
+ * 주요 기능 : 카테고리 추가 모달에서 소분류 추가 선택 시 대분류 목록을 조회
+ */
 router.get('/findFirstCategory', async function (req, res) {
     try {
         const data = await category.find().exec();
@@ -65,7 +76,11 @@ router.get('/findFirstCategory', async function (req, res) {
     }
 })
 
-//대분류 카테고리 등록
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 대분류 등록 - 대분류를 등록하는 함수
+ * 주요 기능 : 카테고리 추가 모달에서 대분류 등록 요청 시 실행되는 함수
+ */
 router.patch('/regFirstCategory', async function (req, res) {
     const data = new category({
         firstCategory: req.body.firstCategory,
@@ -85,24 +100,33 @@ router.patch('/regFirstCategory', async function (req, res) {
     }
 })
 
-//전체 카테고리 등록
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 소분류 등록 - 대분류를 등록하는 함수
+ * 주요 기능 : 카테고리 추가 모달에서 소분류 등록 요청 시 실행되는 함수
+ */
 router.post('/regCategory', function (req, res, next) {
+    /** 중복 검사 */
     category.findOne({firstCategory: req.body.firstCategory}).exec(async (err, result) => {
         if (result) {
             const exist = await category.find().and([{firstCategory: req.body.firstCategory}, {secondCategory: {$all: [req.body.secondCategory]}}]).exec();
+
+            /** 중복일 경우 */
             if (exist) {
                 res.status(201).json({message: "이미 존재하는 소분류 입니다."})
+
+            /** 중복이 아닐 경우 */
             } else {
                 category.update({firstCategory: result.firstCategory}, {$push: {secondCategory: req.body.secondCategory}}).exec();
-                res.status(201).json({message: "소분류 등록완료."})
+                res.status(201).json({message: "소분류 등록완료"})
             }
         } else {
-            const data = new category({
+            /*const data = new category({
                 firstCategory: req.body.firstCategory,
                 secondCategory: req.body.secondCategory
             })
-            const newCategory = await data.save();
-            return res.status(201).json({message: "새 대분류 및 소분류 등록"})
+            const newCategory = await data.save();*/
+            return res.status(201).json({message: "잘못된 경로입니다."})
         }
     })
 });

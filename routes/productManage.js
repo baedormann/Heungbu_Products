@@ -117,6 +117,11 @@ router.post('/search', authUtil, async function (req, res) {
     }
 })
 
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 대여 목록을 조회하는 함수
+ * 주요 기능 : 해당 물품을 대여 중인 사용자 목록을 조회
+ */
 router.post('/rentalList', manage, async function (req, res) {
     try {
         const rentalList = await rental.find({product_code: req.body.product_code, rental_status: '대여중'})
@@ -132,7 +137,11 @@ router.post('/rentalList', manage, async function (req, res) {
     }
 })
 
-//물품 편집 화면으로 이동
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 편집 화면 렌더링 함수
+ * 주요 기능 : 물품 편집 화면을 렌더링
+ */
 router.get('/edit/:product_code', editAuth, async function (req, res, next) {
     let product_code = req.params.product_code;
     const data = await product.findOne({product_code: product_code}).exec();

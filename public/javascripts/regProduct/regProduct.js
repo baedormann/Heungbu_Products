@@ -1,4 +1,8 @@
-// 등록 api호출
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 물품 등록 api 호출 - 물품 등록 api를 호출하는 함수
+ * 주요 기능 : 물품 등록 버튼 클릭 시 입력된 데이터를 등록하는 api를 호출함
+ */
 function regProductApi() {
     let url = "/regProduct"
     let product = {
@@ -32,7 +36,11 @@ function regProductApi() {
     });
 }
 
-//내용 초기화
+/**
+ * 담당자 : 배도훈
+ * 함수 설명 : 초기화. 물품 등록 페이지에서 입력한 내용을 초기화하는 함수
+ * 주요 기능 : 초기화 버튼 클릭 및 confirm 확인 시 입력값 초기화
+ */
 function initReg() {
     if (confirm('내용을 초기화하시겠습니까?')) {
         document.getElementById('first_category_default').selected = true;

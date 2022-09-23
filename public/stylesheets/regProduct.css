@@ -1,3 +1,9 @@
+/**
+* 담당자 : 배도훈
+* 설명 : 물품 등록 css
+* 주요 기능 : 물품 등록 페이지 적용 css
+*/
+
 html, body{
     height: 100%;
 }
@@ -6,7 +12,8 @@ html, body{
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 18px;
+    font-size: 1em;
+    min-height: 710px;
 }
 
 .formContent{
@@ -15,9 +22,9 @@ html, body{
     align-items: center;
     background-color: white;
     border-radius: 10px;
-    width: 70%;
+    width: 80%;
     min-width: 470px;
-    height: 80%;
+    height: 90%;
     position: relative;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
@@ -25,19 +32,19 @@ html, body{
     animation-fill-mode: backwards;
 }
 .content{
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
 }
 .content__top{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 20%;
-    font-size: 24px;
+    font-size: 1.4em;
     font-weight: bold;
 }
 .content__mid{
@@ -49,7 +56,6 @@ html, body{
     justify-content: center;
     align-items: center;
     height: 15%;
-    min-height: 100px;
 }
 .firstCategoryDiv, .secondCategoryDiv, .codeDiv, .nameDiv, .quantityDiv, .radioDiv, .excelDiv{
     display: flex;
@@ -88,6 +94,7 @@ select:focus{
 #uploadBtn, #addCategory{
     color: #222222;
     border: 1px solid #cccccc;
+    padding: 3%;
     margin: 0 0 3% 0;
 }
 
@@ -98,6 +105,9 @@ select:focus{
     padding: 30px 0;
     text-align: center;
     border-radius: 0 0 10px 10px;
+}
+button{
+    height: 80%;
 }
 .clickable:hover{
     cursor: pointer;

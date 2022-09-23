@@ -102,7 +102,7 @@ function confirmInit() {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 초기화. 물품 편집 페이지에서 입력한 내용을 초기화하는 함수
+ * 함수 설명 : 초기화 - 물품 편집 페이지에서 입력한 내용을 초기화하는 함수
  * 주요 기능 : 초기화 버튼 클릭 및 confirm 확인 시 기존의 물품 상세 정보로 입력값 초기화
  */
 function initReg() {
@@ -139,14 +139,16 @@ function initReg() {
 
 /**
  * 담당자 : 배도훈
- * 함수 설명 : 물품 편집 페이지에서 입력한 내용을 초기화하는 함수
- * 주요 기능 : 초기화 버튼 클릭 및 confirm 확인 시 기존의 물품 상세 정보로 입력값 초기화
+ * 함수 설명 : 소분류 조회 - 초기화 시 해당 물품의 소분류 option들을 조회하는 함수
+ * 주요 기능 : 대분류를 parameter로 해당 대분류의 하위 소분류 목록을 조회
  */
 function init_findSecondCategory(firstCategory) {
+    /** 소분류 비활성화 해제 및 선택된 대분류를 변수로 저장 */
     document.getElementById('secondCategory').disabled = false;
     let selectedElement = document.getElementById("firstCategory");
     let optionVal = selectedElement.options[selectedElement.selectedIndex].value;
-
+    
+    /** 선택된 대분류를 parameter로 소분류 조회 api 호출 */
     let url = '/regProduct/findSecondCategory/' + optionVal;
     fetch(url, {
         method: "get",
@@ -155,6 +157,7 @@ function init_findSecondCategory(firstCategory) {
             "Authorization": "Bearer " + getCookie('token')
         }
     }).then(response => response.json()).then((data) => {
+        /** 조회된 소분류 데이터 바인딩 */
         let str = '<option id="second_category_default" value="" disabled>선택</option>';
         for (var i = 0; i < data[0].secondCategory.length; i++) {
             str += '<option id="" value="' + data[0].secondCategory[i] + '">' + data[0].secondCategory[i] + '</option>';
@@ -163,7 +166,7 @@ function init_findSecondCategory(firstCategory) {
 
         const secondOptions = document.getElementById('secondCategory').children;
 
-        //소분류 selected 결정 반복문
+        /** 소분류 selected를 결정하는 반복문 */
         for (var j = 1; j < secondOptions.length; j++) {
             if (secondOptions[j].value == secondCategory) {
                 document.getElementById('secondCategory').children[j].selected = true;
