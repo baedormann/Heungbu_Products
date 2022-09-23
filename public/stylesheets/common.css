@@ -1,3 +1,12 @@
+/**
+* 담당자 : 배도훈
+* 설명 : 공통css
+* 주요 기능 :
+*    - 각 페이지에 공통으로 적용할 css.
+*    - tag, type, class로 사용
+*/
+
+/* 폰트 */
 @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
@@ -5,6 +14,7 @@
     font-style: normal;
 }
 
+/* 페이지 공통 애니메이션 */
 @keyframes fadeIn {
     0%{
         opacity: 0;
@@ -19,9 +29,11 @@
 * {
     font-family: "Pretendard-Regular";
 }
+
 body {
     background-color: rgb(243, 243, 243);
 }
+
 button{
     color: white;
     background-color: #4385F5;
@@ -31,8 +43,11 @@ button{
     border-radius: 6px;
     transition: background-color, opacity 0.3s ease-in-out;
 }
-input[type="text"]:focus, input[type="datetime-local"]:focus,
-input[type="password"]:focus, select:focus, input[type="number"]:focus{
+
+input[type="text"]:focus, input[type="datetime-local"]:focus
+, input[type="password"]:focus
+, select:focus
+, input[type="number"]:focus{
     background-color: white;
     outline: 2px solid #f6f6f6;
 }
@@ -40,21 +55,25 @@ button:hover{
     cursor: pointer;
     opacity: 0.5;
 }
+
 .btn-primary{
     color: white;
     background-color: #0098FE;
     border: 1px solid transparent;
 }
+
 .btn-empty{
     color: #575757;
     background-color: white;
     border: 1px solid #a8a8a8;
 }
+
 .btn-green{
     color: white;
     background-color: #198754;
     border: 1px solid transparent;
 }
+
 .btn-red{
     color: white;
     background-color: #DC3545;
