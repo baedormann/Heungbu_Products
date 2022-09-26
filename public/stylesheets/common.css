@@ -25,6 +25,16 @@
         transform: translateZ(0);
     }
 }
+@keyframes fadeInBack {
+    0%{
+        opacity: 0;
+        transform: translate3d(-20px, -20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
 
 * {
     font-family: "Pretendard-Regular";
