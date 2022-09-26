@@ -29,13 +29,13 @@ function productModalOpen(product_code) {
         document.getElementById("inputEnd").innerHTML = ``
         document.getElementById("inputText").innerHTML = ``
         document.getElementById('rentalButton').innerHTML = ``
-        document.getElementById("product_name").innerHTML = `${data.product_name}`
-        document.getElementById("product_name").value = `${data.product_name}`
-        document.getElementById("product_category").innerHTML = `${data.product_category.firstCategory} - ${data.product_category.secondCategory}`
-        document.getElementById("product_code").innerHTML = `${data.product_code}`
-        document.getElementById("rental_availability").innerHTML = ` ${data.rental_availability ? 'O' : 'X'}`
-        document.getElementById("return_needed").innerHTML = `${data.return_needed ? 'O' : 'X'}`
-        document.getElementById("quantity").innerHTML = `${data.leftQuantity}`
+        document.getElementById("product_name").innerHTML =`${data.product_name}`
+        document.getElementById("product_name").value =`${data.product_name}`
+        document.getElementById("product_category").innerHTML =`${data.product_category.firstCategory} - ${data.product_category.secondCategory}`
+        document.getElementById("product_code").innerHTML =`${data.product_code}`
+        document.getElementById("rental_availability").innerHTML =`${data.rental_availability ? 'O' : 'X'}`
+        document.getElementById("return_needed").innerHTML =`${data.return_needed ? 'O' : 'X'}`
+        document.getElementById("quantity").innerHTML =`${data.leftQuantity}`
         /** 대여 권한에 따른 대여화면 표시 */
         if (!data.rental_availability) {
             document.getElementById("rentState").innerHTML = `대여할 수 없는 물품입니다.`

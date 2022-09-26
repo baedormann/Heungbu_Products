@@ -10,6 +10,7 @@ function xlsxTable() {
     /** 데이터를 엑셀 양식에 맞게 데이터 가공 */
     for (let i = 1; i < table.length; i++) {
         let cells = table[i].getElementsByTagName('td');
+        console.log(cells[3].innerHTML + "다음")
         tableData.push({
             first_category: cells[0].innerHTML.split('-')[0],
             second_category: cells[0].innerHTML.split('-')[1],
