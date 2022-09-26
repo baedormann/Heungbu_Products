@@ -14,7 +14,7 @@
     background: white;
     border-radius: 10px;
     margin-top: 50px;
-    animation: fadeIn 1.5s;
+    animation: fadeIn 1s;
     animation-fill-mode: backwards;
 }
 .myInfoComponent {

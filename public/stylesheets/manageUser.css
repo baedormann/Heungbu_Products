@@ -16,7 +16,7 @@
     margin-top: 50px;
     height: 800px;
     align-items: center;
-    animation: fadeIn 1.5s;
+    animation: fadeIn 1s;
     animation-fill-mode: backwards;
 }
 h2 {
