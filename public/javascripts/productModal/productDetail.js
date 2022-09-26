@@ -37,14 +37,17 @@ function productModalOpen(product_code) {
         document.getElementById("return_needed").innerHTML = `${data.return_needed ? 'O' : 'X'}`
         document.getElementById("quantity").innerHTML = `${data.leftQuantity}`
         /** 대여 권한에 따른 대여화면 표시 */
-        if (data.rental_availability && (JSON.parse(localStorage.getItem('rent_auth')) || (JSON.parse(localStorage.getItem('manage'))))) {
+        if (!data.rental_availability) {
+            document.getElementById("rentState").innerHTML = `대여할 수 없는 물품입니다.`
+        } else if ((JSON.parse(localStorage.getItem('rent_auth')) || (JSON.parse(localStorage.getItem('manage'))))) {
+            document.getElementById("rentState").innerHTML = ``
             document.getElementById("inputStart").innerHTML = `<div class="rentalTextDiv">시작일</div><input class="rentalInput" id="startDate" type="datetime-local" onchange="startEnd()">`
             document.getElementById("inputEnd").innerHTML = `<div class="rentalTextDiv">종료일</div><input class="rentalInput" id="endDate" type="datetime-local" onchange="startEnd()">`
             document.getElementById("inputText").innerHTML = `<div class="rentalTextDiv">대여 목적</div><input class="rentalInput" id="rentPurpose" type="text">`
             document.getElementById('rentalButton').innerHTML = `<button onClick="rental()">대여</button>`
             defaultStartEnd();
         } else {
-            document.getElementsByClassName("rentalDiv")[0].innerHTML = "대여권한이 없습니다."
+            document.getElementById("rentState").innerHTML = `대여권한이 없습니다.`
         }
         document.getElementsByClassName('product_code')[0].value = product_code;
         document.getElementsByClassName('product_id')[0].value = data._id;
