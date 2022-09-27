@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const member = require('../models/member');
+const AWS = require('aws-sdk');
+AWS.config.loadFromPath(__dirname + "/../config/awsConfig.json");
 
 /**
  * 담당자 : 박신욱
@@ -43,4 +45,39 @@ router.post('/', async function (req, res) {
         res.status(400).json({message: err.message});
     }
 })
+
+router.post('/email', function (req, res){
+    let ses = new AWS.SES();
+    let params = {
+        Destination: { /* required */
+            ToAddresses: [
+                'asad0922@gmail.com',
+            ]
+        },
+        Message: { /* required */
+            Body: { /* required */
+                Text: {
+                    Charset: "UTF-8",
+                    Data: "인증번호입니다."
+                }
+            },
+            Subject: {
+                Charset: 'UTF-8',
+                Data: '인증번호'
+            }
+        },
+        Source: 'asad0922@gmail.com', /* required */
+        ReplyToAddresses: [
+            'asad0922@gmail.com',
+            /* more items */
+        ],
+    };
+    ses.sendEmail(params, function (err, result){
+        if(err){
+            res.send(err);
+        }
+        res.send(result)
+    })
+})
+
 module.exports = router;
