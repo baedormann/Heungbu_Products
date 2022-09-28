@@ -1,0 +1,38 @@
+<!--
+    * 담당자 : 박신욱
+    * 기능 : 회원가입 페이지
+    * 설명 : 각 회원정보에 필요한 데이터를 입력할 수 있는 Elements 배치 및 유효성 검사 처리를 위한 에러 메시지 Elements 배치
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel='stylesheet' href='/stylesheets/common.css'/>
+    <link rel='stylesheet' href='/stylesheets/auth.css'/>
+    <script src="/javascripts/auth.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="formContent" onkeyup="enter()">
+        <div>
+            <h4 class="clickable hover-underline" onclick="location.href='/login'">로그인</h4>
+            <h4 class="clickable hover-underline currentPage">회원가입</h4>
+        </div>
+        <div class="inputDiv">
+            <div class="widthDiv">
+                <input type="text" name="email" , id="emailInput" , onkeyup="emailKeyUp()" , placeholder="이메일">
+                <button class="btn-empty sendBtn">전송</button>
+            </div>
+        </div>
+        <div class="mismatch-message-email" style="font-size:12px; color:red; visibility: hidden">이메일 형식에 맞지 않습니다 ex)asdasd@gmail.com</div>
+        <div><input type="text" name="codeCheck" , onkeyup="passwordKeyUp()" , id="codeCheck" placeholder="인증 번호"></div>
+        <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">코드를 다시 확인해주세요.</div>
+        <button id="submitBtn" onclick="auth()">다음</button>
+    </div>
+</div>
+<div class="alertDiv">
+    <%- include('alertModal.ejs') %>
+</div>
+</body>
+</html>
