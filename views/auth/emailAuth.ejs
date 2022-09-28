@@ -1,0 +1,19 @@
+ <div class="formContent">
+        <div>
+            <h4 class="clickable hover-underline" onclick="location.href='/login'">로그인</h4>
+            <h4 class="clickable hover-underline currentPage">회원가입</h4>
+        </div>
+        <div class="inputDiv">
+            <div class="widthDiv">
+                <input type="text" name="email" , id="emailInput" , onkeyup="emailKeyUp()" , placeholder="이메일">
+                <button class="btn-empty sendBtn" onclick="emailAuth()">전송</button>
+            </div>
+        </div>
+        <div class="mismatch-message-email" style="font-size:12px; color:red; visibility: hidden">이메일 형식에 맞지 않습니다 ex)asdasd@gmail.com</div>
+        <div><input type="text" name="codeCheck"  , id="codeCheck" placeholder="인증 번호"></div>
+        <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">코드를 다시 확인해주세요.</div>
+        <button id="submitBtn" onclick="authGo()">다음</button>
+    </div>
+</div>
+
+

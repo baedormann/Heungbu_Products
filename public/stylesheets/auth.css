@@ -21,13 +21,17 @@ body{
 }
 .wrapper{
     display: flex;
+    position: fixed;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     min-height: 100%;
 }
-.formContent{
+.current{
+    z-index: 1;
+}
+.wrapper__auth, .wrapper__email{
     background-color: white;
     border-radius: 10px;
     max-width: 450px;
@@ -37,6 +41,7 @@ body{
     text-align: center;
     animation: fadeInDown 1s;
 }
+
 h4{
     display: inline-block;
     padding: 40px 8px 10px 8px;

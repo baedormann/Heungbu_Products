@@ -11,36 +11,20 @@
     <link rel='stylesheet' href='/stylesheets/common.css'/>
     <link rel='stylesheet' href='/stylesheets/auth.css'/>
     <script src="/javascripts/auth.js"></script>
+    <script defer src="/javascripts/emailAuth.js"></script>
+    <script src="/javascripts/cookieModule.js"></script>
 </head>
 <body>
 <div class="wrapper">
-    <div class="formContent" onkeyup="enter()">
-        <div>
-            <h4 class="clickable hover-underline" onclick="location.href='/login'">로그인</h4>
-            <h4 class="clickable hover-underline currentPage">회원가입</h4>
-        </div>
-        <div><input type="text" name="emp_name" , id="emp_name" placeholder="이름"></div>
-        <div><input type="text" name="dept" , id="dept" placeholder="부서"></div>
-        <div>
-            <select name=emp_position, id="emp_position">
-                <option value="">직급</option>
-                <option value="사원">사원</option>
-                <option value="주임">주임</option>
-                <option value="대리">대리</option>
-                <option value="과장">과장</option>
-                <option value="차장">차장</option>
-                <option value="부장">부장</option>
-                <option value="팀장">팀장</option>
-            </select>
-        </div>
-        <div><input type="text" name="emp_no" , id="emp_no" placeholder="사번"></div>
-        <div><input type="text" name="email" , id="email" , onkeyup="emailKeyUp()" , placeholder="이메일"></div>
-        <div class="mismatch-message-email" style="font-size:12px; color:red; visibility: hidden">이메일 형식에 맞지 않습니다 ex)asdasd@gmail.com</div>
-        <div><input type="password" name="password" , onkeyup="passwordKeyUp()" id="password" placeholder="비밀번호"></div>
-        <div><input type="password" name="passwordCheck" , onkeyup="passwordKeyUp()" , id="passwordCheck" placeholder="비밀번호 확인"></div>
-        <div class="mismatch-message" style="font-size:12px; color:red; visibility: hidden">두 비밀번호가 일치하지 않습니다.</div>
-        <button id="submitBtn" onclick="auth()">회원가입</button>
+    <div class="wrapper__email">
+    <%- include('./auth/emailAuth.ejs') %>
     </div>
+</div>
+<div class="wrapper">
+    <div class="wrapper__auth" style="display: none">
+    <%- include('./auth/auth.ejs') %>
+    </div>
+</div>
 </div>
 <div class="alertDiv">
     <%- include('alertModal.ejs') %>

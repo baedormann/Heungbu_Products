@@ -1,19 +1,4 @@
-/**
- * 담당자 : 박신욱
- * 함수 설명 : 회원가입시 이메일 유효성 검사
- * 주요 기능 : @와 .텍스트가 포함되도록 하는 유효성검사와 에러 메세지 표시및 숨김
- */
-function emailKeyUp() {
-    let elMismatchmessage = document.querySelector('.mismatch-message-email');
-    if (document.getElementById('email').value.indexOf('@')==-1 || document.getElementById('email').value.indexOf('.')==-1) {
-        elMismatchmessage.style.visibility = "visible"
-        return false;
-    }
-    else {
-        elMismatchmessage.style.visibility = "hidden"
-        return true;
-    }
-}
+
 
 /**
  * 담당자 : 박신욱
@@ -58,6 +43,9 @@ function isMatch (password1, password2) {
  * 주요 기능 : 전체적인 회원가입 데이터에대한 유효성 검사와 요청할 데이터가공, 에러처리
  */
 function auth() {
+    if(!emailSuccess){
+        return alert("인증이 완료되지 않았습니다.");
+    }
     /** 전체적인 유효성 검사 */
     if(!Boolean(document.getElementById("emp_no").value)){
         return alert("사번을 입력하세요");
