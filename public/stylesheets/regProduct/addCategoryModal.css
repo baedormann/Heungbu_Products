@@ -3,57 +3,7 @@
 * 설명: 카테고리 추가 모달 css
 * 주요 기능: 카테고리 추가 에 들어간 Elements 배치및 디자인
 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 5px solid #888;
-    border-radius: 20px;
-    width: 50%;
-    max-width: 700px;
-    height:30%;
-    min-height: 300px;
-}
-.modal__body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-}
-.modal__top{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-
-}
-.modal__mid{
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.modal__bottom{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column;
-    height: 30%;
-}
 #addCategoryInput{
     display: flex;
     justify-content: center;

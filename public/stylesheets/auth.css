@@ -65,6 +65,27 @@ button{
     border-radius: 6px;
     transition: background-color 0.3s ease-in-out;
 }
+.inputDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.widthDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+}
+#emailInput{
+    width: 55%;
+}
+.sendBtn{
+    width: 20%;
+    padding: 4.5% 0%;
+    margin: 0 0;
+    margin-bottom: 10px;
+    height: 100%;
+}
 button:hover{
     cursor: pointer;
     background-color: #3274E4;

@@ -13,6 +13,7 @@ const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const memberApi = require('./routes/member');
 const authRouter = require('./routes/auth');
+const emailRouter = require('./routes/emailAuth');
 const regProduct = require('./routes/regProduct');
 const editProduct = require('./routes/editProduct');
 const useManageRouter = require('./routes/manageUser');
@@ -76,6 +77,7 @@ mongoose
 /** 내부 middleWare */
 app.use('/',indexRouter);
 app.use('/auth', authRouter);
+app.use('/emailAuth', emailRouter);
 app.use('/login', loginRouter);
 app.use('/productManage', productManageRouter);
 
