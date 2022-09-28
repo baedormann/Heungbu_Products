@@ -18,6 +18,7 @@ function emailKeyUp() {
 }
 
 function emailAuth() {
+    let elMismatchmessage = document.querySelector('.mismatch-message-timmer');
     if (emailKeyUp()) {
         const url = "/auth/email"
         fetch(url, {
@@ -30,6 +31,9 @@ function emailAuth() {
             response.json()
         ).then((data) => {
             alert(data.message);
+            stopWatch(180);
+            elMismatchmessage.style.visibility = "visible";
+            document.getElementsByClassName("sendBtn")[0].disabled = true;
         }).catch((err) => {
             alert("인증번호보내기가 실패하였습니다.");
         });
@@ -66,5 +70,19 @@ function authGo() {
     ).catch((err) => {
         console.log(err);
     });
+}
 
+function stopWatch(time) {
+    let elMismatchmessage = document.querySelector('.mismatch-message-timmer');
+    email_timmer = setInterval(function () {
+        min = parseInt(time/60);
+        sec = time%60;
+        document.getElementsByClassName('mismatch-message-timmer')[0].innerHTML = min + "분" + sec + "초";
+        time--;
+        if(time <0) {
+            document.getElementsByClassName("sendBtn")[0].disabled = false;
+            elMismatchmessage.style.visibility = "hidden"
+            clearInterval(email_timmer);
+        }
+    }, 1000);
 }
