@@ -13,7 +13,7 @@ const authUtil = require('../middlewares/auth').checkToken;
  * 주요 기능 : 물품과 카테고리 컬렉션 find 후 response
  */
 router.get('/', authUtil, async function (req, res, next) {
-    const data = await product.find().exec();
+    const data = await product.find().skip(0).limit(10).exec();
     const category = await categorys.find().exec();
     res.render('productManage', {stateUrl: 'productManage', data: data, category: category});
 });

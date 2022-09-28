@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const member = require('../models/member');
+const bcrypt = require('bcrypt');
 const AWS = require('aws-sdk');
 AWS.config.loadFromPath(__dirname + "/../config/awsConfig.json");
 
@@ -46,38 +47,63 @@ router.post('/', async function (req, res) {
     }
 })
 
-router.post('/email', function (req, res){
-    let ses = new AWS.SES();
-    let params = {
-        Destination: { /* required */
-            ToAddresses: [
-                'asad0922@gmail.com',
-            ]
-        },
-        Message: { /* required */
-            Body: { /* required */
-                Text: {
-                    Charset: "UTF-8",
-                    Data: "인증번호입니다."
+router.post('/email', function (req, res) {
+    try {
+        let number = Math.floor(Math.random() * 1000000) + 100000;
+        if (number > 1000000) {
+            number -= 100000;
+        }
+        let ses = new AWS.SES();
+        let params = {
+            Destination: { /* required */
+                ToAddresses: [
+                    req.body.email,
+                ]
+            },
+            Message: { /* required */
+                Body: { /* required */
+                    Text: {
+                        Charset: "UTF-8",
+                        Data: `인증번호는 ${number} 입니다.`
+                    }
+                },
+                Subject: {
+                    Charset: 'UTF-8',
+                    Data: '흥부 물품 회원가입 인증번호'
                 }
             },
-            Subject: {
-                Charset: 'UTF-8',
-                Data: '인증번호'
+            Source: 'asad0922@gmail.com', /* required */
+            ReplyToAddresses: [
+                'asad0922@gmail.com',
+                /* more items */
+            ],
+        };
+        ses.sendEmail(params, function (err, result) {
+            if (err) {
+                return res.send(err);
             }
-        },
-        Source: 'asad0922@gmail.com', /* required */
-        ReplyToAddresses: [
-            'asad0922@gmail.com',
-            /* more items */
-        ],
-    };
-    ses.sendEmail(params, function (err, result){
-        if(err){
-            res.send(err);
+            const hashNum = bcrypt.hash(number, 12);
+            return res.cookie('authNum', hashNum, {
+                maxAge: 60 * 5
+            })
+        })
+    } catch (err) {
+        return res.send(err);
+    }
+})
+
+router.post('/email/auth', function (req, res) {
+    const authNum = req.cookies.authNum;
+    const CEA = req.body.CEA;
+    try {
+        if (bcrypt.compareSync(CEA, authNum)) {
+            res.json({result: true})
+        } else {
+            res.json({result: false})
         }
-        res.send(result)
-    })
+    } catch (err) {
+        res.send(err);
+    }
 })
 
 module.exports = router;
