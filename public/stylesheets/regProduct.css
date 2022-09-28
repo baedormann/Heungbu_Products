@@ -98,9 +98,6 @@ select:focus{
     margin: 0 0 3% 0;
 }
 
-button{
-    height: 80%;
-}
 .clickable:hover{
     cursor: pointer;
 }
