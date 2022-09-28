@@ -96,16 +96,16 @@ function readExcel() {
                 const confirm_ = data.data[0].length + data.data[1].length + data.data[2].length;
                 /** 물품 등록이 전부 성공했을 경우 */
                 if (confirm_ < rows.length && confirm_ == 0) {
-                    alert("엑셀 파일 등록 성공")
-                    return location.reload()
+                    alert("엑셀 파일 등록 성공", true)
+                    /*return location.reload()*/
                 /** 물품 등록이 전부 실패했을 경우 */
                 } else if (rows.length == confirm_) {
-                    alert("엑셀 파일 등록 실패\n\n오류:" + str);
-                    return location.reload()
+                    alert("엑셀 파일 등록 실패\n\n오류: " + str);
+                    /*return location.reload()*/
                 /** 물품 등록이 하나라도 성공했을 경우 */
                 } else {
-                    alert("엑셀 파일 성공\n\n오류:" + str);
-                    return location.reload()
+                    alert("엑셀 파일 성공\n\n오류: " + str);
+                    /*return location.reload()*/
                 }
             }).catch((err) => {
                 alert("엑셀파일 등록 실패");
