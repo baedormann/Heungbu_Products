@@ -11,6 +11,7 @@ function alert(text, reload){
         document.getElementsByClassName('alertBtnDiv')[0].innerHTML = '<button id="okBtn" onclick="alertDone(true)">확인</button>';
     }
     document.getElementsByClassName('alertText')[0].innerText = text;
+    document.getElementById('okBtn').focus();
 }
 /**
  * 담당자 : 배도훈

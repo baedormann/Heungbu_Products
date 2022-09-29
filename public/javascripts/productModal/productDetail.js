@@ -124,8 +124,7 @@ function rental() {
         }
         return response.json()
     }).then((data) => {
-        alert(`대여하셨습니다.`);
-        location.reload();
+        alert(`대여하셨습니다.`, true);
     })
 }
 

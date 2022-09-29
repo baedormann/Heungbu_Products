@@ -80,7 +80,7 @@
                 <div class="content__bottom">
                     <div class="btnDiv">
                         <button id="initBtn" class="btn-green" onclick="confirmInit();">초기화</button>
-                        <button id="cancelBtn" class="btn-empty" onclick="window.history.back();">취소</button>
+                        <button id="cancelBtn" class="btn-empty" onclick="location.href='/productManage';">취소</button>
                         <button id="submitBtn" class="btn-primary" onclick="editProduct();">편집</button>
                     </div>
                 </div>
@@ -91,6 +91,8 @@
             <input id="secondCategoryHidden" type="hidden" value="<%= data.product_category.secondCategory %>">
             <input id="rentalAvailailityHidden" type="hidden" value="<%= data.rental_availability %>">
             <input id="returnNeededHidden" type="hidden" value="<%= data.return_needed %>">
+            <input id="leftQuatityHidden" type="hidden" value="<%= data.leftQuantity %>">
+            <input id="quantityHidden" type="hidden" value="<%= data.quantity %>">
         </div>
         <div class="modalDiv">
             <%- include('regProduct/addCategoryModal.ejs') %>

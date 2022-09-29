@@ -34,15 +34,29 @@ initReg();
  * 주요 기능 : 대분류, 소분류, 물품명, 수량 null 체크 후 alert 메시지 처리
  */
 function editProduct() {
-    if (!Boolean(document.getElementById("firstCategory").value)) {
+    const firstCategory = document.getElementById("firstCategory");
+    const secondCategory = document.getElementById("secondCategory");
+    const productName = document.getElementById("product_name");
+    const quantity = document.getElementById("quantity");
+    const leftQuantity = document.getElementById("leftQuatityHidden");
+    const quantityHidden = document.getElementById("quantityHidden");
+
+    if (!Boolean(firstCategory.value)) {
         return alert("대분류를 선택하세요");
-    } else if (!Boolean(document.getElementById("secondCategory").value)) {
+    } else if (!Boolean(secondCategory.value)) {
         return alert("소분류를 선택하세요");
-    } else if (!Boolean(document.getElementById("product_name").value)) {
+    } else if (!Boolean(productName.value)) {
         return alert("물품명을 입력하세요");
-    } else if (!Boolean(document.getElementById("quantity").value)) {
+    } else if (!Boolean(quantity.value)) {
         return alert("수량을 입력하세요");
+    } else if(leftQuantity.value < (quantityHidden.value - quantity.value)){
+        return alert('현재 남은 수량은 ' + leftQuantity.value + '입니다. 수량을 확인하세요.');
     }
+
+
+
+
+
 
     /** 물품 편집 api를 호출하는 함수 실행 */
     editProductApi();
@@ -80,8 +94,7 @@ function editProductApi() {
         }
     }).then((data) => {
         /** 성공 시 alert 표시 및 새로고침 */
-        alert(data.message);
-        console.log(data, true);
+        alert(data.message, true);
     }).catch((err) => {
         console.log(err);
         alert("물품등록에 실패했습니다.");
