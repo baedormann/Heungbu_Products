@@ -80,6 +80,13 @@ input[type="radio"]{
     width: 30px;
     margin: 0 10px 3% 40px;
 }
+.modal-content:not(.alertModal .modal-content) {
+    margin: 16% auto; /* 15% from the top and centered */
+    width: 50%;
+    max-width: 700px;
+    height:30%;
+    min-height: 300px;
+}
 .radioText{
     width: 50px;
     margin: 0 20px 3% 0;

@@ -2,3 +2,4 @@ node_modules/*
 config/awsConfig.json
 .idea
 *.iml
+config/awsConfig.json
