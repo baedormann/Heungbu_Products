@@ -16,7 +16,7 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content:not(#alertModal .modal-content) {
+.modal-content:not(.alertModal .modal-content) {
     background-color: #fefefe;
     margin: 6% auto;
     padding: 20px;
@@ -25,7 +25,7 @@
     width: 60%;
     min-width: 500px;
     height: 100%;
-    min-height: 700px;
+    min-height: 680px;
     max-height: 70%;
     transition: all 0.5s ease-in-out;
 }
