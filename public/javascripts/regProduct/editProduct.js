@@ -81,8 +81,7 @@ function editProductApi() {
     }).then((data) => {
         /** 성공 시 alert 표시 및 새로고침 */
         alert(data.message);
-        console.log(data);
-        location.reload();
+        console.log(data, true);
     }).catch((err) => {
         console.log(err);
         alert("물품등록에 실패했습니다.");

@@ -1,4 +1,4 @@
-<link rel='stylesheet' href="/stylesheets/navbar.css" />
+<link rel='stylesheet' href="/stylesheets/navbar.css"/>
 <script src="https://kit.fontawesome.com/6ae3e97f2e.js" crossorigin="anonymous"></script>
 <script src="/javascripts/logout.js"></script>
 <script src="/javascripts/navbar.js"></script>
@@ -22,13 +22,13 @@
         <span class="tooltip">홈</span>
     </li>
     <div class="manageTap">
-    <li>
-        <a href="/manageUser" class="manageUser">
-            <i class="fa-solid fa-people-roof"></i>
-            <span class="links_name">이용자관리</span>
-        </a>
-        <span class="tooltip">이용자관리</span>
-    </li>
+        <li>
+            <a href="/manageUser" class="manageUser">
+                <i class="fa-solid fa-people-roof"></i>
+                <span class="links_name">이용자관리</span>
+            </a>
+            <span class="tooltip">이용자관리</span>
+        </li>
     </div>
     <li>
         <a href="/regProduct" class="regProduct">
@@ -85,28 +85,29 @@
     let closeBtn = document.querySelector("#btn");
     let searchBtn = document.querySelector("#searchIcon");
 
-    closeBtn.addEventListener("click", ()=>{
+    closeBtn.addEventListener("click", () => {
         sidebar.classList.toggle("open");
         menuBtnChange();
     });
 
-    searchBtn.addEventListener("click", ()=>{
+    searchBtn.addEventListener("click", () => {
         sidebar.classList.toggle("open");
         menuBtnChange();
     });
 
     function menuBtnChange() {
-        if(sidebar.classList.contains("open")){
+        if (sidebar.classList.contains("open")) {
             closeBtn.classList.remove("fa-solid", "fa-bars");
             closeBtn.classList.add("fa-solid", "fa-arrow-left");
-        }else {
+        } else {
             closeBtn.classList.remove("fa-solid", "fa-arrow-left");
             closeBtn.classList.add("fa-solid", "fa-bars");
         }
     }
+
     let stateUrl = document.querySelector('#stateUrl').value;
 
-    switch(stateUrl) {
+    switch (stateUrl) {
         case 'home':
             document.querySelector('.home').classList.add('currentPage');
             break;
@@ -118,6 +119,9 @@
             break;
 
         case 'productManage':
+            document.querySelector('.productManage').classList.add('currentPage');
+            break;
+        case 'editProduct':
             document.querySelector('.productManage').classList.add('currentPage');
             break;
         case 'rentStatus':
