@@ -52,7 +52,7 @@ router.post('/', async function (req, res) {
         /** 물품 코드로 물품 중복 체크 후 물품 등록 */
         await product.findOne({product_code: data.product_code}).exec(async (err, result) => {
             if (result) {
-                return res.status(400).json({message: "이미 등록된 코드입니다."});
+                return res.status(401).json({message: "이미 등록된 코드입니다."});
             } else {
                 const newProduct = await data.save();
                 console.log(data.product_code + "물품 등록 완료.");

@@ -15,25 +15,15 @@ function regProductApi() {
         return_needed: return_needed()
     };
     fetch(url, {
-        method: "post",
-        headers: {
+        method: "post", headers: {
             "Content-Type": "application/json",
-        },
-        body: JSON.stringify(product)
+        }, body: JSON.stringify(product)
     }).then(response => {
-        const {status} = response;
-        if (status == 400) {
-            alert("중복된 물품코드입니다.")
-        } else {
-            return response.json()
-        }
-    }).then((data) => {
+        return response.json()
+    }).then(data => {
         alert(data.message);
-        console.log(data);
-    }).catch((err) => {
-        console.log(err);
-        alert("물품등록에 실패했습니다.");
-    });
+    })
+        .catch(e => alert("물품등록에 실패했습니다."));
 }
 
 /**
