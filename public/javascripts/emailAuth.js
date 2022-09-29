@@ -17,6 +17,11 @@ function emailKeyUp() {
     }
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 회원가입시 이메일로 인증번호를 요청하는 함수
+ * 주요 기능 : 이메일 인증번호 요청을 보낸후 인증번호 유효시간 타이머 실행
+ */
 function emailAuth() {
     if (emailKeyUp()) {
         const url = "/auth/email"
@@ -42,6 +47,11 @@ function emailAuth() {
     }
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이메일로받은 인증번호로 검증하는 요청을 보내는 함수
+ * 주요 기능 : 인증번호 처리가 완료되었을 경우 회원가입 페이지 표시
+ */
 function authGo() {
     let emailComponent = document.getElementsByClassName("wrapper__email")[0];
     let authComponent = document.getElementsByClassName("wrapper__auth")[0];
@@ -72,6 +82,11 @@ function authGo() {
     });
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 인증번호 유효기간 타이머 함수
+ * 주요 기능 : 인증번호 유효기간을 타이머로두고 유효기간 동안의 전송 버튼 처리
+ */
 function stopWatch(time) {
     email_timmer = setInterval(function () {
         min = parseInt(time/60);

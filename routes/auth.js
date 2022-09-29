@@ -3,8 +3,16 @@ const router = express.Router();
 const member = require('../models/member');
 const bcrypt = require('bcrypt');
 const AWS = require('aws-sdk');
+
+// aws 설정 루트
 AWS.config.loadFromPath(__dirname + "/../config/awsConfig.json");
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 이메일 인증
+ * 주요 기능 : 이메일 params를 설정해 메일을 보내는기능
+ * 인증번호를 난수화하여 bcrypt모듈로 암호화 후 3분의 유효기간을 두어 쿠키 저장
+ */
 router.post('/email', function (req, res) {
     try {
         let number = Math.floor(Math.random() * 1000000) + 100000;
@@ -51,6 +59,11 @@ router.post('/email', function (req, res) {
     }
 })
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 메일 인증번호 검증 기능
+ * 주요 기능 : 쿠키에 암호화로 저장된 인증번호와 사용자가 입력한 인증번호가 일치하는지 유효성 검사하는 기능
+ */
 router.post('/email/success', function (req, res) {
     const authNum = req.cookies.authNum;
     const CEA = req.body.CEA;
