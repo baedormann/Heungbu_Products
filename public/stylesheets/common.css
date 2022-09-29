@@ -46,7 +46,6 @@ body {
 
 button{
     color: white;
-    background-color: #4385F5;
     padding: 10px;
     width: 110px;
     border: none;
@@ -179,6 +178,14 @@ button:hover{
     width: 100%;
     align-items: flex-start;
     word-break: break-all;
+}
+button:disabled{
+    opacity: 0.5;
+}
+button:disabled:hover{
+    cursor: default;
+    background-color: #198754;
+    opacity: 0.5;
 }
 
 

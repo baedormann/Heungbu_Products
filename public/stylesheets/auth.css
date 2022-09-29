@@ -93,7 +93,6 @@ button{
 }
 button:hover{
     cursor: pointer;
-    background-color: #3274E4;
 }
 .checkboxDiv{
     display: inline-block;
