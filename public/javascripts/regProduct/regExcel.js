@@ -100,11 +100,11 @@ function readExcel() {
                     /*return location.reload()*/
                 /** 물품 등록이 전부 실패했을 경우 */
                 } else if (rows.length == confirm_) {
-                    alert("엑셀 파일 등록 실패\n\n오류: " + str);
+                    alert("엑셀 파일 등록 실패\n\n오류 물품 " + str);
                     /*return location.reload()*/
                 /** 물품 등록이 하나라도 성공했을 경우 */
                 } else {
-                    alert("엑셀 파일 성공\n\n오류: " + str);
+                    alert("엑셀 파일 성공\n\n오류 물품 " + str);
                     /*return location.reload()*/
                 }
             }).catch((err) => {

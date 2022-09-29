@@ -72,8 +72,7 @@ function saveAuth(emp_no) {
         },
         body: JSON.stringify(data)
     }).then(response => response.json()).then((data) => {
-        alert('권한을 수정하였습니다.');
-        location.reload();
+        alert('권한을 수정하였습니다.', true);
     });
 }
 

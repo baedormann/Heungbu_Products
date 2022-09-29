@@ -149,8 +149,7 @@ function productDelete() {
                 throw alert('물품 삭제에 실패하였습니다.');
             }
         }).then((data) => {
-            alert(`삭제되었습니다`);
-            location.reload();
+            alert(`삭제되었습니다`, true);
         }).catch(err => {
             console.log(err);
         })
