@@ -13,46 +13,54 @@ AWS.config.loadFromPath(__dirname + "/../config/awsConfig.json");
  * 주요 기능 : 이메일 params를 설정해 메일을 보내는기능
  * 인증번호를 난수화하여 bcrypt모듈로 암호화 후 3분의 유효기간을 두어 쿠키 저장
  */
-router.post('/email', function (req, res) {
+router.post('/email', async function (req, res) {
     try {
-        let number = Math.floor(Math.random() * 1000000) + 100000;
-        if (number > 1000000) {
-            number -= 100000;
-        }
-        let ses = new AWS.SES();
-        let params = {
-            Destination: { /* required */
-                ToAddresses: [
-                    req.body.email,
-                ]
-            },
-            Message: { /* required */
-                Body: { /* required */
-                    Text: {
-                        Charset: "UTF-8",
-                        Data: `인증번호는 ${number} 입니다.`
-                    }
-                },
-                Subject: {
-                    Charset: 'UTF-8',
-                    Data: '흥부 물품 회원가입 인증번호'
+        await member.findOne({email: req.body.email}).exec((err, result)=>{
+            if(result){
+                return res.json({
+                    message: "이미등록된 이메일 입니다."
+                })
+            }else{
+                let number = Math.floor(Math.random() * 1000000) + 100000;
+                if (number > 1000000) {
+                    number -= 100000;
                 }
-            },
-            Source: 'asad0922@gmail.com', /* required */
-            ReplyToAddresses: [
-                'asad0922@gmail.com',
-                /* more items */
-            ],
-        };
-        ses.sendEmail(params, function (err, result) {
-            if (err) {
-                return res.json({message: "인증번호 요청에 실패하였습니다."});
+                let ses = new AWS.SES();
+                let params = {
+                    Destination: { /* required */
+                        ToAddresses: [
+                            req.body.email,
+                        ]
+                    },
+                    Message: { /* required */
+                        Body: { /* required */
+                            Text: {
+                                Charset: "UTF-8",
+                                Data: `인증번호는 ${number} 입니다.`
+                            }
+                        },
+                        Subject: {
+                            Charset: 'UTF-8',
+                            Data: '흥부 물품 회원가입 인증번호'
+                        }
+                    },
+                    Source: 'asad0922@gmail.com', /* required */
+                    ReplyToAddresses: [
+                        'asad0922@gmail.com',
+                        /* more items */
+                    ],
+                };
+                ses.sendEmail(params, function (err, result) {
+                    if (err) {
+                        return res.json({message: "인증번호 요청에 실패하였습니다."});
+                    }
+                    number = number.toString();
+                    const hashNum = bcrypt.hashSync(number, 12);
+                    return res.cookie('authNum', hashNum, {
+                        maxAge: 180000
+                    }).json({message: "인증번호를 요청하였습니다."})
+                })
             }
-            number = number.toString();
-            const hashNum = bcrypt.hashSync(number, 12);
-            return res.cookie('authNum', hashNum, {
-                maxAge: 180000
-            }).json({message: "인증번호를 요청하였습니다."})
         })
     } catch (err) {
         return res.send(err);

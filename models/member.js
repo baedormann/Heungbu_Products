@@ -40,6 +40,7 @@ const memberSchema = new Schema({
         {
             type: String,
             required: true,
+            unique: true
         },
     manage:
         {

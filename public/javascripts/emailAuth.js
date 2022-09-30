@@ -38,6 +38,7 @@ function emailAuth() {
             if(data.message == "인증번호를 요청하였습니다."){
                 stopWatch(180);
                 document.getElementsByClassName("sendBtn")[0].disabled = true;
+                document.getElementById("emailInput").disabled = true;
             }
         }).catch((err) => {
             alert("인증번호보내기가 실패하였습니다.");
@@ -96,6 +97,7 @@ function stopWatch(time) {
         if(time <0) {
             document.getElementsByClassName("sendBtn")[0].disabled = false;
             document.getElementsByClassName("sendBtn")[0].innerHTML = "전송";
+            document.getElementById("emailInput").disabled=false;
             clearInterval(email_timmer);
         }
     }, 1000);

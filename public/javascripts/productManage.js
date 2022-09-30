@@ -188,5 +188,15 @@ window.onclick = function (event) {
     }
 }
 
+/**
+ * 담당자 : 박신욱
+ * 함수 설명 : 물품 검색 함수
+ * 주요 기능 : 엔터 키 입력시 물품 검색 함수 요청
+ */
+function searchEnter() {
+    if (window.event.keyCode == 13) {
+        productSearch();
+    }
+}
 
 
