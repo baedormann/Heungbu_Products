@@ -137,6 +137,9 @@ button:hover{
     visibility: visible;
     transform: scaleX(1);
 }
+.currentPage:hover{
+    cursor: default;
+}
 *.hover-underline:hover:before {
     visibility: visible;
     transform: scaleX(1);
