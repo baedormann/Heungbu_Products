@@ -1,5 +1,5 @@
 # Heungbu_Products
-*** [헤븐트리_평가기수제_테크파트_1기_1차발표자료_물품관리프로그램.pdf](https://github.com/baedormann/Heungbu_Products/files/10150427/_._._1._1._.pdf)
+[헤븐트리_평가기수제_테크파트_1기_1차발표자료_물품관리프로그램.pdf](https://github.com/baedormann/Heungbu_Products/files/10150427/_._._1._1._.pdf)
 
 # 흥부 물품 관리 업데이트 노트  
 **v.1.01**  
